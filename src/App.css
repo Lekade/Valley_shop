@@ -1,0 +1,42 @@
+body{
+    width:100%;
+    height:100%;
+    background-color: #fff;
+}
+
+*,
+:before,
+:after{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+h1, h2, h3, h4, h5, h6{
+    margin:0;
+}
+
+p{
+    margin:0;
+}
+
+html{
+    height: 100%;
+    font-size: calc(100vw/1440*10);
+
+}
+
+
+.wrapper{
+    min-height:100vh;
+    position: relative;
+    width:100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.main{
+    flex: 1 1 auto;
+}
+

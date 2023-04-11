@@ -1,0 +1,60 @@
+.header{
+    padding-top:1.7rem;
+    display: flex;
+    width: 100%;
+    height:5.5rem;
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.logo{
+    margin-left: 13rem;
+    font-family: 'Aclonica';
+    font-weight: 400;
+    font-size: 2.4rem;
+    line-height: 2.7rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #000000;
+}
+
+.nav {
+    margin-left: 20.6rem;
+    margin-right:21.8rem;
+}
+
+.nav a{
+    margin-right: 2.3rem;
+    font-family: 'Poppins';
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #000000;
+}
+
+.nav a:last-child{
+    margin-right: 0;
+}
+
+.iconItom{
+    margin-right: 2rem;
+}
+
+.profile img{
+    width: 1.533rem;
+    height: 1.533rem;
+}
+
+.like img{
+    width: 1.5rem;
+    height: 1.376rem;
+}
+
+.basket img{
+    height: 1.725rem;
+    width: 1.66rem;
+
+}
+
+
