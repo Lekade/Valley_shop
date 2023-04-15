@@ -7,6 +7,197 @@
     width: 25.5rem;
 }
 
+.sidebarHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.sidebarHeader {
+    margin-bottom: 3rem;
+    padding-left: 1.7rem;
+    padding-right: 1.4rem;
+}
+
+.sidebarH2{
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.8rem;
+    line-height: 2.7rem;
+    text-transform: uppercase;
+}
+
+.sidebarHeader .checkImg{
+    width: 1rem;
+    height: 2rem;
+}
+
+.sidebarPrice{
+    padding-bottom:3rem;
+}
+
+.priceLabel{
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.priceStart{
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+    text-transform: uppercase;
+}
+
+.priceEnd{
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+    text-transform: uppercase;
+}
+
+.priceDecoration{
+    margin: 0 1.3rem;
+    width: 1.9rem;
+    height: 0.1rem;
+    background-color: #000;
+}
+
+/*-------------------------------------------------*/
+
+.range{
+    position:relative;
+    width: 100%;
+    height: 2.6rem;
+}
+
+input[type="range"]{
+    margin-left: 1.8rem;
+    margin-right:1.8rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 21.9rem;
+    outline: none;
+    position: absolute;
+    top: 0.8rem;
+    background-color: transparent;
+    pointer-events: none;
+}
+.sliderTrack{
+    margin-left: 1.8rem;
+    margin-right:1.8rem;
+    width: 21.9rem;
+    height: 1.8rem;
+    position: absolute;
+    top: 0.8rem;
+    border: 0.1rem solid #CCCCCC;
+    border-radius: 0.3rem;
+}
+input[type="range"]::-webkit-slider-runnable-track{
+    -webkit-appearance: none;
+    height: 1.8rem;
+}
+input[type="range"]::-moz-range-track{
+    -moz-appearance: none;
+    height: 1.8rem;
+}
+input[type="range"]::-ms-track{
+    appearance: none;
+    height: 1.8rem;
+}
+input[type="range"]::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    margin-top:-0.4rem;
+    width: 3.3rem;
+    height: 2.6rem;
+    background: #FFFFFF;
+    cursor: pointer;
+    border: 0.1rem solid #CCCCCC;
+    box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.15);
+    border-radius: 0.3rem;
+
+}
+input[type="range"]::-moz-range-thumb{
+    -webkit-appearance: none;
+    margin-top:-0.4rem;
+    width: 3.3rem;
+    height: 2.6rem;
+    cursor: pointer;
+    background: #FFFFFF;
+    border: 0.1rem solid #CCCCCC;
+    box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.15);
+    border-radius: 0.3rem;
+    pointer-events: auto;
+}
+input[type="range"]::-ms-thumb{
+    appearance: none;
+    margin-top:-0.4rem;
+    width: 3.3rem;
+    height: 2.6rem;
+    cursor: pointer;
+    background: #FFFFFF;
+    border: 0.1rem solid #CCCCCC;
+    box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.15);
+    border-radius: 0.3rem;
+    pointer-events: auto;
+}
+input[type="range"]:active::-webkit-slider-thumb{
+    background: #3C3C3C;
+
+
+}
+
+/*-------------------------------------------------*/
+
+.checboxBody{
+    padding-bottom:3rem;
+    margin-left:1.4rem;
+}
+
+.labelCheckbox{
+    margin-bottom: 0.4rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.checkboxhidden{
+    width: 0.0001rem;
+    height: 0.0001rem;
+    visibility: hidden;
+    opacity: 0;
+}
+.checkboxDecoration{
+    width:2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0.1rem solid #CCCCCC;
+}
+
+.checkboxDecoration img{
+    width: 1.3rem;
+    height: 1.3rem;
+}
+
+.checkboxText{
+    margin-left: 1rem;
+    font-family: 'Nunito', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+}
+
 .content{
     padding-top: 3.8rem;
     width: 118.4rem;
@@ -23,13 +214,13 @@
     text-transform: uppercase;
 }
 
-.sorting{
+.sortingBlock{
     display: flex;
     height: 3.5rem;
     margin-bottom: 1.5rem;
 }
 
-.sorting span{
+.sortingBlock .soringLable{
     margin-right: 1.4rem;
     width: 6.7rem;
     display: flex;
@@ -44,22 +235,67 @@
     text-transform: uppercase;
 }
 
-.sorting div{
-    padding-left: 0.8rem;
+.sortingBlock .sortingBody{
+    position:relative;
     width: 14.5rem;
-    height: 3.5rem;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
     font-family: 'Nunito', sans-serif;
     font-weight: 400;
     font-size: 1.1rem;
     line-height: 1.5rem;
     text-transform: uppercase;
     border: 1px solid #B0B0B0;
+    z-index: 1;
+}
+.sortingHeader{
+    padding-left: 0.8rem;
+    padding-right: .6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 3.5rem;
+    cursor:pointer;
 }
 
-.selectionItoms{
+
+.sortingHeader .checkImg{
+    width: 0.7rem;
+    height: 1.2rem;
+}
+
+.sortingItems{
+    width:100%;
+    position:absolute;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.sortingBody.activ  .sortingItems{
+    visibility: visible;
+    opacity: 100%;
+}
+
+.sortingBody.activ .checkImg{
+    transform:rotate(180deg);
+}
+
+.sortingItem{
+    width:100%;
+    padding-left: 0.8rem;
+    height: 3.5rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #fff;
+    transition:0.5s;
+    cursor:pointer;
+}
+
+.sortingItem:hover{
+    background-color: #CCCCCC;
+    transition:0.5s;
+}
+
+.selectionItems{
     padding-right: 1rem;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -67,13 +303,15 @@
     gap:1.8rem 1.1rem;
 }
 
+
+
 .item{
 
 }
 
 .itemImg{
-    width: 38.4rem;
-    height:49.3rem;
+    width: 38rem;
+    height:49rem;
 }
 
 .itemInfo{

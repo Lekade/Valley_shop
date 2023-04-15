@@ -67,6 +67,7 @@
     margin-right: 0.2rem;
     width: 3.4rem;
     height: 2.2rem;
+    border-radius: 0.4rem;
 }
 
 .paymentItem:last-child{
