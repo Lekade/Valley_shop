@@ -1,13 +1,34 @@
 import React from "react";
 import style from './Сheckout.module.css'
-
 import visaImg from '../../assecs/images/visa.svg'
 import masterCardImg from '../../assecs/images/masterCard.svg'
 import GPayImg from '../../assecs/images/GPay.svg'
 import APayImg from '../../assecs/images/APay.svg'
-import item from '../../assecs/images/itom1.jpg'
 
-const Checkout = () => {
+
+const Checkout = ({basketItem = [], removeBasketItem}) => {
+
+    let checkoutItems = basketItem.map(item => <div key={item.item.id} className={style.basketItem}>
+        <button className={style.deliteItem} onClick={() => removeBasketItem(item.item.id, item.label)}>X</button>
+        <img className={style.imgItem} src={item.item.imageUrl} alt="item"/>
+        <div className={style.infoItem}>
+            <h4 className={style.nameItem}>{item.item.title}</h4>
+            <p className={style.labelInfo}>Size:</p>
+            <span className={style.sizeMark}>XS</span>
+            <span className={style.sizeMark}>S</span>
+            <span className={style.sizeMark}>M</span>
+            <span className={style.sizeMark}>L</span>
+            <span className={style.sizeMark}>XL</span>
+            <p className={style.labelInfo}>Quantity:</p>
+            <div className={style.quantityBlock}>
+                <div className={style.quantity}>123</div>
+                <span className={style.quantitySet}>+</span>
+                <span className={style.quantitySet}>-</span>
+            </div>
+            <div className={style.priceItem}>{item.item.price}<p>$</p></div>
+        </div>
+    </div>)
+
     return (
         <div className={style.checkout}>
             <div className={style.checkoutInfo}>
@@ -71,26 +92,7 @@ const Checkout = () => {
             </div>
             <div className={style.checkoutBasket}>
                 <div className={style.basketInner}>
-                    <div className={style.basketItem}>
-                        <div className={style.deliteItem}>X</div>
-                        <img className={style.imgItem} src={item} alt="item"/>
-                        <div className={style.infoItem}>
-                            <h4 className={style.nameItem}>Hoodie  white dragon</h4>
-                            <p className={style.labelInfo}>Size:</p>
-                            <span className={style.sizeMark}>XS</span>
-                            <span className={style.sizeMark}>S</span>
-                            <span className={style.sizeMark}>M</span>
-                            <span className={style.sizeMark}>L</span>
-                            <span className={style.sizeMark}>XL</span>
-                            <p className={style.labelInfo}>Quantity:</p>
-                            <div className={style.quantityBlock}>
-                                <div className={style.quantity}>123</div>
-                                <span className={style.quantitySet}>+</span>
-                                <span className={style.quantitySet}>-</span>
-                            </div>
-                            <div className={style.priceItem}>172<p>$</p></div>
-                        </div>
-                    </div>
+                    {checkoutItems}
                 </div>
                 <div className={style.priceInfo}><p>Cost of the items:</p>172<p>$</p></div>
                 <div className={style.priceInfo}><p>Delivery cost:</p>172<p>$</p></div>

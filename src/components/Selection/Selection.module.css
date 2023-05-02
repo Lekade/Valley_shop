@@ -309,15 +309,49 @@ input[type="range"]:active::-webkit-slider-thumb{
 
 }
 
-.itemImg{
+.imgBlock{
+    position: relative;
     width: 38rem;
     height:49rem;
 }
 
+.itemImg{
+    width: 100%;
+    height: 100%;
+}
+
 .itemInfo{
+    width: 100%;
     margin: 1.4rem 1.8rem;
     display: flex;
     flex-direction: column;
+}
+
+.btnFavorite{
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:  #3C3C3C;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.likeImg{
+    width: 2rem;
+    height: 1.835rem;
+    fill:none;
+    transition: 0.5s;
+}
+
+.btnFavorite:hover .likeImg{
+    fill: rgba(250, 250, 250, 0.3);
+    transition: 0.5s;
 }
 
 .item a{
@@ -335,4 +369,52 @@ input[type="range"]:active::-webkit-slider-thumb{
     font-weight: 300;
     font-size: 1.4rem;
     line-height: 1.9rem;
+}
+
+.infoBlock{
+    display: flex;
+}
+
+.btnBuy{
+    margin: 2.5rem 1.8rem;
+    width: 12.8rem;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3C3C3C;
+    color: #FFFFFF;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.btnBuy.btnBuyOff{
+    background-color: transparent;
+    color: #3C3C3C;
+    border: 0.2rem solid #3C3C3C;
+}
+
+.btnBuy:hover{
+    opacity: 90%;
+    transition: 0.5s;
+}
+
+.itemName{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+}
+
+.itemPrice{
+    margin-top: 1rem;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 300;
+    font-size: 1.4rem;
 }
