@@ -18,7 +18,7 @@ const Header = () => {
             <a href="#">popular</a>
         </nav>
         <a href="#" className={`${style.iconItom} ${style.profile}`}><img src={profileImg} alt="profile"/></a>
-        <a href="#" className={`${style.iconItom} ${style.like}`}><img src={likedImg} alt="like"/></a>
+        <NavLink to='/Favorites' className={`${style.iconItom} ${style.like}`}><img src={likedImg} alt="basket"/></NavLink>
         <NavLink to='/Checkout' className={`${style.iconItom} ${style.basket}`}><img src={basketImg} alt="basket"/></NavLink>
 
     </header>

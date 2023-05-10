@@ -1,0 +1,48 @@
+.favorites{
+    padding: 0 10.4rem 7rem;
+}
+.favoritesTop{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.favoritesTitle{
+    margin: 3.8rem 0 3rem 16.2rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 2.8rem;
+    line-height: 4.2rem;
+    text-transform: uppercase;
+}
+.buttonCleatAll{
+    margin-bottom: 0.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 9.8rem;
+    height: 2.2rem;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.buttonCleatAll img{
+    margin-right: 1rem;
+    width: 2rem;
+    height: 2rem;
+}
+
+.buttonCleatAll span{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+    text-transform: uppercase;
+}
+
+.selectionItems{
+    display: grid;
+    grid-template-columns: repeat(3, 38.4rem);
+    grid-template-rows: 56.8rem;
+    padding-bottom:10.7rem;
+    gap:3rem 4rem;
+}
