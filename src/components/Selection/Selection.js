@@ -1,20 +1,20 @@
-import React from "react";
+import React, {useState} from "react";
 import style from './Selection.module.css'
 import checkImg from '../../assecs/images/check.svg'
 import checkboxImg from '../../assecs/images/checkbox.svg'
 import CardItem from "../CardItem/CardItem";
+import Skeleton from "./Skeleton";
 
 
-const Selection = ({items,basketItem,  favorites, addBasketItem, clickToFavorites}) => {
-    const [sortingItems, setSortingItems] = React.useState(false)
+const Selection = ({items,basketItem, favorites, isLoading, addBasketItem, clickToFavorites}) => {
+    const [sortOpen, setSortOpen] = useState(false)
+    const [sortPriceOpen, setSortPriceOpen] = useState(true)
+    const [sortSeasonOpen, setSortSeasonOpen] = useState(true)
+    const [sortSizeOpen, setSortSizeOpen] = useState(true)
+    const sortItems = ["default", "popular", "price (low - hight)", "price (hight - low)"]
+    const [sortNum, setSortNum] = useState(0)
+    let sortSelected = sortItems[sortNum]
 
-    const onClickSorting  = () => {
-        if(!sortingItems){
-            setSortingItems(true)
-        }else{
-            setSortingItems(false)
-        }
-    }
 
 
     let sliderOne = React.useRef(30);
@@ -51,13 +51,13 @@ const Selection = ({items,basketItem,  favorites, addBasketItem, clickToFavorite
     return (
         <div className={style.selection}>
             <div className={style.sidebar}>
-                <div className={style.sidebarPrice}>
-                    <div className={style.sidebarHeader}>
+                <div className={style.sortEl}>
+                    <div onClick={() => setSortPriceOpen(!sortPriceOpen)} className={sortPriceOpen ? `${style.sidebarTitle} ${style.sidebarTitleOpen}` :  style.sidebarTitle}>
                         <h2 className={style.sidebarH2}>Price</h2>
                         <img className={style.checkImg} src={checkImg} alt="check"/>
                     </div>
 
-                    <div className={style.priceInner}>
+                    {sortPriceOpen && <div className={style.sortElInner}>
                         <div className={style.priceLabel}>
                             <div className={style.priceStart}><span className={style.priceStartValue} ref={displayValOne}>175</span> USD.</div>
                             <span className={style.priceDecoration}></span>
@@ -68,15 +68,15 @@ const Selection = ({items,basketItem,  favorites, addBasketItem, clickToFavorite
                             <input className={style.sliderOne} ref={sliderOne} type="range" min="0" max="100" value='30' />
                             <input className={style.sliderTwo} ref={sliderTwo} type="range" min="0" max="100" value='70' />
                         </div>
-                    </div>
+                    </div> }
                 </div>
-                <div className={style.sidebarSeason}>
-                    <div className={style.sidebarHeader}>
+                <div className={style.sortEl}>
+                    <div onClick={() => setSortSeasonOpen(!sortSeasonOpen)}  className={sortSeasonOpen ? `${style.sidebarTitle} ${style.sidebarTitleOpen}` :  style.sidebarTitle}>
                         <h2 className={style.sidebarH2}>Season</h2>
                         <img className={style.checkImg} src={checkImg} alt="check"/>
                     </div>
 
-                    <div className={style.checboxBody}>
+                    {sortSeasonOpen && <div className={style.sortElInner}>
                         <label  className={style.labelCheckbox}>
                             <input className={style.checkboxhidden} type="checkbox" value='spring'/>
                             <div className={style.checkboxDecoration}>
@@ -92,14 +92,14 @@ const Selection = ({items,basketItem,  favorites, addBasketItem, clickToFavorite
                             </div>
                             <p className={style.checkboxText}>Demi-season</p>
                         </label>
-                    </div>
+                    </div>}
                 </div>
-                <div className={style.sidebarSize}>
-                    <div className={style.sidebarHeader}>
+                <div className={style.sortEl}>
+                    <div onClick={() => setSortSizeOpen(!sortSizeOpen)}  className={sortSizeOpen ? `${style.sidebarTitle} ${style.sidebarTitleOpen}` :  style.sidebarTitle}>
                         <h2 className={style.sidebarH2}>Size</h2>
                         <img className={style.checkImg} src={checkImg} alt="check"/>
                     </div>
-                    <div className={style.checboxBody}>
+                    {sortSizeOpen && <div className={style.sortElInner}>
                         <label  className={style.labelCheckbox}>
                             <input className={style.checkboxhidden} type="checkbox" value='spring'/>
                             <div className={style.checkboxDecoration}>
@@ -115,7 +115,7 @@ const Selection = ({items,basketItem,  favorites, addBasketItem, clickToFavorite
                             </div>
                             <p className={style.checkboxText}>Demi-season</p>
                         </label>
-                    </div>
+                    </div>}
                 </div>
             </div>
 
@@ -123,21 +123,18 @@ const Selection = ({items,basketItem,  favorites, addBasketItem, clickToFavorite
                 <h1>hoodies</h1>
                 <div className={style.sortingBlock}>
                     <span className={style.soringLable}>Sorting:</span>
-                    <div className={sortingItems ? `${style.sortingBody} ${style.activ}` : style.sortingBody}>
-                        <div className={style.sortingHeader} onClick={onClickSorting}>
-                            <span className={style.sortingCurrent}>Default</span>
+                    <div  className={sortOpen ? `${style.sortingBody} ${style.activ}` : style.sortingBody}>
+                        <div onClick={() => setSortOpen(!sortOpen)} className={style.sortingHeader}>
+                            <span className={style.sortingCurrent}>{sortSelected}</span>
                             <img className={style.checkImg} src={checkImg} alt="check"/>
                         </div>
                         <div className={style.sortingItems}>
-                            <div className={style.sortingItem} value={'Default'}>Default</div>
-                            <div className={style.sortingItem}>popular</div>
-                            <div className={style.sortingItem}>price (low - hight)</div>
-                            <div className={style.sortingItem}>price (hight - low)</div>
+                            {sortItems.map((el, index ) => <div onClick={ () => (setSortNum(index), setSortOpen(false))} key={index} className={index === sortNum ? `${style.soringActiv} ${style.sortingItem}` : style.sortingItem}>{el}</div>)}
                         </div>
                     </div>
                 </div>
                 <div className={style.selectionItems}>
-                    <CardItem items={items} basketItem={basketItem} favorites={favorites} addBasketItem={addBasketItem} clickToFavorites={clickToFavorites}/>
+                    <CardItem items={items} basketItem={basketItem} favorites={favorites} isLoading={isLoading} addBasketItem={addBasketItem} clickToFavorites={clickToFavorites}/>
                 </div>
             </div>
         </div>

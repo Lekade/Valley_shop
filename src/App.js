@@ -16,6 +16,7 @@ function App() {
     const [items, setItems] = useState([]);
     const [basketItem, setBasketItem] = useState([])
     const [favorites, setFavorites] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
 
     const getBasketItem = () => {
         return (
@@ -34,11 +35,13 @@ function App() {
     }
 
     React.useEffect(() => {
+        setIsLoading(true)
         axios.get('https://644146b5792fe886a8a31f8c.mockapi.io/items').then(res => {
             setItems(res.data)
         })
         getBasketItem()
         getFavoritesItem()
+        setIsLoading(false)
     }, [])
 
 
@@ -60,7 +63,13 @@ function App() {
             axios.post('https://64523a52a2860c9ed4057faf.mockapi.io/favorites', el.item).then( res =>
                 getFavoritesItem())
         }else{
-            axios.delete(`https://64523a52a2860c9ed4057faf.mockapi.io/favorites/${el.item.label}`)
+            let label = "";
+            favorites.forEach(item => {
+                if(item.item.id === el.item.item.id){
+                    label = item.label
+                }
+            })
+            axios.delete(`https://64523a52a2860c9ed4057faf.mockapi.io/favorites/${label}`)
             setFavorites((prev) => prev.filter(item => item.item.id !== el.item.item.id))
         }
     }
@@ -72,7 +81,7 @@ function App() {
                   <main className="main">
                     <Routes>
                         <Route path='/*'  element={
-                            <Selection items={items} basketItem={basketItem} favorites={favorites} addBasketItem={addBasketItem} clickToFavorites={clickToFavorites}/> }/>
+                            <Selection items={items} basketItem={basketItem} favorites={favorites} isLoading={isLoading} addBasketItem={addBasketItem} clickToFavorites={clickToFavorites}/> }/>
                         <Route path='/Checkout/*'  element={
                             <Checkout basketItem={basketItem} setBasketItem={setBasketItem} removeBasketItem={removeBasketItem}/> }/>
                         <Route path='/Favorites/*'  element={

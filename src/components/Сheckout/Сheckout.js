@@ -7,6 +7,12 @@ import APayImg from '../../assecs/images/APay.svg'
 
 
 const Checkout = ({basketItem = [], removeBasketItem}) => {
+    const totalPrice = basketItem.reduce((sum, obj) => Number(obj.item.price) + sum, 0)
+    let delivery = 30
+    const basket = {}
+    const funct = (Mysize, quantity, id) => {
+
+    }
 
     let checkoutItems = basketItem.map(item => <div key={item.item.id} className={style.basketItem}>
         <button className={style.deliteItem} onClick={() => removeBasketItem(item.item.id, item.label)}>X</button>
@@ -14,11 +20,7 @@ const Checkout = ({basketItem = [], removeBasketItem}) => {
         <div className={style.infoItem}>
             <h4 className={style.nameItem}>{item.item.title}</h4>
             <p className={style.labelInfo}>Size:</p>
-            <span className={style.sizeMark}>XS</span>
-            <span className={style.sizeMark}>S</span>
-            <span className={style.sizeMark}>M</span>
-            <span className={style.sizeMark}>L</span>
-            <span className={style.sizeMark}>XL</span>
+            {item.item.size.map(el => <button className={style.sizeMark}>{el}</button>)}
             <p className={style.labelInfo}>Quantity:</p>
             <div className={style.quantityBlock}>
                 <div className={style.quantity}>123</div>
@@ -94,9 +96,9 @@ const Checkout = ({basketItem = [], removeBasketItem}) => {
                 <div className={style.basketInner}>
                     {checkoutItems}
                 </div>
-                <div className={style.priceInfo}><p>Cost of the items:</p>172<p>$</p></div>
-                <div className={style.priceInfo}><p>Delivery cost:</p>172<p>$</p></div>
-                <div className={style.priceTotal}><p>Total due:</p>172<p>$</p></div>
+                <div className={style.priceInfo}><p>Cost of the items:</p>{totalPrice}<p>$</p></div>
+                <div className={style.priceInfo}><p>Delivery cost:</p>{delivery}<p>$</p></div>
+                <div className={style.priceTotal}><p>Total due:</p>{totalPrice + delivery}<p>$</p></div>
                 <button className={style.submiteBtn}>proceed</button>
             </div>
         </div>

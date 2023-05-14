@@ -7,18 +7,19 @@
     width: 25.5rem;
 }
 
-.sidebarHeader{
+.sortEl{
+    margin-bottom: 2rem;
+}
+
+.sidebarTitle{
+    padding-left: 1.7rem;
+    padding-right: 1.4rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
 }
 
-.sidebarHeader {
-    margin-bottom: 3rem;
-    padding-left: 1.7rem;
-    padding-right: 1.4rem;
-}
 
 .sidebarH2{
     font-family: 'Poppins', sans-serif;
@@ -29,13 +30,19 @@
     text-transform: uppercase;
 }
 
-.sidebarHeader .checkImg{
+.sidebarTitle .checkImg{
     width: 1rem;
     height: 2rem;
+    transition: 0.5s;
+}
+.sidebarTitle.sidebarTitleOpen .checkImg{
+    transform: rotate(180deg);
+    transition: 0.5s;
 }
 
-.sidebarPrice{
-    padding-bottom:3rem;
+.sortElInner{
+    padding-top:3rem;
+    margin-left:1.4rem;
 }
 
 .priceLabel{
@@ -156,11 +163,6 @@ input[type="range"]:active::-webkit-slider-thumb{
 }
 
 /*-------------------------------------------------*/
-
-.checboxBody{
-    padding-bottom:3rem;
-    margin-left:1.4rem;
-}
 
 .labelCheckbox{
     margin-bottom: 0.4rem;
@@ -294,12 +296,22 @@ input[type="range"]:active::-webkit-slider-thumb{
     background-color: #CCCCCC;
     transition:0.5s;
 }
+.sortingItem.soringActiv{
+    background-color: #3C3C3C;
+    color: #fff;
+    transition:0.5s;
+}
 
 .selectionItems{
+    padding-right: 1rem;
+    padding-bottom:10.7rem;
     display: grid;
     grid-template-columns: repeat(3, 38.4rem);
     grid-template-rows: 56.8rem;
-    padding-bottom:10.7rem;
     gap:1.8rem 1.1rem;
+}
+.skeleton{
+    width: 38.4rem;
+    height: 56.8rem;
 }
 
