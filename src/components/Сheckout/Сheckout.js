@@ -9,10 +9,6 @@ import APayImg from '../../assecs/images/APay.svg'
 const Checkout = ({basketItem = [], removeBasketItem}) => {
     const totalPrice = basketItem.reduce((sum, obj) => Number(obj.item.price) + sum, 0)
     let delivery = 30
-    const basket = {}
-    const funct = (Mysize, quantity, id) => {
-
-    }
 
     let checkoutItems = basketItem.map(item => <div key={item.item.id} className={style.basketItem}>
         <button className={style.deliteItem} onClick={() => removeBasketItem(item.item.id, item.label)}>X</button>

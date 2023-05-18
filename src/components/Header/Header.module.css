@@ -17,20 +17,55 @@
     color: #000000;
 }
 
-.nav {
+.category {
+    display: flex;
     margin-left: 20.6rem;
     margin-right:21.8rem;
+    text-decoration: none;
 }
 
-.nav a{
+.category .item{
+    position: relative;
     margin-right: 2.3rem;
-    font-family: 'Poppins';
+    font-family: 'Poppins', sans-serif;
     font-weight: 400;
     font-size: 1.4rem;
     line-height: 2.1rem;
     text-transform: uppercase;
-    text-decoration: none;
     color: #000000;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.category .item:after{
+    content: "";
+    position: absolute;
+    top: 2rem;
+    left: 0;
+    width: 100%;
+    height: 0.1rem;
+    background-color: rgba(0,0,0, 0.0);
+    transition: 0.5s;
+}
+.category .item:hover:after{
+    content: "";
+    position: absolute;
+    top: 2rem;
+    left: 0;
+    width: 100%;
+    height: 0.1rem;
+    background-color: rgba(0,0,0, 0.3);
+    transition: 0.5s;
+
+}
+.category .item.active:after{
+    content: "";
+    position: absolute;
+    top: 2rem;
+    left: 0;
+    width: 100%;
+    height: 0.1rem;
+    background-color: rgba(0,0,0, 1);
+    transition: 0.5s;
 }
 
 .nav a:last-child{

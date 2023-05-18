@@ -45,130 +45,13 @@
     margin-left:1.4rem;
 }
 
-.priceLabel{
-    margin-bottom: 1.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
-.priceStart{
-    font-family: 'Poppins', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 1.4rem;
-    line-height: 2.1rem;
-    text-transform: uppercase;
-}
-
-.priceEnd{
-    font-family: 'Poppins', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 1.4rem;
-    line-height: 2.1rem;
-    text-transform: uppercase;
-}
-
-.priceDecoration{
-    margin: 0 1.3rem;
-    width: 1.9rem;
-    height: 0.1rem;
-    background-color: #000;
-}
-
-/*-------------------------------------------------*/
-
-.range{
-    position:relative;
-    width: 100%;
-    height: 2.6rem;
-}
-
-input[type="range"]{
-    margin-left: 1.8rem;
-    margin-right:1.8rem;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    width: 21.9rem;
-    outline: none;
-    position: absolute;
-    top: 0.8rem;
-    background-color: transparent;
-    pointer-events: none;
-}
-.sliderTrack{
-    margin-left: 1.8rem;
-    margin-right:1.8rem;
-    width: 21.9rem;
-    height: 1.8rem;
-    position: absolute;
-    top: 0.8rem;
-    border: 0.1rem solid #CCCCCC;
-    border-radius: 0.3rem;
-}
-input[type="range"]::-webkit-slider-runnable-track{
-    -webkit-appearance: none;
-    height: 1.8rem;
-}
-input[type="range"]::-moz-range-track{
-    -moz-appearance: none;
-    height: 1.8rem;
-}
-input[type="range"]::-ms-track{
-    appearance: none;
-    height: 1.8rem;
-}
-input[type="range"]::-webkit-slider-thumb{
-    -webkit-appearance: none;
-    margin-top:-0.4rem;
-    width: 3.3rem;
-    height: 2.6rem;
-    background: #FFFFFF;
-    cursor: pointer;
-    border: 0.1rem solid #CCCCCC;
-    box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.15);
-    border-radius: 0.3rem;
-
-}
-input[type="range"]::-moz-range-thumb{
-    -webkit-appearance: none;
-    margin-top:-0.4rem;
-    width: 3.3rem;
-    height: 2.6rem;
-    cursor: pointer;
-    background: #FFFFFF;
-    border: 0.1rem solid #CCCCCC;
-    box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.15);
-    border-radius: 0.3rem;
-    pointer-events: auto;
-}
-input[type="range"]::-ms-thumb{
-    appearance: none;
-    margin-top:-0.4rem;
-    width: 3.3rem;
-    height: 2.6rem;
-    cursor: pointer;
-    background: #FFFFFF;
-    border: 0.1rem solid #CCCCCC;
-    box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.15);
-    border-radius: 0.3rem;
-    pointer-events: auto;
-}
-input[type="range"]:active::-webkit-slider-thumb{
-    background: #3C3C3C;
-
-
-}
-
-/*-------------------------------------------------*/
-
-.labelCheckbox{
+.checkboxItem{
     margin-bottom: 0.4rem;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    cursor: pointer;
 }
 
 .checkboxhidden{
@@ -177,7 +60,7 @@ input[type="range"]:active::-webkit-slider-thumb{
     visibility: hidden;
     opacity: 0;
 }
-.checkboxDecoration{
+.checkbox{
     width:2rem;
     height: 2rem;
     display: flex;
