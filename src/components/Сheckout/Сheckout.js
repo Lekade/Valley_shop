@@ -7,23 +7,23 @@ import APayImg from '../../assecs/images/APay.svg'
 
 
 const Checkout = ({basketItem = [], removeBasketItem}) => {
-    const totalPrice = basketItem.reduce((sum, obj) => Number(obj.item.price) + sum, 0)
+    const totalPrice = basketItem.reduce((sum, obj) => Number(obj.price) + sum, 0)
     let delivery = 30
 
-    let checkoutItems = basketItem.map(item => <div key={item.item.id} className={style.basketItem}>
-        <button className={style.deliteItem} onClick={() => removeBasketItem(item.item.id, item.label)}>X</button>
-        <img className={style.imgItem} src={item.item.imageUrl} alt="item"/>
+    let checkoutItems = basketItem.map(item => <div key={item.id} className={style.basketItem}>
+        <button className={style.deliteItem} onClick={() => removeBasketItem(item.id, item.number)}>X</button>
+        <img className={style.imgItem} src={item.imageUrl} alt="item"/>
         <div className={style.infoItem}>
-            <h4 className={style.nameItem}>{item.item.title}</h4>
+            <h4 className={style.nameItem}>{item.title}</h4>
             <p className={style.labelInfo}>Size:</p>
-            {item.item.size.map(el => <button className={style.sizeMark}>{el}</button>)}
+            {item.size.map(el => <button className={style.sizeMark}>{el}</button>)}
             <p className={style.labelInfo}>Quantity:</p>
             <div className={style.quantityBlock}>
                 <div className={style.quantity}>123</div>
                 <span className={style.quantitySet}>+</span>
                 <span className={style.quantitySet}>-</span>
             </div>
-            <div className={style.priceItem}>{item.item.price}<p>$</p></div>
+            <div className={style.priceItem}>{item.price}<p>$</p></div>
         </div>
     </div>)
 

@@ -9,13 +9,14 @@ import Checkout from "./components/Сheckout/Сheckout";
 import Favorites from "./components/Favorites/Favorites";
 
 import { useSelector, useDispatch } from 'react-redux'
-import {setCategoryId} from "./redux/slices/selectionSlice"
+import { setCategoryId} from "./redux/slices/filterSlice"
 
 
 
 
 function App() {
-    const categoryId = useSelector((state) => state.selectionReducer.categoryId)
+
+    const [category, categoryId,  sortSelectItem] = useSelector((state) => [state.filterReducer.category, state.filterReducer.categoryId, state.filterReducer.sortSelectItem])
     const dispatch = useDispatch()
 
     const [items, setItems] = useState([]);
@@ -24,7 +25,7 @@ function App() {
     const [isLoading, setIsLoading] = useState(true)
 
 
-    const category = ["t-shirts", "sweaters", "hoodies", "shirts", "pants/shorts", "polo", "popular"]
+
 
     const getBasketItem = () => {
         return (
@@ -42,43 +43,44 @@ function App() {
         )
     }
 
+    const order = sortSelectItem.sortProperty.includes('-') ? 'asc' : 'desc'
     useEffect(() => {
         setIsLoading(true)
-        axios.get('https://644146b5792fe886a8a31f8c.mockapi.io/items?category='+ categoryId).then(res => {
+        axios.get(`https://644146b5792fe886a8a31f8c.mockapi.io/items?${categoryId >= 0 ? `category=${categoryId}`: ''}&sortBy=${sortSelectItem.sortProperty.replace('-', '')}&order=${order}`).then(res => {
             setItems(res.data)
             setIsLoading(false)
         })
         getBasketItem()
         getFavoritesItem()
-    }, [categoryId])
+    }, [categoryId, sortSelectItem])
 
 
     let addBasketItem = ({item}) => {
-        if(basketItem.every(i=> i.item.id !== item.item.id)){
+        if(basketItem.every(i=> i.id !== item.id)){
             axios.post('https://644146b5792fe886a8a31f8c.mockapi.io/checkout', item).then( res =>
                 getBasketItem()
             )
         }
     }
 
-    let removeBasketItem = (id, label) => {
-        axios.delete(`https://644146b5792fe886a8a31f8c.mockapi.io/checkout/${label}`)
-        setBasketItem((prev) => prev.filter(item => item.item.id !== id))
+    let removeBasketItem = (id, number) => {
+        axios.delete(`https://644146b5792fe886a8a31f8c.mockapi.io/checkout/${number}`)
+        setBasketItem((prev) => prev.filter(item => item.id !== id))
     }
 
     let clickToFavorites = (el) => {
-        if(favorites.every(i=> i.item.id !== el.item.item.id)){
+        if(favorites.every(i=> i.id !== el.item.id)){
             axios.post('https://64523a52a2860c9ed4057faf.mockapi.io/favorites', el.item).then( res =>
                 getFavoritesItem())
         }else{
-            let label = "";
+            let number = "";
             favorites.forEach(item => {
-                if(item.item.id === el.item.item.id){
-                    label = item.label
+                if(item.id === el.item.id){
+                    number = item.number
                 }
             })
-            axios.delete(`https://64523a52a2860c9ed4057faf.mockapi.io/favorites/${label}`)
-            setFavorites((prev) => prev.filter(item => item.item.id !== el.item.item.id))
+            axios.delete(`https://64523a52a2860c9ed4057faf.mockapi.io/favorites/${number}`)
+            setFavorites((prev) => prev.filter(item => item.id !== el.item.id))
         }
     }
 

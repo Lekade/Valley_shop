@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
-import selectionReducer from "./slices/selectionSlice";
+import filterReducer from "./slices/filterSlice";
+import itemReducer from "./slices/itemsSlice";
 
 export const store = configureStore({
     reducer: {
-        selectionReducer,
+        filterReducer,
+        itemReducer,
     },
 })
 

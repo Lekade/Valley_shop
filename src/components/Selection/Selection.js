@@ -4,6 +4,8 @@ import checkImg from '../../assecs/images/check.svg'
 import checkboxImg from '../../assecs/images/checkbox.svg'
 import SliderRenge from "./sliderRenge/SliderRenge";
 import CardItem from "../CardItem/CardItem";
+import { useSelector, useDispatch } from 'react-redux'
+import {selectorSortSelect, setSortSelectItem, setSortSeasonNum, setSortSizeNum} from "../../redux/slices/filterSlice"
 
 
 const Selection = ({category, categoryId, items,basketItem, favorites, isLoading, addBasketItem, clickToFavorites}) => {
@@ -11,23 +13,8 @@ const Selection = ({category, categoryId, items,basketItem, favorites, isLoading
     const [sortPriceOpen, setSortPriceOpen] = useState(true)
     const [sortSeasonOpen, setSortSeasonOpen] = useState(true)
     const [sortSizeOpen, setSortSizeOpen] = useState(true)
-    const sortItems = ["default", "popular", "price (low - hight)", "price (hight - low)"]
-    const sortSeason = ["spring", "Demi-season", "winter", "summer", "autumn"]
-    const sortSize = ["xs", "s", "m", "l", "xl"]
-    const [sortNum, setSortNum] = useState(0)
-    const [sortSeasonNum, setSortSeasonNum] = useState([])
-    const [sortSizeNum, setSortSizeNum] = useState([])
-    let sortSelected = sortItems[sortNum]
-
-    const onchangeSort = (sortItems, sortFun, i) => {
-        if(sortItems.every(el => el !== i)){
-            return sortFun((prev) => [...prev, i])
-        }else{
-            return sortFun((prev) => prev.filter(item => item !== i))
-        }
-    }
-
-    console.log(sortSeasonNum)
+    const dispatch = useDispatch()
+    const [sortSelect, sortSelectItem,  sortSeason,  sortSeasonNum, sortSize, sortSizeNum] = useSelector(state => selectorSortSelect(state))
 
     return (
         <div className={style.selection}>
@@ -51,7 +38,7 @@ const Selection = ({category, categoryId, items,basketItem, favorites, isLoading
 
                     {sortSeasonOpen && <div className={style.sortElInner}>
                         {sortSeason.map((el, index) =>
-                            <div key={index} className={style.checkboxItem} onClick={ () => onchangeSort(sortSeasonNum, setSortSeasonNum, index)}>
+                            <div key={index} className={style.checkboxItem} onClick={ () => dispatch(setSortSeasonNum(index)) }>
                                 <div className={style.checkbox}>
                                     {sortSeasonNum.some(num => num === index) && <img src={checkboxImg} alt="check"/>}
                                 </div>
@@ -67,7 +54,7 @@ const Selection = ({category, categoryId, items,basketItem, favorites, isLoading
                     </div>
                     {sortSizeOpen && <div className={style.sortElInner}>
                         {sortSize.map((el, index)=>
-                            <div key={index} className={style.checkboxItem} onClick={ () => onchangeSort(sortSizeNum, setSortSizeNum, index)} >
+                            <div key={index} className={style.checkboxItem} onClick={ () => dispatch(setSortSizeNum(index))} >
                                 <div className={style.checkbox}>
                                     {sortSizeNum.some(num => num === index) && <img src={checkboxImg} alt="check"/>}
                                 </div>
@@ -84,13 +71,13 @@ const Selection = ({category, categoryId, items,basketItem, favorites, isLoading
                     <span className={style.soringLable}>Sorting:</span>
                     <div  className={sortOpen ? `${style.sortingBody} ${style.activ}` : style.sortingBody}>
                         <div onClick={() => setSortOpen(!sortOpen)} className={style.sortingHeader}>
-                            <span className={style.sortingCurrent}>{sortSelected}</span>
+                            <span className={style.sortingCurrent}>{sortSelectItem.name}</span>
                             <img className={style.checkImg} src={checkImg} alt="check"/>
                         </div>
                         <div className={style.sortingItems}>
-                            {sortItems.map((el, index ) =>
-                                <div onClick={ () => (setSortNum(index), setSortOpen(false))} key={index}
-                                     className={index === sortNum ? `${style.soringActiv} ${style.sortingItem}` : style.sortingItem}>{el}</div>)}
+                            {sortSelect.map((obj, index ) =>
+                                <div onClick={ () => (dispatch(setSortSelectItem(obj)), setSortOpen(false))} key={index}
+                                     className={obj.name === sortSelectItem.name ? `${style.soringActiv} ${style.sortingItem}`: style.sortingItem}>{obj.name}</div>)}
                         </div>
                     </div>
                 </div>
