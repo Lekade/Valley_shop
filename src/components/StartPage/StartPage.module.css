@@ -1,0 +1,63 @@
+.srartPage{
+    width: 100%;
+    height: 74.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+.gender{
+    position: relative;
+    width: 72.1rem;
+    height: 74.3rem;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+.gender:first-child{
+    background: url("../../../public/image/static/woman.jpg") no-repeat 0 0;
+    background-size: 72.1rem 74.3rem;
+}
+
+.gender:last-child{
+    background: url("../../../public/image/static/man.jpg") no-repeat 0 0;
+    background-size: 72.1rem 74.3rem;
+}
+.gender:first-child:after,
+.gender:last-child:after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0, .7);
+    z-index: 1;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.gender:first-child:hover:after,
+.gender:last-child:hover:after{
+    opacity: 1;
+    transition: 0.5s;
+}
+.text{
+    padding-top: 48rem;
+    font-family: 'Aclonica', sans-serif;
+    font-weight: 400;
+    font-size: 9rem;
+    line-height: 10.2rem;
+    text-transform: uppercase;
+    color: transparent;
+    transition: 0.5s;
+    z-index: 2;
+}
+
+.gender:first-child:hover .text,
+.gender:last-child:hover .text{
+    color: #fff;
+    transition: 0.5s;
+}
+
+

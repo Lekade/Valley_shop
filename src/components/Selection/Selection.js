@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import style from './Selection.module.css'
 import checkImg from '../../assecs/images/check.svg'
 import checkboxImg from '../../assecs/images/checkbox.svg'
@@ -6,16 +6,35 @@ import SliderRenge from "./sliderRenge/SliderRenge";
 import CardItem from "../CardItem/CardItem";
 import { useSelector, useDispatch } from 'react-redux'
 import {selectorSortSelect, setSortSelectItem, setSortSeasonNum, setSortSizeNum} from "../../redux/slices/filterSlice"
+import {fetchProducts} from "../../redux/slices/productSlice";
 
 
-const Selection = ({category, categoryId, items,basketItem, favorites, isLoading, addBasketItem, clickToFavorites}) => {
+const Selection = ({basketItem, favorites, addBasketItem, clickToFavorites}) => {
     const [sortOpen, setSortOpen] = useState(false)
     const [sortPriceOpen, setSortPriceOpen] = useState(true)
     const [sortSeasonOpen, setSortSeasonOpen] = useState(true)
     const [sortSizeOpen, setSortSizeOpen] = useState(true)
-    const dispatch = useDispatch()
-    const [sortSelect, sortSelectItem,  sortSeason,  sortSeasonNum, sortSize, sortSizeNum] = useSelector(state => selectorSortSelect(state))
 
+    const dispatch = useDispatch()
+    const [sortSelect, sortSelectItem,  sortSeason,  sortSeasonNum, sortSize, sortSizeNum, category, categoryId] = useSelector(state => selectorSortSelect(state))
+    const {products, status} = useSelector(state => state.productReducer)
+
+    const getProducts = () =>  {
+        const order = sortSelectItem.sortProperty.includes('-') ? 'asc' : 'desc'
+        const category = categoryId >= 0 ? `category=${categoryId}`: ''
+        const sortBy = sortSelectItem.sortProperty.replace('-', '')
+        dispatch(fetchProducts({category, sortBy,order}))
+    }
+    useEffect(()=>{
+        getProducts()
+    },[categoryId, sortSelectItem])
+
+    const errorBlock = () => {
+           return <div className={style.errorBlock}>
+                <p className={style.errorTitle}>Nothing was found for your query</p>
+                <p className={style.errorSubtitle}>try again</p>
+            </div>
+    }
     return (
         <div className={style.selection}>
             <div className={style.sidebar}>
@@ -81,8 +100,8 @@ const Selection = ({category, categoryId, items,basketItem, favorites, isLoading
                         </div>
                     </div>
                 </div>
-                <div className={style.selectionItems}>
-                    <CardItem items={items} basketItem={basketItem} favorites={favorites} isLoading={isLoading} addBasketItem={addBasketItem} clickToFavorites={clickToFavorites}/>
+                <div className={products.length === 0 & status !== 'loading' ? `${style.selectionItems} ${style.error}` : style.selectionItems }>
+                    <CardItem items={products} basketItem={basketItem} favorites={favorites} status={status} addBasketItem={addBasketItem} clickToFavorites={clickToFavorites} errorBlock={errorBlock}/>
                 </div>
             </div>
         </div>

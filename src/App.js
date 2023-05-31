@@ -7,25 +7,13 @@ import Footer from "./components/Footer/Footer";
 import Selection from "./components/Selection/Selection";
 import Checkout from "./components/Сheckout/Сheckout";
 import Favorites from "./components/Favorites/Favorites";
-
+import StartPage from "./components/StartPage/StartPage";
 import { useSelector, useDispatch } from 'react-redux'
-import { setCategoryId} from "./redux/slices/filterSlice"
-
-
-
 
 function App() {
-
-    const [category, categoryId,  sortSelectItem] = useSelector((state) => [state.filterReducer.category, state.filterReducer.categoryId, state.filterReducer.sortSelectItem])
-    const dispatch = useDispatch()
-
-    const [items, setItems] = useState([]);
     const [basketItem, setBasketItem] = useState([])
-    const [favorites, setFavorites] = useState([])
-    const [isLoading, setIsLoading] = useState(true)
-
-
-
+    const dispatch = useDispatch()
+    const {favorites} = useSelector(state => state.favoritesReducer)
 
     const getBasketItem = () => {
         return (
@@ -35,24 +23,10 @@ function App() {
         )
     }
 
-    const getFavoritesItem = () => {
-        return (
-            axios.get('https://64523a52a2860c9ed4057faf.mockapi.io/favorites').then(res => {
-                setFavorites(res.data)
-            })
-        )
-    }
 
-    const order = sortSelectItem.sortProperty.includes('-') ? 'asc' : 'desc'
     useEffect(() => {
-        setIsLoading(true)
-        axios.get(`https://644146b5792fe886a8a31f8c.mockapi.io/items?${categoryId >= 0 ? `category=${categoryId}`: ''}&sortBy=${sortSelectItem.sortProperty.replace('-', '')}&order=${order}`).then(res => {
-            setItems(res.data)
-            setIsLoading(false)
-        })
         getBasketItem()
-        getFavoritesItem()
-    }, [categoryId, sortSelectItem])
+    }, [])
 
 
     let addBasketItem = ({item}) => {
@@ -70,8 +44,9 @@ function App() {
 
     let clickToFavorites = (el) => {
         if(favorites.every(i=> i.id !== el.item.id)){
-            axios.post('https://64523a52a2860c9ed4057faf.mockapi.io/favorites', el.item).then( res =>
-                getFavoritesItem())
+            axios.post('https://64523a52a2860c9ed4057faf.mockapi.io/favorites', el.item).then( res => {}
+            // функция дать фаворитов
+            )
         }else{
             let number = "";
             favorites.forEach(item => {
@@ -84,22 +59,19 @@ function App() {
         }
     }
 
-    const changeCategory = (id) => {
-        dispatch(setCategoryId(id))
-    }
-
-
   return (
           <div className="wrapper">
-                  <Header category={category} categoryId={categoryId} changeCategory={ changeCategory}/>
+                  <Header/>
                   <main className="main">
                     <Routes>
                         <Route path='/*'  element={
-                            <Selection category={category} categoryId={categoryId} items={items} basketItem={basketItem} favorites={favorites} isLoading={isLoading} addBasketItem={addBasketItem} clickToFavorites={clickToFavorites}/> }/>
-                        <Route path='/Checkout/*'  element={
-                            <Checkout basketItem={basketItem} setBasketItem={setBasketItem} removeBasketItem={removeBasketItem}/> }/>
+                            <StartPage/> }/>
+                        <Route path='/Category/*'  element={
+                            <Selection basketItem={basketItem} favorites={favorites} addBasketItem={addBasketItem} clickToFavorites={clickToFavorites}/> }/>
                         <Route path='/Favorites/*'  element={
                             <Favorites favorites={favorites} clickToFavorites={clickToFavorites} basketItem={basketItem} addBasketItem={addBasketItem} /> }/>
+                        <Route path='/Checkout/*'  element={
+                            <Checkout basketItem={basketItem} setBasketItem={setBasketItem} removeBasketItem={removeBasketItem}/> }/>
                     </Routes>
                   </main>
                   <Footer/>

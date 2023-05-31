@@ -2,8 +2,7 @@ import React from "react";
 import style from "./CardItem.module.css";
 import Skeleton from "../Selection/Skeleton";
 
-const CardItem = ({items, basketItem, favorites, isLoading, addBasketItem,  clickToFavorites, setBasketItem}) => {
-
+const CardItem = ({items = [], basketItem, favorites, status, addBasketItem,  clickToFavorites, setBasketItem, errorBlock}) => {
     let btnBuyOff = (id) => {
         return basketItem.some( i => i.id === id)
     }
@@ -32,7 +31,7 @@ const CardItem = ({items, basketItem, favorites, isLoading, addBasketItem,  clic
 
     return (
         <>
-            {isLoading ? [...new Array(6)].map((_, i) => <Skeleton key={i}/>) : slectionItem}
+            {status === 'loading' ? [...new Array(6)].map((_, i) => <Skeleton key={i}/>) : (items.length === 0 ? errorBlock() : slectionItem)}
         </>
     )
 }

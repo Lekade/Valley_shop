@@ -1,6 +1,7 @@
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
+import {createSlice} from '@reduxjs/toolkit'
 
 const initialState = {
+    gender: 0,
     category: ["t-shirts", "sweaters", "hoodies", "shirts", "pants/shorts", "polo", "popular"],
     categoryId: 0,
     sortSelect: [
@@ -16,21 +17,18 @@ const initialState = {
     sortSizeNum:[]
 }
 
-const onchangeSort = (sortItems, sortFun, i) => {
-
-    if(sortItems.every(el => el !== i)){
-        return sortFun((prev) => [...prev, i])
-    }else{
-        return sortFun((prev) => prev.filter(item => item !== i))
-    }
-}
 
 export const filterSlice = createSlice({
     name: 'filter',
     initialState,
     reducers: {
+        setGender(state, action){
+            state.gender = action.payload;
+        },
         setCategoryId(state, action){
-            state.categoryId = action.payload;
+            if(state.categoryId !== action.payload){
+                state.categoryId = action.payload;
+            }
         },
         setSortSelectItem(state, action){
             state.sortSelectItem = action.payload;
@@ -38,15 +36,14 @@ export const filterSlice = createSlice({
         setSortSeasonNum(state, action){
             if(state.sortSeasonNum.every(el => el !== action.payload)){
                 state.sortSeasonNum = [...state.sortSeasonNum, action.payload]
-            }else {
+            }else{
                 state.sortSeasonNum = state.sortSeasonNum.filter(item => item !== action.payload)
             }
-
         },
         setSortSizeNum(state, action){
             if(state.sortSizeNum.every(el => el !== action.payload)){
                 state.sortSizeNum = [...state.sortSizeNum, action.payload]
-            }else {
+            }else{
                 state.sortSizeNum = state.sortSizeNum.filter(item => item !== action.payload)
             }
         }
@@ -54,11 +51,11 @@ export const filterSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const {setCategoryId, setSortSelectItem, setSortSeasonNum, setSortSizeNum} = filterSlice.actions
+export const {setGender, setCategoryId, setSortSelectItem, setSortSeasonNum, setSortSizeNum} = filterSlice.actions
 
 
 export const selectorSortSelect = (state) => [state.filterReducer.sortSelect, state.filterReducer.sortSelectItem,
     state.filterReducer.sortSeason, state.filterReducer.sortSeasonNum,
-    state.filterReducer.sortSize, state.filterReducer.sortSizeNum]
+    state.filterReducer.sortSize, state.filterReducer.sortSizeNum, state.filterReducer.category, state.filterReducer.categoryId]
 
 export default filterSlice.reducer
