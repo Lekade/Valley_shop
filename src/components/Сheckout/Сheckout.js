@@ -1,4 +1,8 @@
 import React from "react";
+import {useSelector, useDispatch} from 'react-redux'
+
+
+import {fetchRemoveCheckoutItem} from "../../redux/slices/checkoutSlice";
 import style from './Сheckout.module.css'
 import visaImg from '../../assecs/images/visa.svg'
 import masterCardImg from '../../assecs/images/masterCard.svg'
@@ -6,11 +10,19 @@ import GPayImg from '../../assecs/images/GPay.svg'
 import APayImg from '../../assecs/images/APay.svg'
 
 
-const Checkout = ({basketItem = [], removeBasketItem}) => {
-    const totalPrice = basketItem.reduce((sum, obj) => Number(obj.price) + sum, 0)
+
+
+const Checkout = () => {
+    const dispatch = useDispatch()
+    const {checkoutItems} = useSelector(state => state.checkoutReducer)
+    const totalPrice = checkoutItems.reduce((sum, obj) => Number(obj.price) + sum, 0)
     let delivery = 30
 
-    let checkoutItems = basketItem.map(item => <div key={item.id} className={style.basketItem}>
+    const removeBasketItem = (id, number) => {
+        return dispatch(fetchRemoveCheckoutItem({id, number}))
+    }
+
+    const basket = checkoutItems.map(item => <div key={item.id} className={style.basketItem}>
         <button className={style.deliteItem} onClick={() => removeBasketItem(item.id, item.number)}>X</button>
         <img className={style.imgItem} src={item.imageUrl} alt="item"/>
         <div className={style.infoItem}>
@@ -90,7 +102,7 @@ const Checkout = ({basketItem = [], removeBasketItem}) => {
             </div>
             <div className={style.checkoutBasket}>
                 <div className={style.basketInner}>
-                    {checkoutItems}
+                    {basket}
                 </div>
                 <div className={style.priceInfo}><p>Cost of the items:</p>{totalPrice}<p>$</p></div>
                 <div className={style.priceInfo}><p>Delivery cost:</p>{delivery}<p>$</p></div>

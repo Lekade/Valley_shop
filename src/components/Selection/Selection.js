@@ -9,7 +9,7 @@ import {selectorSortSelect, setSortSelectItem, setSortSeasonNum, setSortSizeNum}
 import {fetchProducts} from "../../redux/slices/productSlice";
 
 
-const Selection = ({basketItem, favorites, addBasketItem, clickToFavorites}) => {
+const Selection = ({addBasketItem}) => {
     const [sortOpen, setSortOpen] = useState(false)
     const [sortPriceOpen, setSortPriceOpen] = useState(true)
     const [sortSeasonOpen, setSortSeasonOpen] = useState(true)
@@ -18,6 +18,7 @@ const Selection = ({basketItem, favorites, addBasketItem, clickToFavorites}) => 
     const dispatch = useDispatch()
     const [sortSelect, sortSelectItem,  sortSeason,  sortSeasonNum, sortSize, sortSizeNum, category, categoryId] = useSelector(state => selectorSortSelect(state))
     const {products, status} = useSelector(state => state.productReducer)
+
 
     const getProducts = () =>  {
         const order = sortSelectItem.sortProperty.includes('-') ? 'asc' : 'desc'
@@ -101,7 +102,7 @@ const Selection = ({basketItem, favorites, addBasketItem, clickToFavorites}) => 
                     </div>
                 </div>
                 <div className={products.length === 0 & status !== 'loading' ? `${style.selectionItems} ${style.error}` : style.selectionItems }>
-                    <CardItem items={products} basketItem={basketItem} favorites={favorites} status={status} addBasketItem={addBasketItem} clickToFavorites={clickToFavorites} errorBlock={errorBlock}/>
+                    <CardItem items={products}  status={status} addBasketItem={addBasketItem} errorBlock={errorBlock}/>
                 </div>
             </div>
         </div>
