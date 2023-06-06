@@ -2,7 +2,7 @@ import React from "react";
 import {NavLink} from "react-router-dom";
 import style from "./StartPage.module.css"
 import {setGender} from "../../redux/slices/filterSlice";
-import { useSelector, useDispatch } from 'react-redux'
+import {useDispatch} from 'react-redux'
 
 const StartPage = () => {
     const dispatch = useDispatch()

@@ -1,5 +1,6 @@
 import {createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from "axios";
+import {setAddCheckoutItem} from "./checkoutSlice";
 
 export const fetchProducts = createAsyncThunk(
     'product/fetchProducts',async ({category, sortBy,order}) => {
@@ -8,8 +9,16 @@ export const fetchProducts = createAsyncThunk(
     }
 )
 
+export const fetchProduct = createAsyncThunk(
+    'product/fetchProduct',async (id) => {
+        const {data} = await  axios.get('https://644146b5792fe886a8a31f8c.mockapi.io/items/' + id)
+        return data
+    }
+)
+
 const initialState = {
     products: [],
+    product: {},
     status: 'loading', // loading | success | error
 }
 
@@ -27,6 +36,9 @@ export const productSlice = createSlice({
         [fetchProducts.fulfilled]:(state, action) => {
             state.products = action.payload
             state.status = 'success'
+        },
+        [fetchProduct.fulfilled]:(state, action) => {
+            state.product = action.payload
         },
         [fetchProducts.rejected]:(state, action) => {
             state.status = 'error'

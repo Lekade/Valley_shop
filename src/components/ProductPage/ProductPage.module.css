@@ -1,0 +1,239 @@
+.wrapper{
+    position: relative;
+    padding: 6.7rem 1rem 1.2rem;
+    display: flex;
+    justify-content: space-between;
+}
+.imagesSection{
+    width: 84.6rem;
+    display: flex;
+    justify-content: center;
+}
+.image{
+    width: 60rem;
+    height: 70rem;
+}
+.paramsSection{
+    padding-left: 1.8rem;
+    width: 57.4rem;
+    position: relative;
+}
+.paramsSectionInner{
+    padding-left: 2.2rem;
+    position: relative;
+    width: 55.6rem;
+    right: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.nameBlock{
+    margin-top: 5rem;
+    width: 36rem;
+}
+.name{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 2.2rem;
+    line-height: 3.3rem;
+    text-transform: uppercase;
+    color: #000000;
+}
+.article{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: .8rem;
+    line-height: 1.2rem;
+    text-transform: uppercase;
+    color: #3C3C3C;
+
+}
+.btnFavorite{
+    margin-top: 4.5rem;
+    margin-right: 2.7rem;
+    width: 4.1rem;
+    height: 4.1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.btnFavorite:hover{
+    background-color: #3C3C3C;
+    transition: 0.5s;
+}
+.likeImg{
+    width: 2.4rem;
+    height: 2.3rem;
+}
+.btnFavorite .likeImg path{
+    transition: 0.5s;
+}
+.btnFavorite:hover .likeImg path{
+    stroke: #fff;
+    transition: 0.5s;
+}
+.sortBlock{
+    margin-top: 2rem;
+    width: 100%;
+}
+.sortInner{
+    display: flex;
+}
+.title{
+    margin-bottom: 1.2rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+    color: #000000;
+}
+.colorItem{
+    margin: 1.4rem 1.2rem 0;
+    width: 2.4rem;
+    height: 2.4rem;
+    background-color: #7B7B7B;
+    border: .06rem solid #000;
+    border-radius: 50%;
+}
+.sizeItem{
+    margin: 1rem 1.8rem 0;
+    width: 3.8rem;
+    height: 3.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: 0.06rem solid transparent;
+
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    text-transform: uppercase;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.sizeItem:hover{
+    outline: 0.06rem solid #B0B0B0;
+    transition: 0.5s;
+}
+
+.priceBlock{
+    margin-top: 4rem;
+    margin-right: 30rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 3rem;
+}
+.ratingBlock{
+    margin-top: 4rem;
+    margin-right: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.asterisk{
+    margin-right: .9rem;
+}
+.asterisk svg{
+    width: 3.4rem;
+    height: 3.1rem;
+}
+.ratingNumber{
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+    font-size: 2.2rem;
+    line-height: 3rem;
+}
+
+.btnBuy1Click,
+.btnBuy{
+    margin-top: 3rem;
+    width: 24.4rem;
+    height: 4.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+    text-transform: uppercase;
+}
+
+.btnBuy{
+    background: #3C3C3C;
+    border: none;
+
+    color: #FFFFFF;
+    transition: 0.5s;
+}
+.btnBuy:hover{
+    background: #959595;
+    transition: 0.5s;
+}
+
+.btnBuy1Click{
+    background-color: #fff;
+    border: .1rem solid #3C3C3C;
+    outline: .1rem solid transparent;
+    transition: 0.5s;
+    color: #3C3C3C;
+
+}
+.btnBuy1Click:hover{
+    outline: .1rem solid #3C3C3C;
+    transition: 0.5s;
+}
+
+.accordionBlock{
+    margin-top: 5rem;
+}
+.accordionItem{
+
+    border-bottom: 0.05rem solid #3C3C3C;
+}
+.accordionTitle{
+    margin-top: 1.2rem;
+    width: 46.6rem;
+    height: 3.3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    cursor: pointer;
+}
+.accordionTitle.accordionTitleOpen .checkImg{
+    transform: rotate(180deg);
+    transition: 0.5s;
+}
+.accordionH2{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 21px;
+    color: #000000;
+}
+.checkImg{
+    margin-top: .8rem;
+    margin-right: .18rem;
+    width: .945rem;
+    height: .525rem;
+    transition: 0.5s;
+}
+.accordionInfo{
+    margin-bottom: 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+}
+.infoItem{
+    margin-left: 2.2rem;
+}

@@ -1,5 +1,5 @@
 .favorites{
-    padding: 0 10.4rem 7rem;
+    padding: 5.5rem 10.4rem 7rem;
 }
 .favoritesTop{
     display: flex;
@@ -45,4 +45,40 @@
     grid-template-rows: 56.8rem;
     padding-bottom:10.7rem;
     gap:3rem 4rem;
+}
+.selectionItems.error{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    height: 100%;
+
+}
+.errorBlock{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.errorTitle{
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 3.4rem;
+    line-height: 5.1rem;
+    text-align: center;
+    text-transform: uppercase;
+    color: #000000;
+}
+.errorSubtitle{
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 3rem;
+    text-align: center;
+    text-transform: lowercase;
+    color: #7B7B7B;
 }

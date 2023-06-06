@@ -1,16 +1,12 @@
 import React from "react";
 import {useSelector, useDispatch} from 'react-redux'
 
-
 import {fetchRemoveCheckoutItem} from "../../redux/slices/checkoutSlice";
 import style from './Сheckout.module.css'
 import visaImg from '../../assecs/images/visa.svg'
 import masterCardImg from '../../assecs/images/masterCard.svg'
 import GPayImg from '../../assecs/images/GPay.svg'
 import APayImg from '../../assecs/images/APay.svg'
-
-
-
 
 const Checkout = () => {
     const dispatch = useDispatch()
@@ -24,7 +20,7 @@ const Checkout = () => {
 
     const basket = checkoutItems.map(item => <div key={item.id} className={style.basketItem}>
         <button className={style.deliteItem} onClick={() => removeBasketItem(item.id, item.number)}>X</button>
-        <img className={style.imgItem} src={item.imageUrl} alt="item"/>
+        <img className={style.imgItem} src={`/${item.imageUrl}`} alt="item"/>
         <div className={style.infoItem}>
             <h4 className={style.nameItem}>{item.title}</h4>
             <p className={style.labelInfo}>Size:</p>

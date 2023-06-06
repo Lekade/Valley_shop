@@ -8,8 +8,8 @@ const Favorites = ({addBasketItem}) => {
 
     const errorBlock = () => {
         return <div className={style.errorBlock}>
-            <p className={style.errorTitle}>Nothing was found for your query</p>
-            <p className={style.errorSubtitle}>try again</p>
+            <p className={style.errorTitle}>You don't have a favorite yet</p>
+            <p className={style.errorSubtitle}>But it's never too late to fix it =)</p>
         </div>
     }
 
@@ -18,7 +18,7 @@ const Favorites = ({addBasketItem}) => {
             <div className={style.favoritesTop}>
                 <h1 className={style.favoritesTitle}>favorites</h1>
             </div>
-            <div className={style.selectionItems}>
+            <div className={favorites.length === 0  ? `${style.selectionItems} ${style.error}` : style.selectionItems}>
                 <CardItem items={favorites} addBasketItem={addBasketItem}  errorBlock={errorBlock}/>
             </div>
         </div>

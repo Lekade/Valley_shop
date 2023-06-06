@@ -7,6 +7,7 @@ import Selection from "./components/Selection/Selection";
 import Checkout from "./components/Сheckout/Сheckout";
 import Favorites from "./components/Favorites/Favorites";
 import StartPage from "./components/StartPage/StartPage";
+import ProductPage from "./components/ProductPage/ProductPage";
 
 
 
@@ -21,6 +22,8 @@ function App() {
                             <StartPage/> }/>
                         <Route path='/Category/*'  element={
                             <Selection/> }/>
+                        <Route path='/Product/:id'  element={
+                            <ProductPage/> }/>
                         <Route path='/Favorites/*'  element={
                             <Favorites/> }/>
                         <Route path='/Checkout/*'  element={
