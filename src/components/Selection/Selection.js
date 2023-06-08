@@ -9,7 +9,7 @@ import {selectorSortSelect, setSortSelectItem, setSortSeasonNum, setSortSizeNum}
 import {fetchProducts} from "../../redux/slices/productSlice";
 
 
-const Selection = ({addBasketItem}) => {
+const Selection = () => {
     const [sortOpen, setSortOpen] = useState(false)
     const [sortPriceOpen, setSortPriceOpen] = useState(true)
     const [sortSeasonOpen, setSortSeasonOpen] = useState(true)
@@ -102,7 +102,7 @@ const Selection = ({addBasketItem}) => {
                     </div>
                 </div>
                 <div className={products.length === 0 & status !== 'loading' ? `${style.selectionItems} ${style.error}` : style.selectionItems }>
-                    <CardItem items={products}  status={status} addBasketItem={addBasketItem} errorBlock={errorBlock}/>
+                    <CardItem items={products}  status={status} errorBlock={errorBlock}/>
                 </div>
             </div>
         </div>

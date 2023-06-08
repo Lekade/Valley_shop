@@ -42,7 +42,7 @@
 .selectionItems{
     display: grid;
     grid-template-columns: repeat(3, 38.4rem);
-    grid-template-rows: 56.8rem;
+    grid-template-rows: 63rem;
     padding-bottom:10.7rem;
     gap:3rem 4rem;
 }
@@ -50,7 +50,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 90vh;
+    min-height: 70vh;
     height: 100%;
 
 }

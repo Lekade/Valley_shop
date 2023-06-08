@@ -7,11 +7,13 @@
 .imagesSection{
     width: 84.6rem;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 .image{
     width: 60rem;
-    height: 70rem;
+    height: 75rem;
 }
 .paramsSection{
     padding-left: 1.8rem;
@@ -20,12 +22,14 @@
 }
 .paramsSectionInner{
     padding-left: 2.2rem;
-    position: relative;
+    position: fixed;
+    top: 5.5rem;
     width: 55.6rem;
     right: 1.2rem;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+
 }
 .nameBlock{
     margin-top: 5rem;
@@ -65,6 +69,15 @@
 }
 .btnFavorite:hover{
     background-color: #3C3C3C;
+    transition: 0.5s;
+}
+
+.btnFavorite.btnFavoriteAdded{
+    background-color: #3C3C3C;
+    transition: 0.5s;
+}
+.btnFavorite.btnFavoriteAdded .likeImg path{
+    stroke: #fff;
     transition: 0.5s;
 }
 .likeImg{
@@ -117,6 +130,11 @@
     text-transform: uppercase;
     transition: 0.5s;
     cursor: pointer;
+}
+
+.sizeItem.selectedSize{
+    outline: 0.06rem solid #000;
+    transition: 0.5s;
 }
 .sizeItem:hover{
     outline: 0.06rem solid #B0B0B0;
@@ -177,6 +195,10 @@
 }
 .btnBuy:hover{
     background: #959595;
+    transition: 0.5s;
+}
+.btnBuy.btnBuyOff{
+    background: #1A1A1A;
     transition: 0.5s;
 }
 

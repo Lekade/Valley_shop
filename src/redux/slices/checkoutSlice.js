@@ -10,10 +10,12 @@ export const fetchCheckoutItems = createAsyncThunk(
 
 export const fetchAddCheckoutItem = createAsyncThunk(
     'checkout/fetchAddCheckoutItem',async (item, thunkAPI) => {
+        debugger
         const {checkoutItems} = thunkAPI.getState().checkoutReducer
         const {dispatch} = thunkAPI
         if(checkoutItems.every(i => i.id !== item.id)){
             dispatch(setAddCheckoutItem(item))
+            debugger
             const {data} = await   axios.post('https://644146b5792fe886a8a31f8c.mockapi.io/checkout', item)
             return data
         }
@@ -24,7 +26,6 @@ export const fetchRemoveCheckoutItem = createAsyncThunk(
     'checkout/fetchRemoveCheckoutItem',async ({id, number}, thunkAPI) => {
         const {dispatch} = thunkAPI
         dispatch(setRemoveCheckoutItem(id))
-        debugger
         const {data} = await   axios.delete(`https://644146b5792fe886a8a31f8c.mockapi.io/checkout/${number}`)
         return data
     }

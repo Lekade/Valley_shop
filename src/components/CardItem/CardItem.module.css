@@ -1,7 +1,12 @@
 
 .selectionItem{
-
+    transition: 0.5s;
 }
+.selectionItem:hover{
+    transition: 0.5s;
+    box-shadow: 0 .2rem .9rem rgba(46, 46, 46, 0.25);
+}
+
 .imgBlock{
     position: relative;
     width: 38.4rem;
@@ -21,6 +26,8 @@
 }
 
 .btnFavorite{
+    visibility: hidden;
+    opacity: 0;
     position: absolute;
     top: 2rem;
     right: 2rem;
@@ -29,26 +36,46 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color:  #3C3C3C;
+    background-color:  #fff;
     border: none;
     border-radius: 50%;
     cursor: pointer;
-}
-.btnFavorite.btnFavoriteAdded .likeImg{
-    fill: #fff;
-    transition: 0.5s;
+    transition:background-color 0.5s ease-out, opacity 0.5s ease-out;
 }
 
-.btnFavorite .likeImg{
-    width: 2rem;
-    height: 1.835rem;
-    fill:transparent;
-    transition: 0.5s;
+.selectionItem:hover .btnFavorite{
+    visibility: visible;
+    opacity: 100;
+    transition: opacity 0.5s ease-out;
+}
+.favoriteItem.selectionItem .btnFavorite{
+    visibility: visible;
+    opacity: 100;
 }
 
-.btnFavorite:hover .likeImg{
-    fill: rgba(250, 250, 250, 0.3);
-    transition: 0.5s;
+.btnFavorite:hover{
+    background-color: #3C3C3C;
+    transition:background-color 0.5s ease-out;
+}
+
+.btnFavorite.btnFavoriteAdded{
+    background-color: #3C3C3C;
+    transition:background-color 0.5s ease-out;
+}
+.btnFavorite.btnFavoriteAdded .likeImg path{
+    stroke: #fff;
+    transition:stroke 0.5s ease-out;
+}
+.likeImg{
+    width: 2.4rem;
+    height: 2.4rem;
+}
+.btnFavorite .likeImg path{
+    transition:stroke 0.5s ease-out;
+}
+.btnFavorite:hover .likeImg path{
+    stroke: #fff;
+    transition:stroke 0.5s ease-out;
 }
 
 .item a{
@@ -69,51 +96,53 @@
 }
 
 .infoBlock{
+    padding: 2rem 2rem 3rem;
     display: flex;
-}
-
-.btnBuy{
-    margin: 2.5rem 1.8rem;
-    width: 12.8rem;
-    height: 3rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #3C3C3C;
-    color: #FFFFFF;
-    border: none;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    font-size: 1.4rem;
-    line-height: 2.1rem;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: 0.5s;
-}
-
-.btnBuy.btnBuyOff{
-    background-color: transparent;
-    color: #3C3C3C;
-    border: 0.2rem solid #3C3C3C;
-}
-
-.btnBuy:hover{
-    opacity: 90%;
-    transition: 0.5s;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .itemName{
+    width: 100%;
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
-    font-size: 1.4rem;
-    line-height: 2.1rem;
+    font-size: 1.8rem;
+    line-height: 3rem;
     text-decoration: none;
+    text-align: center;
     color: #000;
+}
+.selectionItem:hover .itemName{
+    font-size: 2rem;
+    transition: 0.5s;
 }
 
 .itemPrice{
-    margin-top: 1rem;
+    margin-left: 2rem;
+    margin-top: 2.2rem;
     font-family: 'Nunito', sans-serif;
     font-weight: 300;
-    font-size: 1.4rem;
+    font-size: 2.6rem;
+    line-height: 3.5rem;
+}
+
+.ratingBlock{
+    margin-top: 2.2rem;
+    margin-right: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.asterisk{
+    margin-right: .9rem;
+}
+.asterisk svg{
+    width: 3.4rem;
+    height: 3.1rem;
+}
+.ratingNumber{
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+    font-size: 2.2rem;
+    line-height: 3rem;
 }

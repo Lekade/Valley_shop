@@ -1,6 +1,7 @@
 import {createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from "axios";
 
+
 export const fetchFavorites = createAsyncThunk(
     'favorite/fetchFavorites',async () => {
         const {data} = await   axios.get('https://64523a52a2860c9ed4057faf.mockapi.io/favorites')
@@ -11,9 +12,10 @@ export const fetchClickToFavorite = createAsyncThunk(
     'favorite/fetchClickToFavorite',async (el, thunkAPI) => {
         const {favorites} = thunkAPI.getState().favoritesReducer
         const {dispatch} = thunkAPI
-        if(favorites.every(i=> i.number !== el.number)){
+        if(favorites.every(i => i.id !== el.id)){
             dispatch(setAddFavorite(el))
             const {data} = await axios.post('https://64523a52a2860c9ed4057faf.mockapi.io/favorites', el)
+            dispatch(fetchFavorites())
             return data
         }else {
             const number = favorites.find(item => item.id === el.id).number
@@ -45,12 +47,14 @@ export const favoriteSlice = createSlice({
         state.favorites = action.payload
         },
         [fetchFavorites.rejected]:(state, action) => {
+            alert('Server error')
         },
         [fetchClickToFavorite.pending]:(state) => {
         },
         [fetchClickToFavorite.fulfilled]:(state, action) => {
         },
         [fetchClickToFavorite.rejected]:(state, action) => {
+            alert('Server error ')
         },
     },
 })

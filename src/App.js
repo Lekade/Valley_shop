@@ -13,6 +13,8 @@ import ProductPage from "./components/ProductPage/ProductPage";
 
 function App() {
 
+
+
   return (
           <div className="wrapper">
                   <Header/>
