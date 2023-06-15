@@ -116,8 +116,9 @@
 }
 .sizeItem{
     margin: 1rem 1.8rem 0;
-    width: 3.8rem;
-    height: 3.8rem;
+    padding: .7rem .9rem;
+    min-width: 3.8rem;
+    min-height: 3.8rem;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -5,7 +5,7 @@ import {useParams} from "react-router-dom";
 import {fetchProduct} from "../../redux/slices/productSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchClickToFavorite, fetchFavorites} from "../../redux/slices/favoriteSlice";
-import {fetchAddCheckoutItem, fetchCheckoutItems, fetchRemoveCheckoutItem} from "../../redux/slices/checkoutSlice";
+import {fetchAddCheckoutItem, fetchCheckoutItems} from "../../redux/slices/checkoutSlice";
 
 const ProductPage = () => {
     const {id} = useParams()
@@ -13,17 +13,23 @@ const ProductPage = () => {
     const product = useSelector(state => state.productReducer.product)
     const {favorites} = useSelector(state => state.favoritesReducer)
     const {checkoutItems} = useSelector(state => state.checkoutReducer)
-
     const [accordionOpen, setaccordionOpen] = useState([])
-    const [size, setSize] = useState([product.size && product.size[0]])
-
+    const [selectedSize, setSelectedSize] = useState([])
 
     useEffect(()=>{
         favorites.length === 0 && dispatch(fetchFavorites())
         checkoutItems.length === 0 && dispatch(fetchCheckoutItems())
-        accordionOpen.length === 0 && product &&  product.info && product.info.forEach(() => accordionOpen.push(false))
+        accordionOpen.length === 0 && product.hasOwnProperty('info') && product.info.forEach(() => accordionOpen.push(false))
         dispatch(fetchProduct(id))
     }, [])
+
+    useEffect(() => {
+        setSelectedSize(product.hasOwnProperty('size') ? [product.size[0]] : [])
+    }, [product])
+
+    useEffect(() => {
+        btnBuyOff(product.id)
+    }, [selectedSize])
 
     function accordionItemOpen(index) {
         setaccordionOpen(prevState => {
@@ -32,14 +38,7 @@ const ProductPage = () => {
             return newState
         })}
 
-    const addCheckoutItem = (product, size) => {
-        debugger
-        let item = product
-       item.size.filter((el, index) => index !== 0)
-        return dispatch(fetchAddCheckoutItem(item))
-    }
-
-    const accordion = product && product.info && product.info.map((item, index )=> <div key={index} className={style.accordionItem}>
+    const accordion = product.hasOwnProperty('info') && product.info.map((item, index )=> <div key={index} className={style.accordionItem}>
         <div className={accordionOpen[index] ? `${style.accordionTitle} ${style.accordionTitleOpen}`
             : style.accordionTitle} onClick={() => accordionItemOpen(index)}>
             <h2 className={style.accordionH2}>{Object.keys(item)[0]}</h2>
@@ -57,13 +56,12 @@ const ProductPage = () => {
     }
 
     let btnBuyOff = (id) => {
-        return checkoutItems.some( i => i.id === id)
+        return checkoutItems.some( i => i.id === id && i.size[0] === selectedSize[0])
     }
 
     if(!product.id){
         return  'Loading...'
     }
-    console.log(size)
 
     return <div className={style.wrapper}>
         <section className={style.imagesSection}>
@@ -85,7 +83,7 @@ const ProductPage = () => {
                          11.6488 3.56949 13.5604C5.11594 15.4523 7.30874 17.4408 9.85357 19.7484L9.87682 19.7695L9.87826
                           19.7708L11.3268 21.0895L12 21.7023L12.6732 21.0895L14.1217 19.7708L14.1232 19.7695L14.1464 19.7484C16.6913
                            17.4408 18.8841 15.4523 20.4305 13.5604C21.993 11.6488 23 9.71376 23 7.5C23 3.85652 20.1311 1 16.5 1C14.8297
-                            1 13.2254 1.63248 12 2.67427Z" stroke="#3C3C3C" stroke-width="2"/>
+                            1 13.2254 1.63248 12 2.67427Z" stroke="#3C3C3C" strokeWidth="2"/>
                     </svg>
                 </button>
                 <div className={style.sortBlock}>
@@ -102,8 +100,8 @@ const ProductPage = () => {
                 <div className={style.sortBlock}>
                     <h2 className={style.title}>Size:</h2>
                     <div className={style.sortInner}>
-                        {product.size && product.size.map((item, index )=> <div key={index} className={item === size ? `${style.selectedSize} ${style.sizeItem}`
-                            : style.sizeItem} onClick={() => setSize(item)}>{item}</div>)}
+                        {product.size && product.size.map((item, index )=> <div key={index} className={item === selectedSize[0] ? `${style.selectedSize} ${style.sizeItem}`
+                            : style.sizeItem} onClick={() => setSelectedSize([item])}>{item}</div>)}
                     </div>
                 </div>
                 <div className={style.priceBlock}>
@@ -127,7 +125,7 @@ const ProductPage = () => {
                     </div>
                 </div>
                 <button className={ btnBuyOff(product.id) ? `${style.btnBuy} ${style.btnBuyOff}` : style.btnBuy }
-                        onClick={() => addCheckoutItem(product, size)}>add to bag</button>
+                        onClick={() => dispatch(fetchAddCheckoutItem({product, selectedSize}))}>{btnBuyOff(product.id) ? 'in a bag' : 'add to bag'} </button>
                 <button className={style.btnBuy1Click}>buy in 1 click</button>
 
                 <div className={style.accordionBlock}>

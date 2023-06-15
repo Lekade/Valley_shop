@@ -1,37 +1,44 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {useSelector, useDispatch} from 'react-redux'
 
-import {fetchRemoveCheckoutItem} from "../../redux/slices/checkoutSlice";
+import {
+    fetchCheckoutItems,
+    fetchRemoveCheckoutItem,
+    setAugmentCheckoutItem,
+    setReduceCheckoutItem
+} from "../../redux/slices/checkoutSlice";
 import style from './Сheckout.module.css'
 import visaImg from '../../assecs/images/visa.svg'
 import masterCardImg from '../../assecs/images/masterCard.svg'
 import GPayImg from '../../assecs/images/GPay.svg'
 import APayImg from '../../assecs/images/APay.svg'
 
+
 const Checkout = () => {
     const dispatch = useDispatch()
     const {checkoutItems} = useSelector(state => state.checkoutReducer)
-    const totalPrice = checkoutItems.reduce((sum, obj) => Number(obj.price) + sum, 0)
+    const totalPrice = checkoutItems.reduce((sum, obj) => Number(obj.price * obj.quantity) + sum, 0)
     let delivery = 30
 
-    const removeBasketItem = (id, number) => {
-        return dispatch(fetchRemoveCheckoutItem({id, number}))
-    }
+    useEffect(() => {
+        checkoutItems.length === 0 && dispatch(fetchCheckoutItems())
+    }, [])
 
-    const basket = checkoutItems.map(item => <div key={item.id} className={style.basketItem}>
-        <button className={style.deliteItem} onClick={() => removeBasketItem(item.id, item.number)}>X</button>
+
+    const basket = checkoutItems.map(item=> <div key={item.id} className={style.basketItem}>
+        <button className={style.deliteItem} onClick={() => dispatch(fetchRemoveCheckoutItem(item.number))}>X</button>
         <img className={style.imgItem} src={`/${item.imageUrl}`} alt="item"/>
         <div className={style.infoItem}>
             <h4 className={style.nameItem}>{item.title}</h4>
             <p className={style.labelInfo}>Size:</p>
-            {item.size.map(el => <button className={style.sizeMark}>{el}</button>)}
+            <div className={style.sizeMark}>{item.size}</div>
             <p className={style.labelInfo}>Quantity:</p>
             <div className={style.quantityBlock}>
-                <div className={style.quantity}>123</div>
-                <span className={style.quantitySet}>+</span>
-                <span className={style.quantitySet}>-</span>
+                <div className={style.quantity}>{item.quantity}</div>
+                <span className={style.quantitySet} onClick={() => dispatch(setAugmentCheckoutItem(item.number))}>+</span>
+                <span className={style.quantitySet} onClick={() => dispatch(setReduceCheckoutItem(item.number))}>-</span>
             </div>
-            <div className={style.priceItem}>{item.price}<p>$</p></div>
+            <div className={style.priceItem}>{Number(item.price * item.quantity)}<p>$</p></div>
         </div>
     </div>)
 

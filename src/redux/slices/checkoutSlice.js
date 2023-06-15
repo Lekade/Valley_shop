@@ -9,13 +9,14 @@ export const fetchCheckoutItems = createAsyncThunk(
 )
 
 export const fetchAddCheckoutItem = createAsyncThunk(
-    'checkout/fetchAddCheckoutItem',async (item, thunkAPI) => {
-        debugger
+    'checkout/fetchAddCheckoutItem',async ({product, selectedSize}, thunkAPI) => {
+        const item = {...product}
+        item.size = selectedSize
+        item.quantity = 1
         const {checkoutItems} = thunkAPI.getState().checkoutReducer
         const {dispatch} = thunkAPI
-        if(checkoutItems.every(i => i.id !== item.id)){
+        if(checkoutItems.every(i => i.id !== item.id ? true : i.size[0] !== item.size[0])){
             dispatch(setAddCheckoutItem(item))
-            debugger
             const {data} = await   axios.post('https://644146b5792fe886a8a31f8c.mockapi.io/checkout', item)
             return data
         }
@@ -23,10 +24,10 @@ export const fetchAddCheckoutItem = createAsyncThunk(
 )
 
 export const fetchRemoveCheckoutItem = createAsyncThunk(
-    'checkout/fetchRemoveCheckoutItem',async ({id, number}, thunkAPI) => {
+    'checkout/fetchRemoveCheckoutItem',async ( number, thunkAPI) => {
         const {dispatch} = thunkAPI
-        dispatch(setRemoveCheckoutItem(id))
-        const {data} = await   axios.delete(`https://644146b5792fe886a8a31f8c.mockapi.io/checkout/${number}`)
+        dispatch(setRemoveCheckoutItem(number))
+        const {data} = await axios.delete(`https://644146b5792fe886a8a31f8c.mockapi.io/checkout/${number}`)
         return data
     }
 )
@@ -43,7 +44,29 @@ export const checkoutSlice = createSlice({
             state.checkoutItems = [...state.checkoutItems, action.payload];
         },
         setRemoveCheckoutItem(state, action){
-            state.checkoutItems = state.checkoutItems.filter(item => item.id !== action.payload);
+            state.checkoutItems = state.checkoutItems.filter(item => item.number !== action.payload);
+        },
+        setAugmentCheckoutItem(state, action){
+            return {
+                ...state,
+                checkoutItems: state.checkoutItems.map(item => {
+                    if(item.number === action.payload){
+                        return  {...item, quantity : item.quantity + 1}
+                    }
+                    return item
+                })
+            }
+        },
+        setReduceCheckoutItem(state, action){
+            return {
+                ...state,
+                checkoutItems: state.checkoutItems.map(item => {
+                    if(item.number === action.payload){
+                        return  {...item, quantity : item.quantity > 0 ? item.quantity - 1 : item.quantity}
+                    }
+                    return item
+                })
+            }
         },
     },
     extraReducers:{
@@ -63,7 +86,7 @@ export const checkoutSlice = createSlice({
     },
 })
 
-export const {setAddCheckoutItem, setRemoveCheckoutItem} = checkoutSlice.actions
+export const {setAddCheckoutItem, setRemoveCheckoutItem, setAugmentCheckoutItem, setReduceCheckoutItem} = checkoutSlice.actions
 
 
 export default checkoutSlice.reducer
