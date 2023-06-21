@@ -20,7 +20,7 @@ const Header = () => {
 
         </NavLink>}
         <div className={style.iconContainer}>
-            <a href="#" className={`${style.iconItom} ${style.profile}`}><img src={profileImg} alt="profile"/></a>
+            <NavLink to='/Profile' className={`${style.iconItom} ${style.profile}`}><img src={profileImg} alt="profile"/></NavLink>
             <NavLink to='/Favorites' className={`${style.iconItom} ${style.like}`}><img src={likedImg} alt="basket"/></NavLink>
             <NavLink to='/Checkout/' className={`${style.iconItom} ${style.basket}`}><img src={basketImg} alt="basket"/></NavLink>
         </div>

@@ -1,0 +1,33 @@
+.profile{
+    padding: 5.5rem 14rem 10rem 10.4rem;
+}
+.titelePage{
+    margin-top: 3.8rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 2.8rem;
+    line-height: 4.2rem;
+    text-transform: uppercase;
+}
+.profileInner{
+    margin-top: 5rem;
+    display: flex;
+}
+
+.profileMenu{
+    width: 25.8rem;
+}
+.profileMenu li{
+    margin-bottom: 2rem;
+    list-style-type: none;
+}
+.link{
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+    color: #000000;
+    background-color: transparent;
+    border: none;
+}

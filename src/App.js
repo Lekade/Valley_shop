@@ -8,6 +8,7 @@ import Checkout from "./components/Сheckout/Сheckout";
 import Favorites from "./components/Favorites/Favorites";
 import StartPage from "./components/StartPage/StartPage";
 import ProductPage from "./components/ProductPage/ProductPage";
+import Profile from "./components/Profile/Profile";
 
 
 
@@ -26,6 +27,8 @@ function App() {
                             <Selection/> }/>
                         <Route path='/Product/:id'  element={
                             <ProductPage/> }/>
+                        <Route path='/Profile/*'  element={
+                            <Profile/> }/>
                         <Route path='/Favorites/*'  element={
                             <Favorites/> }/>
                         <Route path='/Checkout/*'  element={

@@ -1,0 +1,91 @@
+.orders{
+
+}
+.order{
+    padding: 3rem 2rem 3rem 1rem;
+    width: 93.8rem;
+    display: flex;
+}
+.itemImage{
+    margin-right: 2rem;
+    width: 18rem;
+    height: 20rem;
+    background: #D9D9D9;
+}
+.info{
+    width: 70.8rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.title{
+    padding-top: 1.3rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 1.8rem;
+    line-height: 2.7rem;
+    text-transform: uppercase;
+}
+.date{
+    padding-top: 1.9rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: .8rem;
+    line-height: 1.2rem;
+    text-transform: uppercase;
+    color: #3C3C3C;
+}
+.infoInner{
+    margin: 1.3rem 0 2.3rem;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 15.6rem 23rem 1fr;
+
+}
+.point{
+    margin-bottom: .7rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.pointName{
+    font-family: 'Nunito', sans-serif;
+    font-weight: 300;
+    font-size: 1.4rem;
+    line-height: 1.9rem;
+}
+.pointContent{
+    margin-left: 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    text-transform: uppercase;
+}
+.rating{
+    height: 3.4rem;
+    display: flex;
+    align-items: center;
+}
+.asterisks{
+
+}
+.asterisks svg{
+    width: 3.4rem;
+    height: 3.4rem;
+}
+.ratingNumber{
+    margin-left: .9rem;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+    font-size: 2.2rem;
+    line-height: 3rem;
+    text-align: center;
+}
+.mark{
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.8rem;
+    line-height: 4.2rem;
+    text-transform: uppercase;
+}
