@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const fetchCheckoutItems = createAsyncThunk(
     'checkout/fetchCheckoutItems',async () => {
-        const {data} = await   axios.get('https://644146b5792fe886a8a31f8c.mockapi.io/checkout')
+        const {data} = await   axios.get('https://64523a52a2860c9ed4057faf.mockapi.io/checkout')
         return data
     }
 )
@@ -17,7 +17,7 @@ export const fetchAddCheckoutItem = createAsyncThunk(
         const {dispatch} = thunkAPI
         if(checkoutItems.every(i => i.id !== item.id ? true : i.size[0] !== item.size[0])){
             dispatch(setAddCheckoutItem(item))
-            const {data} = await   axios.post('https://644146b5792fe886a8a31f8c.mockapi.io/checkout', item)
+            const {data} = await   axios.post('https://64523a52a2860c9ed4057faf.mockapi.io/checkout', item)
             return data
         }
     }
@@ -27,7 +27,7 @@ export const fetchRemoveCheckoutItem = createAsyncThunk(
     'checkout/fetchRemoveCheckoutItem',async ( number, thunkAPI) => {
         const {dispatch} = thunkAPI
         dispatch(setRemoveCheckoutItem(number))
-        const {data} = await axios.delete(`https://644146b5792fe886a8a31f8c.mockapi.io/checkout/${number}`)
+        const {data} = await axios.delete(`https://64523a52a2860c9ed4057faf.mockapi.io/checkout/${number}`)
         return data
     }
 )

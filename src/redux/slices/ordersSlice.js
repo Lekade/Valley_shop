@@ -31,6 +31,17 @@ export const ordersSlice = createSlice({
         setAddOrder(state, action){
             state.orders = [...state.orders, action.payload];
         },
+        setInputData(state, action){
+            console.log(action)
+            let point = action.name
+            return{
+                ...state,
+                inputData: {... state.inputData,
+                    point: action.payload
+                }
+
+            }
+        },
     },
     extraReducers: {
         [fetchOrders.pending]: (state) => {
@@ -44,5 +55,5 @@ export const ordersSlice = createSlice({
 })
 
 
-export const {setAddOrder} = checkoutSlice.actions
+export const {setAddOrder, setInputData} = checkoutSlice.actions
 export default ordersSlice.reducer

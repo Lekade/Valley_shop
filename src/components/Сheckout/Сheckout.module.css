@@ -5,6 +5,7 @@
 }
 .checkoutInfo{
     padding-left: 20rem;
+    padding-right: 5rem;
     width: 99.3rem;
 }
 .header{
@@ -43,7 +44,18 @@
     font-size: 1.4rem;
     line-height: 2.1rem;
     border: none;
-    outline: none;
+    outline: .1rem solid transparent;
+    transition: outline .5s;
+}
+.contactLabel:hover .inputEl{
+    outline: .1rem solid #BBBBBB;
+    transition: outline .5s;
+}
+.contactLabel .inputEl:focus{
+    outline: .1rem solid #8D8D8D;
+}
+.contactLabel .inputEl.error{
+    outline: .1rem solid #DA2C2C;
 }
 
 .inputEl::placeholder{

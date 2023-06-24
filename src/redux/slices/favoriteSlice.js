@@ -4,7 +4,7 @@ import axios from "axios";
 
 export const fetchFavorites = createAsyncThunk(
     'favorite/fetchFavorites',async () => {
-        const {data} = await   axios.get('https://64523a52a2860c9ed4057faf.mockapi.io/favorites')
+        const {data} = await   axios.get('https://644146b5792fe886a8a31f8c.mockapi.io/favorites')
         return data
     }
 )
@@ -14,13 +14,13 @@ export const fetchClickToFavorite = createAsyncThunk(
         const {dispatch} = thunkAPI
         if(favorites.every(i => i.id !== el.id)){
             dispatch(setAddFavorite(el))
-            const {data} = await axios.post('https://64523a52a2860c9ed4057faf.mockapi.io/favorites', el)
+            const {data} = await axios.post('https://644146b5792fe886a8a31f8c.mockapi.io/favorites', el)
             dispatch(fetchFavorites())
             return data
         }else {
             const number = favorites.find(item => item.id === el.id).number
             dispatch(setRemoveFavorite(el.id))
-            const {data} = await axios.delete(`https://64523a52a2860c9ed4057faf.mockapi.io/favorites/${number}`)
+            const {data} = await axios.delete(`https://644146b5792fe886a8a31f8c.mockapi.io/favorites/${number}`)
             return data
         }
     })
