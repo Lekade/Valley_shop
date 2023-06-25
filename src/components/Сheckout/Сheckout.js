@@ -8,23 +8,26 @@ import {
     setAugmentCheckoutItem,
     setReduceCheckoutItem
 } from "../../redux/slices/checkoutSlice";
+import {fetchAddOrders} from "../../redux/slices/ordersSlice";
+
 import style from './Сheckout.module.css'
 import visaImg from '../../assecs/images/visa.svg'
 import masterCardImg from '../../assecs/images/masterCard.svg'
 import GPayImg from '../../assecs/images/GPay.svg'
 import APayImg from '../../assecs/images/APay.svg'
+import basketImg from '../../assecs/images/basket.svg'
+
 
 
 
 const Checkout = () => {
     const dispatch = useDispatch()
     const {checkoutItems} = useSelector(state => state.checkoutReducer)
-    const {inputData} = useSelector(state => state.ordersReducer)
     const totalPrice = checkoutItems.reduce((sum, obj) => Number(obj.price * obj.quantity) + sum, 0)
     let delivery = 30
 
     useEffect(() => {
-        checkoutItems.length === 0 && dispatch(fetchCheckoutItems())
+        dispatch(fetchCheckoutItems())
     }, [])
 
 
@@ -56,7 +59,6 @@ const Checkout = () => {
 
                         if (!values.name) {
                             errors.name = 'Required';
-                            console.log(errors.name)
                         }
                         if (!values.surname){
                             errors.surname = 'Required';
@@ -84,38 +86,40 @@ const Checkout = () => {
                         return errors;
                     }}
                     onSubmit={(values, { setSubmitting }) => {
-                        setTimeout(() => {
-                            console.log(values)
-                            alert(JSON.stringify(values, null, 2));
-                            setSubmitting(false);
-                        }, 400);
+                        dispatch(fetchAddOrders(values))
+                        setSubmitting(false);
                     }}
                 >
                     {({ isSubmitting, errors, touched }) => (
                         <Form id="checkout">
-                            {/*<Field type="email" name="email" />*/}
-                            {/*<ErrorMessage name="email" component="div" />*/}
-                            {/*<Field type="password" name="password" />*/}
-                            {/*<ErrorMessage name="password" component="div" />*/}
-                            {/*<button type="submit" >*/}
-                            {/*    Submit*/}
-                            {/*</button>*/}
                             <div className={style.infoBlock}>
                                 <label className={style.contactLabel}>
                                     <h3 className={style.title}>name</h3>
                                     <Field name="name" className={(errors.name && touched.name) ? `${style.error} ${style.inputEl}` : style.inputEl} type="text" placeholder='your name'/>
+                                    <div className={style.errorBlock}>
+                                        <ErrorMessage className={style.errorMessage} name="name" component="div" />
+                                    </div>
                                 </label>
                                 <label className={style.contactLabel}>
                                     <h3 className={style.title}>surname</h3>
                                     <Field name="surname"   className={(errors.surname && touched.surname) ? `${style.error} ${style.inputEl}` : style.inputEl} type="text" placeholder='your surname'/>
+                                    <div className={style.errorBlock}>
+                                        <ErrorMessage className={style.errorMessage} name="surname" component="div" />
+                                    </div>
                                 </label>
                                 <label className={style.contactLabel}>
                                     <h3 className={style.title}>phone</h3>
                                     <Field name="phone" className={(errors.phone && touched.phone) ? `${style.error} ${style.inputEl}` : style.inputEl} type="text" placeholder='phone number'/>
+                                    <div className={style.errorBlock}>
+                                        <ErrorMessage className={style.errorMessage} name="phone" component="div" />
+                                    </div>
                                 </label>
                                 <label className={style.contactLabel}>
                                     <h3 className={style.title}>email</h3>
                                     <Field name="email" className={(errors.email && touched.email) ? `${style.error} ${style.inputEl}` : style.inputEl} type="email" placeholder='your email'/>
+                                    <div className={style.errorBlock}>
+                                        <ErrorMessage className={style.errorMessage} name="email" component="div" />
+                                    </div>
                                 </label>
                             </div>
                             <h2 className={style.header}>delivery details</h2>
@@ -123,14 +127,23 @@ const Checkout = () => {
                                 <label className={style.contactLabel}>
                                     <h3 className={style.title}>REGION/COUNTRY/STATE</h3>
                                     <Field name="country" className={(errors.country && touched.country) ? `${style.error} ${style.inputEl}` : style.inputEl} type="text" placeholder='your location'/>
+                                    <div className={style.errorBlock}>
+                                        <ErrorMessage className={style.errorMessage} name="country" component="div" />
+                                    </div>
                                 </label>
                                 <label className={style.contactLabel}>
                                     <h3 className={style.title}>STREET, HOUSE, APARTMENT</h3>
                                     <Field name="address" className={(errors.address && touched.address) ? `${style.error} ${style.inputEl}` : style.inputEl} type="text" placeholder='your location'/>
+                                    <div className={style.errorBlock}>
+                                        <ErrorMessage className={style.errorMessage} name="address" component="div" />
+                                    </div>
                                 </label>
                                 <label className={style.contactLabel}>
                                     <h3 className={style.title}>POSTCODE</h3>
                                     <Field name="postcode" className={(errors.postcode && touched.postcode) ? `${style.error} ${style.inputEl}` : style.inputEl} type="text" placeholder='your postcode'/>
+                                    <div className={style.errorBlock}>
+                                        <ErrorMessage className={style.errorMessage} name="postcode" component="div" />
+                                    </div>
                                 </label>
                                 <label className={style.contactLabel}>
                                     <h3 className={style.title}>NOTE</h3>
@@ -162,7 +175,10 @@ const Checkout = () => {
             </div>
             <div className={style.checkoutBasket}>
                 <div className={style.basketInner}>
-                    {basket}
+                    {checkoutItems.length > 0 ? basket : <div className={style.emptyBasket}>
+                        <img className={style.emptyBasketImage} src={basketImg} alt="basket"/>
+                        <p className={style.emptyBasketText}>you haven't added any items to cart yet</p>
+                    </div>}
                 </div>
                 <div className={style.priceInfo}><p>Cost of the items:</p>{totalPrice}<p>$</p></div>
                 <div className={style.priceInfo}><p>Delivery cost:</p>{delivery}<p>$</p></div>

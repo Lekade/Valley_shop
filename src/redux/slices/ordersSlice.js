@@ -1,23 +1,30 @@
 import {createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from "axios";
-import {checkoutSlice} from "./checkoutSlice";
+import {fetchRemoveCheckoutItem, setRemoveCheckoutItem} from "./checkoutSlice";
 
 export const fetchOrders = createAsyncThunk(
     'orders/fetchOrdersItems',async () => {
-        const {data} = await   axios.get('https://644146b5792fe886a8a31f8c.mockapi.io/checkout')
+        const {data} = await   axios.get('https://64523a52a2860c9ed4057faf.mockapi.io/orders')
         return data
     }
 )
 
 export const fetchAddOrders = createAsyncThunk(
-    'orders/fetchAddOrdersItem',async (myOrder, thunkAPI) => {
-        const {orders} = thunkAPI.getState().ordersReducer
+    'orders/fetchAddOrdersItem', (formData, thunkAPI) => {
+        const {checkoutItems} = thunkAPI.getState().checkoutReducer
         const {dispatch} = thunkAPI
-        if(orders.every(i => i.order !== myOrder.order)){
-            dispatch(setAddOrder(myOrder))
-            const {data} = await   axios.post('https://644146b5792fe886a8a31f8c.mockapi.io/checkout', myOrder)
-            return data
-        }
+
+        checkoutItems.forEach(async (item) => {
+            if(item.quantity > 0){
+                const order = {...item, formData}
+                const number = item.number
+                dispatch(setRemoveCheckoutItem(number))
+                dispatch(fetchRemoveCheckoutItem(number))
+                const {data} = await axios.post('https://64523a52a2860c9ed4057faf.mockapi.io/orders', order)
+                return data
+
+            }
+        })
     }
 )
 
@@ -31,17 +38,6 @@ export const ordersSlice = createSlice({
         setAddOrder(state, action){
             state.orders = [...state.orders, action.payload];
         },
-        setInputData(state, action){
-            console.log(action)
-            let point = action.name
-            return{
-                ...state,
-                inputData: {... state.inputData,
-                    point: action.payload
-                }
-
-            }
-        },
     },
     extraReducers: {
         [fetchOrders.pending]: (state) => {
@@ -49,11 +45,16 @@ export const ordersSlice = createSlice({
         [fetchOrders.fulfilled]: (state, action) => {
             state.orders = action.payload
         },
-        [fetchOrders.rejected]: (state, action) => {
+        [fetchOrders.rejected]: () => {
+            alert('Server error ')
+        },
+        [fetchAddOrders.rejected]: () => {
+            alert('Server error ')
         }
+
     }
 })
 
 
-export const {setAddOrder, setInputData} = checkoutSlice.actions
+export const {setAddOrder, setInputData} = ordersSlice.actions
 export default ordersSlice.reducer
