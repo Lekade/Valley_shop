@@ -17,7 +17,6 @@ const initialState = {
     sortSizeNum:[]
 }
 
-
 export const filterSlice = createSlice({
     name: 'filter',
     initialState,
@@ -46,7 +45,8 @@ export const filterSlice = createSlice({
             }else{
                 state.sortSizeNum = state.sortSizeNum.filter(item => item !== action.payload)
             }
-        }
+        },
+
     },
 })
 

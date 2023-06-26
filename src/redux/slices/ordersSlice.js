@@ -16,13 +16,18 @@ export const fetchAddOrders = createAsyncThunk(
 
         checkoutItems.forEach(async (item) => {
             if(item.quantity > 0){
-                const order = {...item, formData}
+                const newDate = new Date()
+                const date = newDate.getDate();
+                const month = newDate.getMonth() + 1;
+                const year = newDate.getFullYear();
+                const orderDate = (month >= 10) ? `${date}.${month}.${year}` : `${date}.0${month}.${year}`
+                const order = {...item, formData, orderDate}
                 const number = item.number
+
                 dispatch(setRemoveCheckoutItem(number))
                 dispatch(fetchRemoveCheckoutItem(number))
                 const {data} = await axios.post('https://64523a52a2860c9ed4057faf.mockapi.io/orders', order)
                 return data
-
             }
         })
     }
@@ -35,9 +40,6 @@ export const ordersSlice = createSlice({
     name: 'orders',
     initialState,
     reducers: {
-        setAddOrder(state, action){
-            state.orders = [...state.orders, action.payload];
-        },
     },
     extraReducers: {
         [fetchOrders.pending]: (state) => {
@@ -55,6 +57,4 @@ export const ordersSlice = createSlice({
     }
 })
 
-
-export const {setAddOrder, setInputData} = ordersSlice.actions
 export default ordersSlice.reducer

@@ -18,6 +18,7 @@ export const fetchProduct = createAsyncThunk(
 
 const initialState = {
     products: [],
+    productsAll: [],
     product: {},
     status: 'loading', // loading | success | error
 }
@@ -26,15 +27,19 @@ export const productSlice = createSlice({
     name: 'product',
     initialState,
     reducers: {
-
+        setPriceFilter(state, action){
+            state.products = state.productsAll.filter(item => item.price > action.payload.min && item.price < action.payload.max)
+        }
     },
     extraReducers:{
         [fetchProducts.pending]:(state) => {
             state.status = 'loading'
             state.products = []
+            state.productsAll = []
         },
         [fetchProducts.fulfilled]:(state, action) => {
             state.products = action.payload
+            state.productsAll = action.payload
             state.status = 'success'
         },
         [fetchProduct.fulfilled]:(state, action) => {
@@ -48,7 +53,7 @@ export const productSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const {setProducts} = productSlice.actions
+export const {setPriceFilter} = productSlice.actions
 
 
 export default productSlice.reducer

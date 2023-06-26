@@ -75,13 +75,14 @@ export const checkoutSlice = createSlice({
         [fetchCheckoutItems.fulfilled]:(state, action) => {
             state.checkoutItems = action.payload
         },
-        [fetchAddCheckoutItem.fulfilled]:(state, action) => {
-
+        [fetchAddCheckoutItem.rejected]:(state, action) => {
+            alert('Server error ')
         },
-        [fetchRemoveCheckoutItem.fulfilled]:(state, action) => {
-
+        [fetchRemoveCheckoutItem.rejected]:(state, action) => {
+            alert('Server error ')
         },
         [fetchCheckoutItems.rejected]:(state, action) => {
+            alert('Server error ')
         },
     },
 })
