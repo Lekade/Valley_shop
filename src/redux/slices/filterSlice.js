@@ -1,7 +1,28 @@
-import {createSlice} from '@reduxjs/toolkit'
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
+import axios from "axios";
+
+export const fetchProducts = createAsyncThunk(
+    'filter/fetchProducts',async ({category, sortBy,order}) => {
+        const {data} = await  axios.get(`https://644146b5792fe886a8a31f8c.mockapi.io/items?${category}&sortBy=${sortBy}&order=${order}`)
+        return data
+    }
+)
+
+export const fetchProduct = createAsyncThunk(
+    'filter/fetchProduct',async (id) => {
+        const {data} = await  axios.get('https://644146b5792fe886a8a31f8c.mockapi.io/items/' + id)
+        return data
+    }
+)
 
 const initialState = {
     gender: 0,
+    products: [],
+    productsNoFilter: [],
+    minPrice: 15,
+    maxPrice: 200,
+    product: {},
+    status: 'loading', // loading | success | error
     category: ["t-shirts", "sweaters", "hoodies", "shirts", "pants/shorts", "polo", "popular"],
     categoryId: 0,
     sortSelect: [
@@ -46,16 +67,63 @@ export const filterSlice = createSlice({
                 state.sortSizeNum = state.sortSizeNum.filter(item => item !== action.payload)
             }
         },
-
+        setPrice(state, action){
+            state.minPrice = action.payload.min
+            state.maxPrice = action.payload.max
+        },
+        setFilter(state){
+            const productFilterPrice = state.productsNoFilter.filter(item => item.price > state.minPrice && item.price < state.maxPrice)
+            const productFilterSeason = state.sortSeasonNum.length > 0  ?  productFilterPrice.filter(item => item.season.some(
+                season => {
+                    for(let i = 0; i < state.sortSeason.length; i++ ){
+                        if(parseInt(season, 10) === state.sortSeasonNum[i]){
+                            return true
+                        }else {
+                            return false
+                        }
+                    }
+                    return true
+                }
+            )) : productFilterPrice
+            state.products = state.sortSizeNum.length > 0  ? productFilterSeason.filter(item => item.size.some(
+                size => {
+                    for(let i = 0; i < state.sortSize.length; i++ ){
+                        if(size.toLowerCase() === state.sortSize[state.sortSizeNum[i]]){
+                            return true
+                        }
+                    }
+                    return true
+                }
+            )) : productFilterSeason
+        }
+    },
+    extraReducers:{
+        [fetchProducts.pending]:(state) => {
+            state.status = 'loading'
+            state.products = []
+            state.productsNoFilter = []
+        },
+        [fetchProducts.fulfilled]:(state, action) => {
+            state.products = action.payload
+            state.productsNoFilter = action.payload
+            state.status = 'success'
+        },
+        [fetchProduct.fulfilled]:(state, action) => {
+            state.product = action.payload
+        },
+        [fetchProducts.rejected]:(state, action) => {
+            state.status = 'error'
+            state.products = []
+        },
     },
 })
 
 // Action creators are generated for each case reducer function
-export const {setGender, setCategoryId, setSortSelectItem, setSortSeasonNum, setSortSizeNum} = filterSlice.actions
+export const {setGender, setCategoryId, setSortSelectItem, setSortSeasonNum, setSortSizeNum, setFilter, setPrice} = filterSlice.actions
 
 
 export const selectorSortSelect = (state) => [state.filterReducer.sortSelect, state.filterReducer.sortSelectItem,
     state.filterReducer.sortSeason, state.filterReducer.sortSeasonNum,
-    state.filterReducer.sortSize, state.filterReducer.sortSizeNum, state.filterReducer.category, state.filterReducer.categoryId]
+    state.filterReducer.sortSize, state.filterReducer.sortSizeNum, state.filterReducer.category, state.filterReducer.categoryId, state.filterReducer.products, state.filterReducer.status, state.filterReducer.productsNoFilter]
 
 export default filterSlice.reducer

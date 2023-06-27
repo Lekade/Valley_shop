@@ -1,39 +1,39 @@
-import React, {useState} from "react";
+import React from "react";
 import style from "./SliderRenge.module.css"
 import ReactSlider from 'react-slider'
 import { useSelector, useDispatch } from 'react-redux'
-import {setPriceFilter} from "../../../redux/slices/productSlice";
+import {setPrice, setFilter} from "../../../redux/slices/filterSlice";
 
 
 const SliderRenge = () => {
     const dispatch = useDispatch()
+    const {minPrice, maxPrice} = useSelector(state => state.filterReducer)
 
-    const [sliderValue, setSliderValue] = useState([15, 50])
 
-    const PriceChange = (sliderValue, index) =>{
-        setSliderValue(sliderValue)
-        dispatch(setPriceFilter({min: sliderValue[0], max: sliderValue[1]}))
+    const PriceChange = (minPrice, maxPrice) =>{
+        dispatch(setPrice({min: minPrice, max: maxPrice}))
+        dispatch(setFilter())
     }
 
     return(
         <>
             <div className={style.priceLabel}>
-                <div className={style.priceStart}><span className={style.priceStartValue} >{sliderValue[0]}</span> USD.</div>
+                <div className={style.priceStart}><span className={style.priceStartValue} >{minPrice}</span> USD.</div>
                 <span className={style.priceDecoration}></span>
-                <div className={style.priceEnd}><span className={style.priceEndValue}>{sliderValue[1]}</span> USD.</div>
+                <div className={style.priceEnd}><span className={style.priceEndValue}>{maxPrice}</span> USD.</div>
             </div>
             <div>
                 <ReactSlider
                     className={style.sliderPrice}
                     thumbClassName={style.thumb}
                     trackClassName="trackPrice"
-                    defaultValue={[sliderValue[0], sliderValue[1]]}
+                    defaultValue={[minPrice, maxPrice]}
                     max={300}
                     min={0}
                     renderThumb={(props, state) => <div {...props}></div>}
                     pearling
                     minDistance={0}
-                    onChange={(sliderValue, index) => PriceChange(sliderValue, index)}
+                    onChange={([minPrice, maxPrice], index) => PriceChange(minPrice, maxPrice)}
                 />
             </div>
         </>

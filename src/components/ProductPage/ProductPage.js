@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import style from "./ProductPage.module.css"
 import checkImg from '../../assecs/images/check.svg'
 import {useParams} from "react-router-dom";
-import {fetchProduct} from "../../redux/slices/productSlice";
+import {fetchProduct} from "../../redux/slices/filterSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchClickToFavorite, fetchFavorites} from "../../redux/slices/favoriteSlice";
 import {fetchAddCheckoutItem, fetchCheckoutItems} from "../../redux/slices/checkoutSlice";
@@ -10,7 +10,7 @@ import {fetchAddCheckoutItem, fetchCheckoutItems} from "../../redux/slices/check
 const ProductPage = () => {
     const {id} = useParams()
     const dispatch = useDispatch()
-    const product = useSelector(state => state.productReducer.product)
+    const product = useSelector(state => state.filterReducer.product)
     const {favorites} = useSelector(state => state.favoritesReducer)
     const {checkoutItems} = useSelector(state => state.checkoutReducer)
     const [accordionOpen, setaccordionOpen] = useState([])
@@ -22,6 +22,7 @@ const ProductPage = () => {
         accordionOpen.length === 0 && product.hasOwnProperty('info') && product.info.forEach(() => accordionOpen.push(false))
         dispatch(fetchProduct(id))
     }, [])
+
 
     useEffect(() => {
         setSelectedSize(product.hasOwnProperty('size') ? [product.size[0]] : [])

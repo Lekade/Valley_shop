@@ -5,8 +5,14 @@ import checkboxImg from '../../assecs/images/checkbox.svg'
 import SliderRenge from "./sliderRenge/SliderRenge";
 import CardItem from "../CardItem/CardItem";
 import { useSelector, useDispatch } from 'react-redux'
-import {selectorSortSelect, setSortSelectItem, setSortSeasonNum, setSortSizeNum} from "../../redux/slices/filterSlice"
-import {fetchProducts} from "../../redux/slices/productSlice";
+import {
+    selectorSortSelect,
+    setSortSelectItem,
+    setSortSeasonNum,
+    setSortSizeNum,
+    fetchProducts,
+    setFilter
+} from "../../redux/slices/filterSlice"
 
 
 const Selection = () => {
@@ -16,9 +22,7 @@ const Selection = () => {
     const [sortSizeOpen, setSortSizeOpen] = useState(true)
 
     const dispatch = useDispatch()
-    const [sortSelect, sortSelectItem,  sortSeason,  sortSeasonNum, sortSize, sortSizeNum, category, categoryId] = useSelector(state => selectorSortSelect(state))
-    const {products, status} = useSelector(state => state.productReducer)
-
+    const [sortSelect, sortSelectItem,  sortSeason,  sortSeasonNum, sortSize, sortSizeNum, category, categoryId, products, status, productsNoFilter] = useSelector(state => selectorSortSelect(state))
 
     const getProducts = () =>  {
         const order = sortSelectItem.sortProperty.includes('-') ? 'asc' : 'desc'
@@ -26,9 +30,14 @@ const Selection = () => {
         const sortBy = sortSelectItem.sortProperty.replace('-', '')
         dispatch(fetchProducts({category, sortBy,order}))
     }
+
     useEffect(()=>{
         getProducts()
     },[categoryId, sortSelectItem])
+
+    useEffect(()=>{
+        dispatch(setFilter())
+    }, [productsNoFilter])
 
     const errorBlock = () => {
            return <div className={style.errorBlock}>
@@ -36,6 +45,18 @@ const Selection = () => {
                 <p className={style.errorSubtitle}>try again</p>
             </div>
     }
+
+    const changeFilter = (index , filter) =>{
+        if(filter === 'season'){
+            dispatch(setSortSeasonNum(index))
+            dispatch(setFilter())
+        } else if(filter === 'size'){
+            dispatch(setSortSizeNum(index))
+            dispatch(setFilter())
+        }
+
+    }
+
     return (
         <div className={style.selection}>
             <div className={style.sidebar}>
@@ -58,7 +79,7 @@ const Selection = () => {
 
                     {sortSeasonOpen && <div className={style.sortElInner}>
                         {sortSeason.map((el, index) =>
-                            <div key={index} className={style.checkboxItem} onClick={ () => dispatch(setSortSeasonNum(index)) }>
+                            <div key={index} className={style.checkboxItem} onClick={ () => changeFilter(index, 'season') }>
                                 <div className={style.checkbox}>
                                     {sortSeasonNum.some(num => num === index) && <img src={checkboxImg} alt="check"/>}
                                 </div>
@@ -74,7 +95,7 @@ const Selection = () => {
                     </div>
                     {sortSizeOpen && <div className={style.sortElInner}>
                         {sortSize.map((el, index)=>
-                            <div key={index} className={style.checkboxItem} onClick={ () => dispatch(setSortSizeNum(index))} >
+                            <div key={index} className={style.checkboxItem} onClick={ () => changeFilter(index, 'size')} >
                                 <div className={style.checkbox}>
                                     {sortSizeNum.some(num => num === index) && <img src={checkboxImg} alt="check"/>}
                                 </div>
