@@ -1,11 +1,12 @@
 .selection{
     display: flex;
     padding-top: 5.5rem;
+    justify-content: space-between;
 }
 
 .sidebar{
     padding-top:15.2rem;
-    width: 25.5rem;
+    width: 23rem;
 }
 
 .sortEl{
@@ -234,4 +235,6 @@
     text-transform: lowercase;
     color: #7B7B7B;
 }
+
+
 

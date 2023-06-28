@@ -73,26 +73,31 @@ export const filterSlice = createSlice({
         },
         setFilter(state){
             const productFilterPrice = state.productsNoFilter.filter(item => item.price > state.minPrice && item.price < state.maxPrice)
+
             const productFilterSeason = state.sortSeasonNum.length > 0  ?  productFilterPrice.filter(item => item.season.some(
                 season => {
+                    let num = 0
                     for(let i = 0; i < state.sortSeason.length; i++ ){
+                        num++
                         if(parseInt(season, 10) === state.sortSeasonNum[i]){
                             return true
-                        }else {
-                            return false
                         }
                     }
-                    return true
+                    return num !== state.sortSeason.length;
+
                 }
             )) : productFilterPrice
             state.products = state.sortSizeNum.length > 0  ? productFilterSeason.filter(item => item.size.some(
                 size => {
+                    let num = 0
                     for(let i = 0; i < state.sortSize.length; i++ ){
+                        num++
                         if(size.toLowerCase() === state.sortSize[state.sortSizeNum[i]]){
                             return true
                         }
                     }
-                    return true
+                    return num !== state.sortSize.length;
+
                 }
             )) : productFilterSeason
         }

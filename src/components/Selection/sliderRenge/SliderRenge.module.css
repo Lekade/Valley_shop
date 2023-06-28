@@ -31,15 +31,18 @@
 }
 
 /*-------------------------------------------------*/
+.wrapperSliderPrice{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
 
 .sliderPrice{
-    width: 21.9rem;
+    width: 20rem;
     height: 2.6rem;
 }
 
 .sliderTrack{
-    margin-left: 1.8rem;
-    margin-right:1.8rem;
     width: 21.9rem;
     height: 1.8rem;
 

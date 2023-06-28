@@ -144,7 +144,93 @@
 
 .checkoutBasket{
     width: 44.7rem;
+    background-color: #FFFFFF;
 }
+/*---------------------------------------------*/
+
+.checkoutBasket.checkoutBasketPopup{
+    position: absolute;
+    width: 37rem;
+    height: 100vh;
+    z-index: 100;
+    top: 0;
+    right: 0;
+}
+
+.checkoutBasket.checkoutBasketPopup .basketItem{
+    padding-bottom: 0;
+}
+
+.checkoutBasket.checkoutBasketPopup .basketInner{
+    margin-top: 3rem;
+    margin-bottom: 0;
+    height: 36.3rem;
+}
+
+.checkoutBasket.checkoutBasketPopup .priceInfo{
+    display: none;
+}
+
+.checkoutBasket.checkoutBasketPopup .priceTotal{
+    margin-left: 3.8rem;
+}
+.checkoutBasket.checkoutBasketPopup .priceTotal p:first-child{
+    margin-right: 9rem;
+}
+.checkoutBasket.checkoutBasketPopup .submitBtn{
+    display: none;
+}
+.checkoutBasket.checkoutBasketPopup .checkoutBtn{
+    display: flex;
+    margin: 4rem auto 0;
+    width: 26rem;
+}
+.checkoutBasket.checkoutBasketPopup .closeBtn{
+    display: flex;
+}
+.closeBtn{
+    display: none;
+    margin: 2.5rem auto;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.closeBtnImg{
+    width: 3.5rem;
+    height: 4.2rem;
+}
+.closeBtnText{
+    margin-left: 1.5rem;
+    color: #000;
+    font-size: 1.8rem;
+    font-family: Poppins, sans-serif;
+    text-transform: uppercase;
+}
+.checkoutBasket.checkoutBasketPopup .info{
+    display: flex;
+}
+.info{
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+}
+.info h2{
+    color: #000;
+    font-size: 2.8rem;
+    font-family: Poppins, sans-serif;
+    text-transform: uppercase;
+}
+.info span{
+    margin-left: 2.4rem;
+    width: 7.2rem;
+    height: .2rem;
+    background-color: black;
+    font-size: 0;
+    color: transparent;
+}
+/*-------------------------------------------*/
 
 .basketInner{
     margin-top: 10rem;
@@ -273,7 +359,7 @@
     margin-right: 2rem;
     font-size: 1.8rem;
 }
-.submiteBtn{
+.btn{
     margin-top: 4rem;
     width: 34.7rem;
     height: 4.8rem;
@@ -288,4 +374,8 @@
     text-transform: uppercase;
     color: #FFFFFF;
     cursor: pointer;
+    text-decoration: none;
+}
+.checkoutBtn{
+    display: none;
 }

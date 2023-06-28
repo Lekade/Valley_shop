@@ -1,13 +1,7 @@
-import React, {useEffect} from "react";
-import {useSelector, useDispatch} from 'react-redux'
+import React from "react";
+import {useDispatch} from 'react-redux'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
-import {
-    fetchCheckoutItems,
-    fetchRemoveCheckoutItem,
-    setAugmentCheckoutItem,
-    setReduceCheckoutItem
-} from "../../redux/slices/checkoutSlice";
 import {fetchAddOrders} from "../../redux/slices/ordersSlice";
 
 import style from './Сheckout.module.css'
@@ -15,39 +9,10 @@ import visaImg from '../../assecs/images/visa.svg'
 import masterCardImg from '../../assecs/images/masterCard.svg'
 import GPayImg from '../../assecs/images/GPay.svg'
 import APayImg from '../../assecs/images/APay.svg'
-import basketImg from '../../assecs/images/basket.svg'
-
-
-
+import Basket from "./Basket";
 
 const Checkout = () => {
     const dispatch = useDispatch()
-    const {checkoutItems} = useSelector(state => state.checkoutReducer)
-    const totalPrice = checkoutItems.reduce((sum, obj) => Number(obj.price * obj.quantity) + sum, 0)
-    let delivery = 30
-
-    useEffect(() => {
-        dispatch(fetchCheckoutItems())
-    }, [])
-
-
-    const basket = checkoutItems.map(item=> <div key={item.id} className={style.basketItem}>
-        <button className={style.deliteItem} onClick={() => dispatch(fetchRemoveCheckoutItem(item.number))}>X</button>
-        <img className={style.imgItem} src={`/${item.imageUrl}`} alt="item"/>
-        <div className={style.infoItem}>
-            <h4 className={style.nameItem}>{item.title}</h4>
-            <p className={style.labelInfo}>Size:</p>
-            <div className={style.sizeMark}>{item.size}</div>
-            <p className={style.labelInfo}>Quantity:</p>
-            <div className={style.quantityBlock}>
-                <div className={style.quantity}>{item.quantity}</div>
-                <span className={style.quantitySet} onClick={() => dispatch(setAugmentCheckoutItem(item.number))}>+</span>
-                <span className={style.quantitySet} onClick={() => dispatch(setReduceCheckoutItem(item.number))}>-</span>
-            </div>
-            <div className={style.priceItem}>{Number(item.price * item.quantity)}<p>$</p></div>
-        </div>
-    </div>)
-
     return (
         <div className={style.checkout}>
             <div className={style.checkoutInfo}>
@@ -173,18 +138,7 @@ const Checkout = () => {
                     )}
                 </Formik>
             </div>
-            <div className={style.checkoutBasket}>
-                <div className={style.basketInner}>
-                    {checkoutItems.length > 0 ? basket : <div className={style.emptyBasket}>
-                        <img className={style.emptyBasketImage} src={basketImg} alt="basket"/>
-                        <p className={style.emptyBasketText}>you haven't added any items to cart yet</p>
-                    </div>}
-                </div>
-                <div className={style.priceInfo}><p>Cost of the items:</p>{totalPrice}<p>$</p></div>
-                <div className={style.priceInfo}><p>Delivery cost:</p>{delivery}<p>$</p></div>
-                <div className={style.priceTotal}><p>Total due:</p>{totalPrice + delivery}<p>$</p></div>
-                <button form="checkout" type="submit" className={style.submiteBtn}>proceed</button>
-            </div>
+            <Basket/>
         </div>
     )
 }

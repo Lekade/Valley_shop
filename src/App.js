@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {Routes, Route} from "react-router-dom";
 import './App.css';
 import Header from './components/Header/Header'
@@ -9,16 +9,20 @@ import Favorites from "./components/Favorites/Favorites";
 import StartPage from "./components/StartPage/StartPage";
 import ProductPage from "./components/ProductPage/ProductPage";
 import Profile from "./components/Profile/Profile";
+import Basket from "./components/Сheckout/Basket";
 
 
 
 function App() {
 
-
+    const [popupOpen, setPopupOpen] = useState(true)
 
   return (
           <div className="wrapper">
-                  <Header/>
+                  <Header setPopupOpen={setPopupOpen}/>
+              {popupOpen && <div className="popupCheckout">
+                      <Basket setPopupOpen={setPopupOpen}/>
+                  </div>}
                   <main className="main">
                     <Routes>
                         <Route path='/*'  element={

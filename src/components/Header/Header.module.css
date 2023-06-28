@@ -100,11 +100,17 @@
     width: 1.5rem;
     height: 1.376rem;
 }
-
+.basket{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
 .basket img{
     height: 1.725rem;
     width: 1.66rem;
 
 }
+
+
 
 

@@ -22,7 +22,7 @@ const SliderRenge = () => {
                 <span className={style.priceDecoration}></span>
                 <div className={style.priceEnd}><span className={style.priceEndValue}>{maxPrice}</span> USD.</div>
             </div>
-            <div>
+            <div className={style.wrapperSliderPrice}>
                 <ReactSlider
                     className={style.sliderPrice}
                     thumbClassName={style.thumb}
