@@ -1,21 +1,19 @@
 .profile{
     padding: 5.5rem 14rem 10rem 10.4rem;
 }
-.titelePage{
-    margin-top: 3.8rem;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400;
-    font-size: 2.8rem;
-    line-height: 4.2rem;
-    text-transform: uppercase;
-}
 .profileInner{
-    margin-top: 5rem;
     display: flex;
+    justify-content: space-between;
 }
 
 .profileMenu{
-    width: 25.8rem;
+    display: block;
+    margin-top: 13rem;
+    width: 16.2rem;
+    flex-grow: 1;
+}
+.profileContent{
+    width: 103rem;
 }
 .profileMenu li{
     margin-bottom: 2rem;

@@ -1,7 +1,17 @@
 .orders{
 
 }
+.header{
+    margin-top: 3.8rem;
+    margin-bottom: 5.7rem;
+    color: #000;
+    font-size: 2.8rem;
+    font-family: Poppins, sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+}
 .order{
+    margin-left: 9.6rem;
     padding: 3rem 2rem 3rem 1rem;
     width: 93.8rem;
     display: flex;

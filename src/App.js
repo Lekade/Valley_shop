@@ -15,7 +15,7 @@ import Basket from "./components/Сheckout/Basket";
 
 function App() {
 
-    const [popupOpen, setPopupOpen] = useState(true)
+    const [popupOpen, setPopupOpen] = useState(false)
 
   return (
           <div className="wrapper">

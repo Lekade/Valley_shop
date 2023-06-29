@@ -1,16 +1,21 @@
 import React from "react";
-import style from "../../Сheckout/CheckoutForm/Form.module.css"
+import style from "./Form.module.css";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import {fetchAddOrders} from "../../../redux/slices/ordersSlice";
+import visaImg from "../../../assecs/images/visa.svg";
+import masterCardImg from "../../../assecs/images/masterCard.svg";
+import GPayImg from "../../../assecs/images/GPay.svg";
+import APayImg from "../../../assecs/images/APay.svg";
 import {useDispatch} from "react-redux";
 
 
-const PersonalData = () => {
+const CheckoutForm = () => {
     const dispatch = useDispatch()
-    return <div className={style.personalDataForm}>
-        <h1 className={style.header}>personal data</h1>
+
+    return <div className={style.checkoutForm}>
+        <h1 className={style.header}>Contact details</h1>
         <Formik
-            initialValues={{ name: '', surname: '', phone: '', email: '', country: '', address: '', postcode: ''}}
+            initialValues={{ name: '', surname: '', phone: '', email: '', country: '', address: '', postcode: '', note: '', payment: 'visa'}}
             validate={values => {
                 const errors = {};
 
@@ -78,6 +83,9 @@ const PersonalData = () => {
                                 <ErrorMessage className={style.errorMessage} name="email" component="div" />
                             </div>
                         </label>
+                    </div>
+                    <h1 className={style.header}>delivery details</h1>
+                    <div className={style.infoBlock}>
                         <label className={style.contactLabel}>
                             <h3 className={style.title}>REGION/COUNTRY/STATE</h3>
                             <Field name="country" className={(errors.country && touched.country) ? `${style.error} ${style.inputEl}` : style.inputEl} type="text" placeholder='your location'/>
@@ -99,13 +107,34 @@ const PersonalData = () => {
                                 <ErrorMessage className={style.errorMessage} name="postcode" component="div" />
                             </div>
                         </label>
+                        <label className={style.contactLabel}>
+                            <h3 className={style.title}>NOTE</h3>
+                            <Field name="note"  className={style.inputEl} type="text" placeholder='optional'/>
+                        </label>
                     </div>
-                    <h1 className={style.header}>change password</h1>
-
+                    <h2 className={style.header}>payment method</h2>
+                    <div className={style.paymentBlock}>
+                        <label className={style.paymentEl}>
+                            <Field  type="radio" name='payment' value="visa"/>
+                            <img src={visaImg} alt="visa"/>
+                        </label>
+                        <label className={style.paymentEl}>
+                            <Field type="radio" name='payment' value="masterCard"/>
+                            <img src={masterCardImg} alt="masterCard"/>
+                        </label>
+                        <label className={style.paymentEl}>
+                            <Field type="radio" name='payment' value="GPay"/>
+                            <img src={GPayImg} alt="GPay"/>
+                        </label>
+                        <label className={style.paymentEl}>
+                            <Field type="radio" name='payment' value="APay"/>
+                            <img src={APayImg} alt="APay"/>
+                        </label>
+                    </div>
                 </Form>
             )}
         </Formik>
     </div>
 }
 
-export default PersonalData
+export default CheckoutForm

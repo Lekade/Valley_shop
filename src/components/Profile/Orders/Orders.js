@@ -123,6 +123,7 @@ const Orders = () => {
     </div>})
 
     return <div className={style.orders}>
+        <h1 className={style.header}>My orders</h1>
         {orderItems}
     </div>
 }
