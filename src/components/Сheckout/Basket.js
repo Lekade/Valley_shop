@@ -11,11 +11,10 @@ import {useDispatch, useSelector} from "react-redux";
 import {NavLink, useLocation} from 'react-router-dom';
 
 
-const Basket = ({setPopupOpen}) => {
-    debugger
+const Basket = ({popupOpen, setPopupOpen}) => {
     const dispatch = useDispatch()
     const location = useLocation()
-    const popupOpen = location.pathname === '/Category' || location.pathname.includes('/Product/')  || location.pathname === '/Favorites' && true
+    const trueLocation = location.pathname === '/Category' || location.pathname.includes('/Product/')  || location.pathname === '/Favorites' && true
     const {checkoutItems} = useSelector(state => state.checkoutReducer)
     const totalPrice = checkoutItems.reduce((sum, obj) => Number(obj.price * obj.quantity) + sum, 0)
     let delivery = 30
@@ -41,12 +40,11 @@ const Basket = ({setPopupOpen}) => {
         </div>
     </div>)
 
-    return  <div className={popupOpen ? `${style.checkoutBasketPopup} ${style.checkoutBasket}` : style.checkoutBasket}>
+    return  <div className={trueLocation ? (trueLocation ? `${style.checkoutBasketPopup} ${style.checkoutBasket} ${style.popupVisible}` : `${style.checkoutBasketPopup} ${style.checkoutBasket}`) : style.checkoutBasket}>
         <button className={style.closeBtn} onClick={() => setPopupOpen(false)}>
             <svg className={style.closeBtnImg} viewBox="0 0 35 42" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M24 4L8 20L24 36" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
-
             <p className={style.closeBtnText}>continue shopping</p>
         </button>
         <div className={style.info}><h2>My purchases</h2><span>-</span></div>

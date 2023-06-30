@@ -1,32 +1,22 @@
 import React from "react";
-import style from "./Form.module.css";
+import {useDispatch} from "react-redux";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import {fetchAddOrders} from "../../../redux/slices/ordersSlice";
-import visaImg from "../../../assecs/images/visa.svg";
-import masterCardImg from "../../../assecs/images/masterCard.svg";
-import GPayImg from "../../../assecs/images/GPay.svg";
-import APayImg from "../../../assecs/images/APay.svg";
-import {useDispatch} from "react-redux";
+import style from "../../Сheckout/CheckoutForm/Form.module.css";
 
-
-const CheckoutForm = () => {
+const PersonalDataForm = ({setOpenForm}) => {
     const dispatch = useDispatch()
-
-    return <div className={style.checkoutForm}>
-        <h1 className={style.header}>Contact details</h1>
+    return(
         <Formik
-            initialValues={{ name: '', surname: '', phone: '', email: '', country: '', address: '', postcode: '', note: '', payment: 'visa'}}
+            initialValues={{ name: '', surname: '', phone: '', email: '', country: '', address: '', postcode: ''}}
             validate={values => {
                 const errors = {};
-
                 errors.name = !values.name && 'Required';
                 errors.surname = !values.surname && 'Required';
                 errors.phone = !values.phone && 'Required';
                 errors.country = !values.country && 'Required';
                 errors.address = !values.address && 'Required';
                 errors.postcode = !values.postcode && 'Required';
-                errors.currentPassword = !values.currentPassword && 'Required';
-
                 if (!values.email){
                     errors.email = 'Required';
                 }
@@ -43,7 +33,7 @@ const CheckoutForm = () => {
             }}
         >
             {({ isSubmitting, errors, touched }) => (
-                <Form id="checkout">
+                <Form id="changePersonalData">
                     <div className={style.infoBlock}>
                         <label className={style.contactLabel}>
                             <h3 className={style.title}>name</h3>
@@ -73,9 +63,6 @@ const CheckoutForm = () => {
                                 <ErrorMessage className={style.errorMessage} name="email" component="div" />
                             </div>
                         </label>
-                    </div>
-                    <h1 className={style.header}>delivery details</h1>
-                    <div className={style.infoBlock}>
                         <label className={style.contactLabel}>
                             <h3 className={style.title}>REGION/COUNTRY/STATE</h3>
                             <Field name="country" className={(errors.country && touched.country) ? `${style.error} ${style.inputEl}` : style.inputEl} type="text" placeholder='your location'/>
@@ -97,34 +84,17 @@ const CheckoutForm = () => {
                                 <ErrorMessage className={style.errorMessage} name="postcode" component="div" />
                             </div>
                         </label>
-                        <label className={style.contactLabel}>
-                            <h3 className={style.title}>NOTE</h3>
-                            <Field name="note"  className={style.inputEl} type="text" placeholder='optional'/>
-                        </label>
-                    </div>
-                    <h2 className={style.header}>payment method</h2>
-                    <div className={style.paymentBlock}>
-                        <label className={style.paymentEl}>
-                            <Field  type="radio" name='payment' value="visa"/>
-                            <img src={visaImg} alt="visa"/>
-                        </label>
-                        <label className={style.paymentEl}>
-                            <Field type="radio" name='payment' value="masterCard"/>
-                            <img src={masterCardImg} alt="masterCard"/>
-                        </label>
-                        <label className={style.paymentEl}>
-                            <Field type="radio" name='payment' value="GPay"/>
-                            <img src={GPayImg} alt="GPay"/>
-                        </label>
-                        <label className={style.paymentEl}>
-                            <Field type="radio" name='payment' value="APay"/>
-                            <img src={APayImg} alt="APay"/>
-                        </label>
+                        <div className={style.submitBlock}>
+                            <button form="changePersonalData" className={style.submitBtn}>save</button>
+                            <div className={style.cancelBtn} onClick={() =>{
+                                setOpenForm(false)
+                            }}>cancel</div>
+                        </div>
                     </div>
                 </Form>
             )}
         </Formik>
-    </div>
+    )
 }
 
-export default CheckoutForm
+export default PersonalDataForm

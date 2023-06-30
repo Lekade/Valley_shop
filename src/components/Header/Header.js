@@ -23,9 +23,9 @@ const Header = ({setPopupOpen}) => {
 
         </NavLink>}
         <div className={style.iconContainer}>
-            <NavLink to='/Profile' className={`${style.iconItom} ${style.profile}`}><img src={profileImg} alt="profile"/></NavLink>
+            <NavLink to='/Profile/PersonalData' className={`${style.iconItom} ${style.profile}`}><img src={profileImg} alt="profile"/></NavLink>
             <NavLink to='/Favorites' className={`${style.iconItom} ${style.like}`}><img src={likedImg} alt="basket"/></NavLink>
-            {popupOpen  ? <button onClick={() => setPopupOpen(true)} className={`${style.iconItom} ${style.basket}`}><img src={basketImg} alt="basket"/></button> : <NavLink to='/Checkout/' className={`${style.iconItom} ${style.basket}`}><img src={basketImg} alt="basket"/></NavLink>}
+            {popupOpen  ? <button onClick={() => setPopupOpen(true)} className={`${style.iconItom} ${style.basket}`}><img src={basketImg} alt="basket"/></button> : <NavLink to='/Checkout' className={`${style.iconItom} ${style.basket}`}><img src={basketImg} alt="basket"/></NavLink>}
         </div>
     </header>
 </>

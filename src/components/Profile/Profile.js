@@ -5,6 +5,7 @@ import {NavLink} from "react-router-dom";
 
 import PersonalData from "./PersonalData/PersonalData";
 import Orders from "./Orders/Orders";
+import ChangePassword from "./ChangePassword/ChangePassword";
 
 
 const Profile = () => {
@@ -12,6 +13,7 @@ const Profile = () => {
         <div className={style.profileInner}>
             <ul className={style.profileMenu}>
                 <li><NavLink to='/Profile/PersonalData'  className={style.link}>Personal data</NavLink></li>
+                <li><NavLink to='/Profile/Password'  className={style.link}>Change password</NavLink></li>
                 <li><NavLink to='/Profile/Orders' className={style.link}>My orders</NavLink></li>
                 <li><button className={style.link}>Sign out</button></li>
             </ul>
@@ -19,6 +21,8 @@ const Profile = () => {
                 <Routes>
                     <Route path='/PersonalData/*'  element={
                         <PersonalData/> }/>
+                    <Route path='/Password/*'  element={
+                        <ChangePassword/> }/>
                     <Route path='/Orders/*'  element={
                         <Orders/> }/>
                 </Routes>

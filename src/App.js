@@ -21,7 +21,7 @@ function App() {
           <div className="wrapper">
                   <Header setPopupOpen={setPopupOpen}/>
               {popupOpen && <div className="popupCheckout">
-                      <Basket setPopupOpen={setPopupOpen}/>
+                      <Basket popupOpen={popupOpen} setPopupOpen={setPopupOpen}/>
                   </div>}
                   <main className="main">
                     <Routes>
