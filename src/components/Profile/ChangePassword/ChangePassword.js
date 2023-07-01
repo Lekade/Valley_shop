@@ -1,7 +1,6 @@
 import React from "react";
 import style from "../../Сheckout/CheckoutForm/Form.module.css";
 import {ErrorMessage, Field, Form, Formik} from "formik";
-import {fetchAddOrders} from "../../../redux/slices/ordersSlice";
 import {useDispatch} from "react-redux";
 
 const ChangePassword = () => {
@@ -12,8 +11,12 @@ const ChangePassword = () => {
             initialValues={{  currentPassword: '', newPassword: '', repeatNewPassword: ''}}
             validate={values => {
                 const errors = {};
-                errors.currentPassword = !values.currentPassword && 'Required';
-                errors.newPassword = !values.newPassword && 'Required';
+
+                if(!values.currentPassword){
+                    errors.currentPassword = 'Required';}
+                if(!values.newPassword){
+                    errors.newPassword = 'Required';
+                }
                 if(!values.repeatNewPassword){
                     errors.repeatNewPassword = 'Required';
                 }else{
@@ -21,8 +24,7 @@ const ChangePassword = () => {
                 }
                 return errors;
             }}
-            onSubmit={(values, { setSubmitting }) => {
-                dispatch(fetchAddOrders(values))
+            onSubmit={(values, { setSubmitting}) => {
                 setSubmitting(false);
             }}
         >
@@ -51,7 +53,7 @@ const ChangePassword = () => {
                             </div>
                         </label>
                         <div className={style.submitBlock}>
-                            <button className={style.submitBtn}>save</button>
+                            <button type="submit" form="changePassword" className={style.submitBtn}>save</button>
                             <button type='reset' className={style.cancelBtn} >cancel</button>
                         </div>
                     </div>

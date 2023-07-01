@@ -40,15 +40,5 @@ html{
     flex: 1 1 auto;
 }
 
-.popupCheckout{
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    background-color: rgba(0,0,0,.6);
-    z-index: 10;
-}
 
-.popupCheckout.popupCheckoutOpen{
-
-}
 

@@ -16,7 +16,7 @@ const Header = ({setPopupOpen}) => {
     return <>
     <header className={style.header}>
         <NavLink onClick={() => dispatch(setGender(0))} to='/' className={gender > 0 ? style.logo : `${style.logo} ${style.logoCenter}`} href="#">VALLEY</NavLink>
-        {gender > 0 && <NavLink to='/Category' className={style.category} href="#">
+        {gender > 0 && <NavLink to='/Category' className={(location.pathname !== '/Category') ? `${style.category} ${style.removeActive}` : style.category} href="#">
             {category.map((name, i) =>
                 <div key={i} onClick={() => dispatch(setCategoryId(i))} className={categoryId === i ? `${style.item} ${style.active}` : style.item}>{name}</div>
             )}

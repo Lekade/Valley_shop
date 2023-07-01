@@ -1,8 +1,8 @@
 import React from "react";
 import {useDispatch} from "react-redux";
 import {ErrorMessage, Field, Form, Formik} from "formik";
-import {fetchAddOrders} from "../../../redux/slices/ordersSlice";
 import style from "../../Сheckout/CheckoutForm/Form.module.css";
+import {setProfileData} from "../../../redux/slices/profileSlice";
 
 const PersonalDataForm = ({setOpenForm}) => {
     const dispatch = useDispatch()
@@ -11,12 +11,24 @@ const PersonalDataForm = ({setOpenForm}) => {
             initialValues={{ name: '', surname: '', phone: '', email: '', country: '', address: '', postcode: ''}}
             validate={values => {
                 const errors = {};
-                errors.name = !values.name && 'Required';
-                errors.surname = !values.surname && 'Required';
-                errors.phone = !values.phone && 'Required';
-                errors.country = !values.country && 'Required';
-                errors.address = !values.address && 'Required';
-                errors.postcode = !values.postcode && 'Required';
+                if(!values.name){
+                    errors.name =   'Required';
+                }
+                if(!values.surname){
+                    errors.surname =   'Required';
+                }
+                if(!values.phone){
+                    errors.phone =   'Required';
+                }
+                if(!values.country){
+                    errors.country =   'Required';
+                }
+                if(!values.address){
+                    errors.address =   'Required';
+                }
+                if(!values.postcode){
+                    errors.postcode =   'Required';
+                }
                 if (!values.email){
                     errors.email = 'Required';
                 }
@@ -27,9 +39,10 @@ const PersonalDataForm = ({setOpenForm}) => {
                 }
                 return errors;
             }}
-            onSubmit={(values, { setSubmitting }) => {
-                dispatch(fetchAddOrders(values))
+            onSubmit={(values, { setSubmitting,  resetForm }) => {
+                dispatch(setProfileData(values))
                 setSubmitting(false);
+                setOpenForm(false)
             }}
         >
             {({ isSubmitting, errors, touched }) => (

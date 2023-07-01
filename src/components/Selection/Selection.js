@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import style from './Selection.module.css'
 import checkImg from '../../assecs/images/check.svg'
 import checkboxImg from '../../assecs/images/checkbox.svg'
@@ -54,8 +54,20 @@ const Selection = () => {
             dispatch(setSortSizeNum(index))
             dispatch(setFilter())
         }
-
     }
+
+    const sortRef = useRef()
+    useEffect(() => {
+        if(!sortOpen) return;
+        const handleClickOutside = e =>{
+            if(!sortRef.current) return
+            if(!sortRef.current.contains(e.target)){
+                setSortOpen(false)
+            }
+        };
+        document.addEventListener('click' , handleClickOutside);
+        return () => document.removeEventListener('click', handleClickOutside)
+    }, [sortOpen])
 
     return (
         <div className={style.selection}>
@@ -110,7 +122,7 @@ const Selection = () => {
                 <h1>{category[categoryId]}</h1>
                 <div className={style.sortingBlock}>
                     <span className={style.soringLable}>Sorting:</span>
-                    <div  className={sortOpen ? `${style.sortingBody} ${style.activ}` : style.sortingBody}>
+                    <div ref={sortRef}  className={sortOpen ? `${style.sortingBody} ${style.activ}` : style.sortingBody}>
                         <div onClick={() => setSortOpen(!sortOpen)} className={style.sortingHeader}>
                             <span className={style.sortingCurrent}>{sortSelectItem.name}</span>
                             <img className={style.checkImg} src={checkImg} alt="check"/>

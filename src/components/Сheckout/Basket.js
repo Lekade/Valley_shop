@@ -11,13 +11,13 @@ import {useDispatch, useSelector} from "react-redux";
 import {NavLink, useLocation} from 'react-router-dom';
 
 
-const Basket = ({popupOpen, setPopupOpen}) => {
+const Basket = ({setPopupOpen}) => {
     const dispatch = useDispatch()
     const location = useLocation()
-    const trueLocation = location.pathname === '/Category' || location.pathname.includes('/Product/')  || location.pathname === '/Favorites' && true
+    const popupOpen = location.pathname === '/Category' || location.pathname.includes('/Product/')  || location.pathname === '/Favorites' && true
     const {checkoutItems} = useSelector(state => state.checkoutReducer)
     const totalPrice = checkoutItems.reduce((sum, obj) => Number(obj.price * obj.quantity) + sum, 0)
-    let delivery = 30
+    let delivery = checkoutItems.length > 0 ? 30 : 0
 
     useEffect(() => {
         dispatch(fetchCheckoutItems())
@@ -40,7 +40,7 @@ const Basket = ({popupOpen, setPopupOpen}) => {
         </div>
     </div>)
 
-    return  <div className={trueLocation ? (trueLocation ? `${style.checkoutBasketPopup} ${style.checkoutBasket} ${style.popupVisible}` : `${style.checkoutBasketPopup} ${style.checkoutBasket}`) : style.checkoutBasket}>
+    return  <div className={popupOpen ? `${style.checkoutBasketPopup} ${style.checkoutBasket}` : style.checkoutBasket}>
         <button className={style.closeBtn} onClick={() => setPopupOpen(false)}>
             <svg className={style.closeBtnImg} viewBox="0 0 35 42" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M24 4L8 20L24 36" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>

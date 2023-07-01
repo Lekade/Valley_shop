@@ -9,24 +9,37 @@
     background-color: #FFFFFF;
 }
 /*---------------------------------------------*/
-
-.checkoutBasket.checkoutBasketPopup{
+.overlay{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0,.6);
     visibility: hidden;
     opacity: 0;
+
+    z-index: 10;
+}
+
+.overlay.overlayVisible{
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.checkoutBasket.checkoutBasketPopup{
     position: absolute;
     width: 37rem;
     height: 100vh;
     z-index: 100;
     top: 0;
-    right: 100%;
-    transition: 0.5s;
+    transform: translateX(100%);
+    right: 0;
 }
 
-.checkoutBasket.checkoutBasketPopup.popupVisible{
-    visibility: hidden;
-    opacity: 0;
-    right: 0;
-    transition: 0.5s;
+.overlayVisible .checkoutBasket.checkoutBasketPopup{
+    transform: translateX(0);
+    transition: transform 0.3s ease-in-out;
+
 }
 
 .checkoutBasket.checkoutBasketPopup .basketItem{

@@ -12,7 +12,7 @@ const Profile = () => {
     return <div className={style.profile}>
         <div className={style.profileInner}>
             <ul className={style.profileMenu}>
-                <li><NavLink to='/Profile/PersonalData'  className={style.link}>Personal data</NavLink></li>
+                <li><NavLink to='/Profile/PersonalData'  className={style.link }>Personal data</NavLink></li>
                 <li><NavLink to='/Profile/Password'  className={style.link}>Change password</NavLink></li>
                 <li><NavLink to='/Profile/Orders' className={style.link}>My orders</NavLink></li>
                 <li><button className={style.link}>Sign out</button></li>

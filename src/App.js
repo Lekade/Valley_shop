@@ -10,6 +10,7 @@ import StartPage from "./components/StartPage/StartPage";
 import ProductPage from "./components/ProductPage/ProductPage";
 import Profile from "./components/Profile/Profile";
 import Basket from "./components/Сheckout/Basket";
+import style from "./components/Сheckout/Сheckout.module.css"
 
 
 
@@ -20,9 +21,9 @@ function App() {
   return (
           <div className="wrapper">
                   <Header setPopupOpen={setPopupOpen}/>
-              {popupOpen && <div className="popupCheckout">
+                  <div className={popupOpen ? `${style.overlay} ${style.overlayVisible}` : style.overlay}>
                       <Basket popupOpen={popupOpen} setPopupOpen={setPopupOpen}/>
-                  </div>}
+                  </div>
                   <main className="main">
                     <Routes>
                         <Route path='/*'  element={

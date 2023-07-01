@@ -67,7 +67,13 @@
     transition: 0.5s;
 
 }
+.removeActive.category .item.active:after{
+    visibility: hidden;
+    opacity: 0;
+}
 .category .item.active:after{
+    visibility: visible;
+    opacity: 1;
     content: "";
     position: absolute;
     top: 2rem;

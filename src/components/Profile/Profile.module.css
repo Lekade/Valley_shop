@@ -28,4 +28,11 @@
     color: #000000;
     background-color: transparent;
     border: none;
+    cursor: pointer;
+    transiton:0.5s;
+}
+
+ :global(.active).link {
+    transiton:0.5s;
+    border-bottom: .1rem solid #CCCCCC;
 }
