@@ -47,6 +47,7 @@
     visibility: visible;
     opacity: 100;
     transition: opacity 0.5s ease-out;
+    z-index: 2;
 }
 .favoriteItem.selectionItem .btnFavorite{
     visibility: visible;
@@ -116,7 +117,6 @@
     font-size: 2rem;
     transition: 0.5s;
 }
-
 .itemPrice{
     margin-left: 2rem;
     margin-top: 2.2rem;
@@ -145,4 +145,22 @@
     font-weight: 400;
     font-size: 2.2rem;
     line-height: 3rem;
+}
+
+.customHoverPagination{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 38.4rem;
+    height:49.3rem;
+    display: flex;
+}
+.hoverPoint{
+    width: 100%;
+    height:49.3rem;
+    flex-grow: 1;
+    border-radius: 0;
+    z-index: 2;
+    font-size: 0;
+    color: transparent;
 }
