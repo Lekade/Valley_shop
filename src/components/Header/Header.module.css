@@ -68,8 +68,10 @@
 
 }
 .removeActive.category .item.active:after{
-    visibility: hidden;
-    opacity: 0;
+    background-color: rgba(0,0,0, 0.0);
+}
+.removeActive.category .item.active:hover:after{
+    background-color: rgba(0,0,0, 0.3);
 }
 .category .item.active:after{
     visibility: visible;

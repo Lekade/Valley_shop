@@ -1,28 +1,107 @@
 .wrapper{
     position: relative;
-    padding: 6.7rem 1rem 1.2rem;
+    padding: 6.7rem 1rem 10rem;
     display: flex;
     justify-content: space-between;
 }
 .imagesSection{
     width: 84.6rem;
+    overflow: hidden;
     display: flex;
-    flex-direction: column;
+    justify-content: flex-end;
+}
+.verticalSlides{
+    width: 12.5rem;
+    height: 70vh;
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
+.productMainSlider{
+  width: 75%;
+}
+
+/*---------------------------------------------------------------------*/
+
+.imagesSection :global(.swiper-slide) {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
-.image{
-    width: 60rem;
-    height: 75rem;
+
+.imagesSection :global(.swiper-slide img) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
+
+
+.imagesSection :global(.swiper ){
+    width: 100%;
+    /*height: 300px;*/
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.imagesSection :global(.swiper-slide ){
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+}
+
+.imagesSection :global(.mySwiper2) {
+    height: 85vh;
+    width: 37vw;
+}
+
+.imagesSection :global(.mySwiper) {
+    width: 100%;
+    height: 85vh;
+    box-sizing: border-box;
+    /*padding: 1rem 0;*/
+}
+
+.imagesSection :global(.mySwiper .swiper-slide) {
+    width: 100%;
+    height: 100%;
+    /*opacity: 0.4;*/
+}
+.imagesSection .productMainSlider :global(.swiper-button-prev),
+.imagesSection .productMainSlider :global(.swiper-button-next){
+    transition: opacity 0.5s ease-out;
+    color: #FFFFFF;
+    opacity: 0;
+}
+.imagesSection .productMainSlider:hover :global(.swiper-button-prev),
+.imagesSection .productMainSlider:hover :global(.swiper-button-next){
+    transition: opacity 0.5s ease-out;
+    opacity: 1;
+}
+
+.imagesSection :global(.mySwiper .swiper-slide-thumb-active) {
+    /*opacity: 1;*/
+}
+
+.imagesSection :global(.swiper-slide img) {
+    display: block;
+    /*width: auto;*/
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/*---------------------------------------------------------------------*/
+
 .paramsSection{
     padding-left: 1.8rem;
     width: 57.4rem;
     position: relative;
+
 }
 .paramsSectionInner{
     padding-left: 2.2rem;
-    position: fixed;
     top: 5.5rem;
     width: 55.6rem;
     right: 1.2rem;
@@ -110,9 +189,21 @@
     margin: 1.4rem 1.2rem 0;
     width: 2.4rem;
     height: 2.4rem;
-    background-color: #7B7B7B;
     border: .06rem solid #000;
+    outline: 1px solid transparent;
     border-radius: 50%;
+    font-size: 0;
+    color: transparent;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.colorItem.colorItemActive{
+    outline: 1px solid #000;
+    transition: 0.5s;
+}
+.colorItem:hover{
+    outline: 1px solid #C8C8C8;
+    transition: 0.5s;
 }
 .sizeItem{
     margin: 1rem 1.8rem 0;
@@ -179,24 +270,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     font-size: 1.4rem;
     line-height: 2.1rem;
     text-transform: uppercase;
+    cursor: pointer;
 }
 
 .btnBuy{
     background: #3C3C3C;
     border: none;
-
     color: #FFFFFF;
     transition: 0.5s;
 }
 .btnBuy:hover{
     background: #959595;
     transition: 0.5s;
+    cursor: pointer;
 }
 .btnBuy.btnBuyOff{
     background: #1A1A1A;
@@ -220,7 +311,6 @@
     margin-top: 5rem;
 }
 .accordionItem{
-
     border-bottom: 0.05rem solid #3C3C3C;
 }
 .accordionTitle{
@@ -259,4 +349,133 @@
 }
 .infoItem{
     margin-left: 2.2rem;
+}
+/*---------------------------------------------------Popup---------------------------------------------------*/
+.overlay{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0, .6);
+    z-index: 11;
+}
+.overlayOpen{
+    visibility: visible;
+}
+.clouse{
+    position: absolute;
+    top: 2.5rem;
+    right: 4rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 4rem;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #FFFFFF;
+    cursor: pointer;
+    transform: rotate(45deg);
+}
+.popup{
+    padding: 3rem 12.5rem;
+    width: 50rem;
+    height: 37.5rem;
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.popupTitle{
+    font-family: Poppins, sans-serif;
+    font-size: 2.8rem;
+    font-weight: 400;
+    line-height: normal;
+}
+.popupText{
+    margin-top: 2rem;
+    text-align: center;
+    font-family: Poppins, sans-serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: normal;
+}
+.inputLabel{
+    display: block;
+    margin-top: 4.5rem;
+    width: 25rem;
+
+}
+.inputEl{
+    padding: 1.4rem 2.4rem;
+    width: 100%;
+    height: 4.8rem;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+    border: none;
+    outline: .1rem solid #BBBBBB;
+    transition: outline .5s;
+    text-align: center;
+}
+.inputLabel .inputEl:focus{
+    outline: .1rem solid #8D8D8D;
+}
+.inputLabel .inputEl.error{
+    outline: .1rem solid #DA2C2C;
+}
+.inputLabel .inputEl.error::placeholder{
+    color: #DA2C2C;
+}
+
+.inputEl::placeholder{
+    color:#B0B0B0;
+    text-transform: uppercase;
+}
+.errorBlock{
+    width: 100%;
+    height: 1rem;
+}
+.errorMessage{
+    font-size: 1rem;
+    color: #DA2C2C;
+}
+.inputEl{}
+.submitBtn{
+    margin-top: 2rem;
+    width: 25rem;
+    height: 4.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3C3C3C;
+    color: #FFF;
+    font-family: Poppins,sans-serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.5s ease-out;
+}
+.submitBtn:hover{
+    background-color: #959595;
+    transition: background-color 0.5s ease-out;
+}
+.message{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-family: Poppins, sans-serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: normal;
 }

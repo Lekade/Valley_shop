@@ -6,6 +6,8 @@ import {fetchProduct} from "../../redux/slices/filterSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchClickToFavorite, fetchFavorites} from "../../redux/slices/favoriteSlice";
 import {fetchAddCheckoutItem, fetchCheckoutItems} from "../../redux/slices/checkoutSlice";
+import ProductSlider from "./ProductSlider";
+import OrderOneClick from "./OrderOneClick";
 
 const ProductPage = () => {
     const {id} = useParams()
@@ -15,6 +17,10 @@ const ProductPage = () => {
     const {checkoutItems} = useSelector(state => state.checkoutReducer)
     const [accordionOpen, setaccordionOpen] = useState([])
     const [selectedSize, setSelectedSize] = useState([])
+
+    const [productColorActive, setProductColorActive] = useState(0)
+    const productColor = ['#808080', '#FFFFFF', '#E2D0EF', '#B199E3', '#F29595']
+    const [orderPopupOpen, setOrderPopupOpen] = useState(false)
 
     useEffect(()=>{
         favorites.length === 0 && dispatch(fetchFavorites())
@@ -65,12 +71,7 @@ const ProductPage = () => {
     }
 
     return <div className={style.wrapper}>
-        <section className={style.imagesSection}>
-            <img className={style.image} src={`/${product.imageUrl}`} alt="IMG"/>
-            <img className={style.image} src={`/${product.imageUrl}`} alt="IMG"/>
-            <img className={style.image} src={`/${product.imageUrl}`} alt="IMG"/>
-            <img className={style.image} src={`/${product.imageUrl}`} alt="IMG"/>
-        </section>
+        <ProductSlider productImages={product.imageUrl}/>
         <section className={style.paramsSection}>
             <div className={style.paramsSectionInner}>
                 <div className={style.nameBlock}>
@@ -90,12 +91,11 @@ const ProductPage = () => {
                 <div className={style.sortBlock}>
                     <h2 className={style.title}>Color:</h2>
                     <div className={style.sortInner}>
-                        <div className={style.colorItem}>
-
-                        </div>
-                        <div className={style.colorItem}>
-
-                        </div>
+                        {productColor.map((color, index) => (
+                            <div key={index} onClick={() => setProductColorActive(index)}  className={(productColorActive === index) ? `${style.colorItem} ${style.colorItemActive}` : style.colorItem} style={{backgroundColor: color}}>
+                                {index}
+                            </div>
+                        ))}
                     </div>
                 </div>
                 <div className={style.sortBlock}>
@@ -126,14 +126,15 @@ const ProductPage = () => {
                     </div>
                 </div>
                 <button className={ btnBuyOff(product.id) ? `${style.btnBuy} ${style.btnBuyOff}` : style.btnBuy }
-                        onClick={() => dispatch(fetchAddCheckoutItem({product, selectedSize}))}>{btnBuyOff(product.id) ? 'in a bag' : 'add to bag'} </button>
-                <button className={style.btnBuy1Click}>buy in 1 click</button>
+                        onClick={() => dispatch(fetchAddCheckoutItem({product, selectedSize}))}>{btnBuyOff(product.id) ? 'in a bag' : 'add to bag'}</button>
+                <button onClick={() => setOrderPopupOpen(true)}  className={style.btnBuy1Click}>buy in 1 click</button>
 
                 <div className={style.accordionBlock}>
                     {accordion}
                 </div>
             </div>
         </section>
+        <OrderOneClick orderPopupOpen={orderPopupOpen} setOrderPopupOpen={setOrderPopupOpen}/>
     </div>
 }
 

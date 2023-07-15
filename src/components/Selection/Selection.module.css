@@ -153,6 +153,7 @@
     width:100%;
     position:absolute;
     visibility: hidden;
+    border: 0.06rem solid #B0B0B0;
     opacity: 0;
 }
 

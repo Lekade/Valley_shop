@@ -1,0 +1,71 @@
+.overlay{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0, .6);
+    z-index: 11;
+}
+.overlayOpen{
+    visibility: visible;
+}
+.clouse{
+    position: absolute;
+    top: 2.5rem;
+    right: 4rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 4rem;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #FFFFFF;
+    cursor: pointer;
+    transform: rotate(45deg);
+}
+.popup{
+    padding: 3rem 12.5rem;
+    width: 50rem;
+    height: auto;
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.popupTitle{
+    font-family: Poppins, sans-serif;
+    font-size: 2.8rem;
+    font-weight: 400;
+    line-height: normal;
+}
+.choice{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 6rem;
+}
+.choiceBtn{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-color: transparent;
+    border: none;
+    margin-top: 3rem;
+    color: #B0B0B0;
+    font-family: Poppins, sans-serif;
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.5s ease-out;
+}
+.choiceBtn.active{
+    color: #212121;
+    transition: color 0.5s ease-out;
+}

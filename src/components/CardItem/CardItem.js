@@ -23,7 +23,6 @@ const CardItem = ({items = [],  status, errorBlock}) => {
             <div className={style.imgBlock}>
                 <Link to={`/Product/${item.id}`}>
                     <CardImagesSlides images={item.imageUrl}/>
-                    {/*<img className={style.itemImg} src={item.imageUrl} alt="IMG"/>*/}
                 </Link>
                 <button className={btnFavoriteАdded(item.id) ? `${style.btnFavoriteAdded} ${style.btnFavorite}` : style.btnFavorite} onClick={() => dispatch(fetchClickToFavorite(item))} >
                     <svg className={style.likeImg} viewBox="0 0 24 23" fill="#fff" xmlns="http://www.w3.org/2000/svg">

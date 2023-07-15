@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Routes, Route} from "react-router-dom";
+import {Routes, Route, useLocation} from "react-router-dom";
 import './App.css';
 import Header from './components/Header/Header'
 import Footer from "./components/Footer/Footer";
@@ -11,19 +11,23 @@ import ProductPage from "./components/ProductPage/ProductPage";
 import Profile from "./components/Profile/Profile";
 import Basket from "./components/Сheckout/Basket";
 import style from "./components/Сheckout/Сheckout.module.css"
+import LoginPopup from "./components/Profile/Login/LoginPopup";
 
 
 
 function App() {
 
-    const [popupOpen, setPopupOpen] = useState(false)
+    const [basketPopupOpen, setBasketPopupOpen] = useState(false)
+    const [loginPopupOpen, setLoginPopupOpen] = useState(false)
+    const location = useLocation()
 
   return (
           <div className="wrapper">
-                  <Header setPopupOpen={setPopupOpen}/>
-                  <div className={popupOpen ? `${style.overlay} ${style.overlayVisible}` : style.overlay}>
-                      <Basket popupOpen={popupOpen} setPopupOpen={setPopupOpen}/>
-                  </div>
+                  <Header setBasketPopupOpen={setBasketPopupOpen} setLoginPopupOpen={setLoginPopupOpen}/>
+              {location.pathname !== '/Checkout/' && <div className={basketPopupOpen ? `${style.overlay} ${style.overlayVisible}` : style.overlay}>
+                  <Basket setBasketPopupOpen={setBasketPopupOpen}/>
+              </div>}
+              <LoginPopup loginPopupOpen={loginPopupOpen} setLoginPopupOpen={setLoginPopupOpen}/>
                   <main className="main">
                     <Routes>
                         <Route path='/*'  element={

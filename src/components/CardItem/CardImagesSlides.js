@@ -9,7 +9,6 @@ import style from './CardItem.module.css'
 const CardImagesSlides = ({images}) => {
 
     const [swiper, setSwiper] = useState()
-
     return (
         <Swiper
             modules={[Pagination, EffectFade]}
@@ -19,10 +18,10 @@ const CardImagesSlides = ({images}) => {
 
         >{images.map((image) => (
            <SwiperSlide  key={image} >
-               <img className={style.itemImg} src={`/${image}`} alt="slide" onMouseEnter={()=> console.log(1)}/>
+               <img className={style.itemImg} src={`/${image}`} alt="slide"/>
            </SwiperSlide>
             ))}
-            <div className={style.customHoverPagination}  onMouseOut={()=> swiper.slideTo(0)}>
+            <div className={style.customHoverPagination}  onMouseOut={() => swiper.slideTo(0)}>
                 {images.map((image, index) => (
                     <div className={style.hoverPoint} onMouseEnter={() => swiper.slideTo(index)}>{index}</div>
                 ))}

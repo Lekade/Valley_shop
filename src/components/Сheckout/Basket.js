@@ -11,7 +11,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {NavLink, useLocation} from 'react-router-dom';
 
 
-const Basket = ({setPopupOpen}) => {
+const Basket = ({setBasketPopupOpen}) => {
     const dispatch = useDispatch()
     const location = useLocation()
     const popupOpen = location.pathname === '/Category' || location.pathname.includes('/Product/')  || location.pathname === '/Favorites' && true
@@ -41,7 +41,7 @@ const Basket = ({setPopupOpen}) => {
     </div>)
 
     return  <div className={popupOpen ? `${style.checkoutBasketPopup} ${style.checkoutBasket}` : style.checkoutBasket}>
-        <button className={style.closeBtn} onClick={() => setPopupOpen(false)}>
+        <button className={style.closeBtn} onClick={() => setBasketPopupOpen(false)}>
             <svg className={style.closeBtnImg} viewBox="0 0 35 42" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M24 4L8 20L24 36" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
@@ -58,7 +58,7 @@ const Basket = ({setPopupOpen}) => {
         <div className={style.priceInfo}><p>Delivery cost:</p>{delivery}<p>$</p></div>
         <div className={style.priceTotal}><p>Total due:</p>{totalPrice + delivery}<p>$</p></div>
         <button form="checkout" type="submit" className={`${style.btn} ${style.submitBtn}`}>proceed</button>
-        <NavLink to='/Checkout/' onClick={() => setPopupOpen(false)} className={`${style.btn} ${style.checkoutBtn}`}>Checkout</NavLink>
+        <NavLink to='/Checkout/' onClick={() => setBasketPopupOpen(false)} className={`${style.btn} ${style.checkoutBtn}`}>Checkout</NavLink>
     </div>
 }
 

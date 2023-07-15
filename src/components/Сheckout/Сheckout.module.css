@@ -16,7 +16,7 @@
     background-color: rgba(0,0,0,.6);
     visibility: hidden;
     opacity: 0;
-
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
     z-index: 10;
 }
 
@@ -34,6 +34,7 @@
     top: 0;
     transform: translateX(100%);
     right: 0;
+    transition: transform 0.3s ease-in-out;
 }
 
 .overlayVisible .checkoutBasket.checkoutBasketPopup{
@@ -251,7 +252,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #3C3C3C;
+    background-color: #3C3C3C;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     font-size: 1.4rem;
@@ -260,6 +261,12 @@
     color: #FFFFFF;
     cursor: pointer;
     text-decoration: none;
+    transition: background-color 0.5s ease-out;
+    border: none;
+}
+.btn:hover{
+    background-color: #959595;
+    transition: background-color 0.5s ease-out;
 }
 .checkoutBtn{
     display: none;
