@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {Routes, Route, useLocation} from "react-router-dom";
 import './App.css';
 import Header from './components/Header/Header'
@@ -12,8 +12,6 @@ import Profile from "./components/Profile/Profile";
 import Basket from "./components/Сheckout/Basket";
 import style from "./components/Сheckout/Сheckout.module.css"
 import LoginPopup from "./components/Profile/Login/LoginPopup";
-
-
 
 function App() {
 

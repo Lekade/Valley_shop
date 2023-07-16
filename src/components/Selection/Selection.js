@@ -5,24 +5,52 @@ import checkboxImg from '../../assecs/images/checkbox.svg'
 import SliderRenge from "./sliderRenge/SliderRenge";
 import CardItem from "../CardItem/CardItem";
 import { useSelector, useDispatch } from 'react-redux'
+import {useNavigate} from 'react-router-dom'
 import {
     selectorSortSelect,
     setSortSelectItem,
     setSortSeasonNum,
     setSortSizeNum,
     fetchProducts,
-    setFilter
+    setFilter,
+    setSelectSearch, setGender
 } from "../../redux/slices/filterSlice"
+import qs from "qs";
 
 
 const Selection = () => {
+    const navigate = useNavigate()
     const [sortOpen, setSortOpen] = useState(false)
     const [sortPriceOpen, setSortPriceOpen] = useState(true)
     const [sortSeasonOpen, setSortSeasonOpen] = useState(true)
     const [sortSizeOpen, setSortSizeOpen] = useState(true)
+    const isSearch = useRef(false)
+    const isMounted = useRef(false)
 
     const dispatch = useDispatch()
-    const [sortSelect, sortSelectItem,  sortSeason,  sortSeasonNum, sortSize, sortSizeNum, category, categoryId, products, status, productsNoFilter] = useSelector(state => selectorSortSelect(state))
+    const [sortSelect, sortSelectItem,  sortSeason,  sortSeasonNum, sortSize,
+        sortSizeNum, category, categoryId, products, status, productsNoFilter, gender] = useSelector(state => selectorSortSelect(state))
+
+    useEffect(()=>{
+        if(window.location.search){
+            const params = qs.parse(window.location.search.substring(1))
+            const sort = sortSelect.find(obj => obj.sortProperty === params.sortProperty)
+            dispatch(setSelectSearch({
+                    ...params,
+                    sort,
+                })
+            )
+            dispatch(setGender(params.gender))
+            isSearch.current = true
+        }
+    }, [])
+
+    useEffect(()=>{
+        if(!isSearch.current){
+            getProducts()
+        }
+        isSearch.current = false
+    },[categoryId, sortSelectItem])
 
     const getProducts = () =>  {
         const order = sortSelectItem.sortProperty.includes('-') ? 'asc' : 'desc'
@@ -32,12 +60,21 @@ const Selection = () => {
     }
 
     useEffect(()=>{
-        getProducts()
-    },[categoryId, sortSelectItem])
-
-    useEffect(()=>{
         dispatch(setFilter())
     }, [productsNoFilter])
+
+    useEffect(()=>{
+        if(isMounted.current){
+            const queryString = qs.stringify({
+                gender,
+                sortProperty: sortSelectItem.sortProperty,
+                categoryId,
+
+            })
+            navigate(`?${queryString}`)
+        }
+        isMounted.current = true
+    }, [categoryId, sortSelectItem, gender])
 
     const errorBlock = () => {
            return <div className={style.errorBlock}>

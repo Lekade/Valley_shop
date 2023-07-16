@@ -21,9 +21,9 @@ const CardImagesSlides = ({images}) => {
                <img className={style.itemImg} src={`/${image}`} alt="slide"/>
            </SwiperSlide>
             ))}
-            <div className={style.customHoverPagination}  onMouseOut={() => swiper.slideTo(0)}>
+            <div className={style.customHoverPagination}  onMouseOut={() => swiper.slideTo(0, 300)}>
                 {images.map((image, index) => (
-                    <div className={style.hoverPoint} onMouseEnter={() => swiper.slideTo(index)}>{index}</div>
+                    <div key={index} className={style.hoverPoint} onMouseEnter={() => swiper.slideTo(index, 300)}>{index}</div>
                 ))}
             </div>
         </Swiper>

@@ -43,6 +43,8 @@ export const filterSlice = createSlice({
     initialState,
     reducers: {
         setGender(state, action){
+            debugger
+            console.log(action)
             state.gender = action.payload;
         },
         setCategoryId(state, action){
@@ -52,6 +54,10 @@ export const filterSlice = createSlice({
         },
         setSortSelectItem(state, action){
             state.sortSelectItem = action.payload;
+        },
+        setSelectSearch(state, action){
+            state.sortSelectItem = action.payload.sort
+            state.categoryId = Number(action.payload.categoryId)
         },
         setSortSeasonNum(state, action){
             if(state.sortSeasonNum.every(el => el !== action.payload)){
@@ -124,11 +130,12 @@ export const filterSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const {setGender, setCategoryId, setSortSelectItem, setSortSeasonNum, setSortSizeNum, setFilter, setPrice} = filterSlice.actions
+export const {setGender, setCategoryId, setSortSelectItem, setSortSeasonNum, setSortSizeNum, setFilter, setPrice, setSelectSearch} = filterSlice.actions
 
 
 export const selectorSortSelect = (state) => [state.filterReducer.sortSelect, state.filterReducer.sortSelectItem,
     state.filterReducer.sortSeason, state.filterReducer.sortSeasonNum,
-    state.filterReducer.sortSize, state.filterReducer.sortSizeNum, state.filterReducer.category, state.filterReducer.categoryId, state.filterReducer.products, state.filterReducer.status, state.filterReducer.productsNoFilter]
+    state.filterReducer.sortSize, state.filterReducer.sortSizeNum, state.filterReducer.category, state.filterReducer.categoryId,
+    state.filterReducer.products, state.filterReducer.status, state.filterReducer.productsNoFilter, state.filterReducer.gender]
 
 export default filterSlice.reducer
