@@ -7,6 +7,7 @@ import {useSelector} from "react-redux";
 const PersonalData = () => {
     const [openForm, setOpenForm] = useState(false)
     const profileData = useSelector(state => state.profileReducer.profileData)
+    console.log(profileData)
 
     const content = <div className={style.infoBlock}>
             <div className={style.contactLabel}>

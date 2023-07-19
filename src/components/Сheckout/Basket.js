@@ -25,7 +25,7 @@ const Basket = ({setBasketPopupOpen}) => {
 
     const basket = checkoutItems.map(item=> <div key={item.id} className={style.basketItem}>
         <button className={style.deliteItem} onClick={() => dispatch(fetchRemoveCheckoutItem(item.number))}>X</button>
-        <img className={style.imgItem} src={`/${item.imageUrl}`} alt="item"/>
+        <img className={style.imgItem} src={`/${item.imageUrl[0]}`} alt="item"/>
         <div className={style.infoItem}>
             <h4 className={style.nameItem}>{item.title}</h4>
             <p className={style.labelInfo}>Size:</p>

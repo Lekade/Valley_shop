@@ -1,7 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    profileData: {},
+    profileData: {
+        address: "62",
+        country: "Belarus",
+        email: "mail@gmail.com",
+        name: "Denis",
+        phone: "+99 999 99 99",
+        postcode: "999999",
+        surname: "Kasperovich",
+    },
     singIn: {},
     register: {}
 }

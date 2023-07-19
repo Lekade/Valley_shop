@@ -23,11 +23,15 @@
 .logoCenter{
     margin-right: 44rem;
 }
-
-.category {
+.categoryBlock{
+    margin-left: 20.6rem;
+    margin-right: 20.6rem;
     display: flex;
     flex-grow: 2;
-    justify-content: center;
+    justify-content: space-between;
+}
+
+.category {
     text-decoration: none;
 }
 
@@ -98,7 +102,11 @@
 .iconItom:last-child{
     margin-right: 0;
 }
-
+.profile{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
 .profile img{
     width: 1.533rem;
     height: 1.533rem;
@@ -117,6 +125,110 @@
     height: 1.725rem;
     width: 1.66rem;
 
+}
+.burger{
+    display: none;
+}
+.burgerMenu{
+    display: none;
+}
+
+@media(max-width:768px){
+    .header{
+        height: 7rem;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .burger{
+        width: 5rem;
+        height: 5rem;
+        display: block;
+        background-color: transparent;
+        border: none;
+    }
+    .burgerImg{
+        width: 5rem;
+        height: 5rem;
+    }
+    .logo{
+        margin-left: 5rem;
+    }
+    header .category{
+        display: none;
+    }
+    .iconContainer{
+        margin-right:0;
+    }
+    .iconItom{
+        width: 2.3rem;
+        height: 2.3rem;
+    }
+    header .profile{
+        display: none;
+    }
+    .burgerMenu{
+        display: flex;
+        width: 100vw;
+        height: calc(100vh - 7rem) ;
+        top: 7rem;
+        left: -100vw;
+        visibility: hidden;
+        flex-direction: column;
+        background-color: #FFFFFF;
+        position: fixed;
+        z-index: 5;
+        transition: left 0.3s ease-out, visibility 0.3s ease-out;
+    }
+    .burgerMenu.active{
+        left: 0;
+        visibility: visible;
+        transition: left 0.3s ease-out, visibility 0.3s ease-out;
+    }
+    .loginBlock{
+        margin-top: 2.8rem;
+        margin-left: 3rem;
+        display: flex;
+        align-items: center;
+    }
+    .burgerMenu .profile {
+
+    }
+    .login{
+        color: #000;
+        font-family: Poppins, sans-serif;
+        font-size: 1.8rem;
+        font-weight: 400;
+        line-height: normal;
+        text-decoration-line: underline;
+    }
+    .categoryBlock{
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 4.8rem;
+        justify-content: center;
+        flex-direction: column;
+        flex-grow: 0;
+    }
+
+    .category{
+        width: 16rem;
+        margin: 1.2rem auto 0 3rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 0.1rem solid #B0B0B0;
+    }
+    .category .item.active:after{
+        background-color: rgba(0,0,0, 0.0);
+    }
+    .burgerMenu svg path{
+        fill: #3C3C3C;
+    }
+    .burgerMenu :global(.social){
+        margin: auto 2rem 2.1rem auto;
+
+    }
+    .item{}
+    .active{}
+    .social{}
 }
 
 

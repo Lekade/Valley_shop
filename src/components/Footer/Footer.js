@@ -1,13 +1,10 @@
 import React from "react";
 import style from './Footer.module.css';
-
-import facebookImg from '../../assecs/images/facebook.svg'
-import instaImg from '../../assecs/images/insta.svg'
-import tiktokImg from '../../assecs/images/tiktok.svg'
 import visaImg from '../../assecs/images/visa.svg'
 import masterCardImg from '../../assecs/images/masterCard.svg'
 import GPayImg from '../../assecs/images/GPay.svg'
 import APayImg from '../../assecs/images/APay.svg'
+import SocialLink from "./SocialLink/SocialLink";
 
 const Footer = () => {
     return <footer className={style.footer}>
@@ -26,11 +23,7 @@ const Footer = () => {
             </div>
             <div className={style.footerContent}>
                 <h3 className={style.footerH3}>subscribe</h3>
-                <div className={style.social}>
-                    <a className={style.socialItem} href="#"><img src={facebookImg} alt="facebook"/></a>
-                    <a className={style.socialItem} href="#"><img src={instaImg} alt="insta"/></a>
-                    <a className={style.socialItem} href="#"><img src={tiktokImg} alt="tiktok"/></a>
-                </div>
+                <SocialLink/>
                 <h3 className={style.footerH3}>payment methods</h3>
                 <div className={style.payment}>
                     <img className={style.paymentItem} src={visaImg} alt="visa"/>

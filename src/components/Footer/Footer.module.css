@@ -33,31 +33,6 @@
     color: #FFFFFF;
 }
 
-.social{
-    display: flex;
-    flex-wrap:wrap;
-    height:7rem;
-
-}
-
-.socialItem{
-    margin-right:1.2rem;
-    width: 2.8rem;
-    height:2.8rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.socialItem img{
-    width: 2.1rem;
-    height:2.1rem;
-}
-
-.socialItem:last-child{
-    margin-right: 0;
-}
-
 .payment{
     display: flex;
     justify-content: flex-start;

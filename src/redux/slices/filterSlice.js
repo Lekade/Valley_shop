@@ -43,8 +43,6 @@ export const filterSlice = createSlice({
     initialState,
     reducers: {
         setGender(state, action){
-            debugger
-            console.log(action)
             state.gender = action.payload;
         },
         setCategoryId(state, action){

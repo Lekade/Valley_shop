@@ -39,6 +39,15 @@ html{
 .main{
     flex: 1 1 auto;
 }
+@media(max-width:768px){
+    html{
+        font-size: calc(100vw/550*10);
+    }
+}
 
-
+@media(max-width:390px){
+    html{
+        font-size: calc(100vw/390*10);
+    }
+}
 

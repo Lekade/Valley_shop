@@ -1,0 +1,26 @@
+:global(.social){
+    display: flex;
+    flex-wrap:wrap;
+    margin-bottom: 4rem;
+}
+
+.socialItem{
+    margin-right:1.2rem;
+    width: 2.8rem;
+    height:2.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.socialItem svg{
+    width: 2.1rem;
+    height:2.1rem;
+}
+.burgerMenu .socialItem svg path{
+    fill: #3C3C3C;
+}
+
+.socialItem:last-child{
+    margin-right: 0;
+}
