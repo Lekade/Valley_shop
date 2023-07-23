@@ -37,11 +37,15 @@ html{
 }
 
 .main{
+    padding-top: 5.5rem;
     flex: 1 1 auto;
 }
 @media(max-width:768px){
     html{
         font-size: calc(100vw/550*10);
+    }
+    .main {
+        padding-top: 7rem;
     }
 }
 
@@ -49,5 +53,7 @@ html{
     html{
         font-size: calc(100vw/390*10);
     }
+
+
 }
 

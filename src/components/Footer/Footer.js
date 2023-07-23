@@ -9,20 +9,20 @@ import SocialLink from "./SocialLink/SocialLink";
 const Footer = () => {
     return <footer className={style.footer}>
         <div className={style.footerContainer}>
-            <div className={style.footerContent}>
+            <div>
                 <h3 className={style.footerH3}>Contact</h3>
                 <a href="tel:+380995554444">+38 099 555 4444</a>
                 <a href="tel:+380995554444">+38 099 555 4444</a>
                 <a href="mailto:valleycontact@gmail.com">valleycontact@gmail.com</a>
             </div>
-            <div className={style.footerContent}>
+            <div>
                 <h3 className={style.footerH3}>about us</h3>
                 <a href="#">About the brand</a>
                 <a href="#">Write to us</a>
                 <a href="#">Blog</a>
             </div>
-            <div className={style.footerContent}>
-                <h3 className={style.footerH3}>subscribe</h3>
+            <div className={style.footerBottom}>
+                <h3 className={`${style.footerH3} ${style.footerH3Social}`}>subscribe</h3>
                 <SocialLink/>
                 <h3 className={style.footerH3}>payment methods</h3>
                 <div className={style.payment}>

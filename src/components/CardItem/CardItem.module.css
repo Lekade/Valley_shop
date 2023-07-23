@@ -12,19 +12,16 @@
     width: 38.4rem;
     height:49.3rem;
 }
+.itemSlider{
+    display: block;
+    width: 38.4rem;
+    height:49.3rem;
+}
 
 .itemImg{
     width: 100%;
     height: 100%;
 }
-
-.itemInfo{
-    width: 100%;
-    margin: 1.4rem 1.8rem;
-    display: flex;
-    flex-direction: column;
-}
-
 .btnFavorite{
     visibility: hidden;
     opacity: 0;
@@ -77,23 +74,6 @@
 .btnFavorite:hover .likeImg path{
     stroke: #fff;
     transition:stroke 0.5s ease-out;
-}
-
-.item a{
-    margin-bottom: 1rem;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400;
-    font-size: 1.4rem;
-    line-height: 2.1rem;
-    text-transform: uppercase;
-
-}
-
-.item span{
-    font-family: 'Nunito', sans-serif;
-    font-weight: 300;
-    font-size: 1.4rem;
-    line-height: 1.9rem;
 }
 
 .infoBlock{
@@ -163,4 +143,92 @@
     z-index: 2;
     font-size: 0;
     color: transparent;
+}
+/*---------------------------------------------------@media -------------------------------------------------------*/
+
+@media (max-width:768px){
+
+    .selectionItem{
+        transition: 0.5s;
+    }
+    .selectionItem:hover{
+        transition: 0.5s;
+        box-shadow: 0 .2rem .9rem rgba(46, 46, 46, 0.25);
+    }
+    .imgBlock{
+        position: relative;
+        width: 18rem;
+        height:22rem;
+    }
+    .itemSlider{
+        display: block;
+        width: 18rem;
+        height:22rem;
+    }
+    .itemImg{
+        width: 18rem;
+        height:22rem;
+    }
+    .selectionItem .btnFavorite{
+        visibility:visible;
+        opacity: 100;
+        top: 1rem;
+        right: 1rem;
+        width: 3rem;
+        height: 3rem;
+    }
+    .likeImg{
+        width: 1.9rem;
+        height: 1.9rem;
+    }
+
+    .infoBlock{
+        padding: 1rem 0.6rem 1.6rem;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .itemName{
+        font-size: 1.2rem;
+        line-height: normal;
+
+    }
+    .selectionItem:hover .itemName{
+        font-size: 1.2rem;
+        transition: 0s;
+    }
+    .itemPrice{
+        margin-left: .4rem;
+        margin-top: 1.2rem;
+        font-family: 'Nunito', sans-serif;
+        font-size: 1.4rem;
+        line-height: normal;
+    }
+
+    .ratingBlock{
+        margin-top: 1.2rem;
+        margin-right: .7rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .asterisk{
+        margin-right: .3rem;
+    }
+    .asterisk svg{
+        width: 1.8rem;
+        height: 1.8rem;
+    }
+    .ratingNumber{
+        font-size: 1.4rem;
+        line-height: normal;
+    }
+
+    .customHoverPagination{
+        display: none;
+    }
+    .hoverPoint{
+        display: none;
+    }
 }

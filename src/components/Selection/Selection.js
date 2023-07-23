@@ -110,6 +110,12 @@ const Selection = () => {
         <div className={style.selection}>
             <div className={style.sidebar}>
                 <div className={style.sortEl}>
+                    <button className={style.filtersClouse}>
+                        <div className={style.btnName}>Filters</div>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
+                            <path d="M11.0572 3.05737C11.3072 2.80741 11.6463 2.66699 11.9998 2.66699C12.3534 2.66699 12.6925 2.80741 12.9425 3.05737L18.9425 9.05737C19.1925 9.30741 19.3329 9.64649 19.3329 10C19.3329 10.3536 19.1925 10.6927 18.9425 10.9427L12.9425 16.9427C12.691 17.1856 12.3542 17.32 12.0046 17.3169C11.655 17.3139 11.3206 17.1737 11.0734 16.9265C10.8262 16.6793 10.686 16.3448 10.6829 15.9952C10.6799 15.6456 10.8143 15.3088 11.0572 15.0574L14.6665 11.3334H1.99984C1.64622 11.3334 1.30708 11.1929 1.05703 10.9429C0.80698 10.6928 0.666504 10.3537 0.666504 10C0.666504 9.64642 0.80698 9.30728 1.05703 9.05723C1.30708 8.80718 1.64622 8.66671 1.99984 8.66671H14.6665L11.0572 4.94271C10.8072 4.69267 10.6668 4.35359 10.6668 4.00004C10.6668 3.64649 10.8072 3.30741 11.0572 3.05737Z" fill="#3B3B3B"/>
+                        </svg>
+                    </button>
                     <div onClick={() => setSortPriceOpen(!sortPriceOpen)} className={sortPriceOpen ? `${style.sidebarTitle} ${style.sidebarTitleOpen}` :  style.sidebarTitle}>
                         <h2 className={style.sidebarH2}>Price</h2>
                         <img className={style.checkImg} src={checkImg} alt="check"/>
@@ -170,6 +176,19 @@ const Selection = () => {
                                      className={obj.name === sortSelectItem.name ? `${style.soringActiv} ${style.sortingItem}`: style.sortingItem}>{obj.name}</div>)}
                         </div>
                     </div>
+                    <button className={style.filtersShow}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M2.49967 3.33333L8.33301 3.33333" stroke="#7B7B7B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M11.6667 3.33333L17.5 3.33333" stroke="#7B7B7B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M2.5 10L10 10" stroke="#7B7B7B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M13.3333 10L17.5 10" stroke="#7B7B7B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M2.50033 16.6667L6.66699 16.6667" stroke="#7B7B7B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M10 16.6667L17.5 16.6667" stroke="#7B7B7B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M8.33301 0.833328L8.33301 5.83333" stroke="#7B7B7B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M13.333 7.5L13.333 12.5" stroke="#7B7B7B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M6.66699 14.1667L6.66699 19.1667" stroke="#7B7B7B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                    </button>
                 </div>
                 <div className={products.length === 0 & status !== 'loading' ? `${style.selectionItems} ${style.error}` : style.selectionItems }>
                     <CardItem items={products}  status={status} errorBlock={errorBlock}/>

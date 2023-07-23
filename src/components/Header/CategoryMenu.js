@@ -6,14 +6,15 @@ import {useDispatch} from "react-redux";
 
 const CategoryMenu = ({category, gender, url, categoryId}) => {
     const dispatch = useDispatch()
+
     return <>
-        {gender > 0 && <div className={style.categoryBlock}>
+             <div className={gender > 0 ? style.categoryBlock : `${style.categoryBlock} ${style.remove}` }>
             {category.map((name, i) =>
-                <NavLink to='/Category' className={(url !== '/Category') ? `${style.category} ${style.removeActive}` : style.category} href="#">
-                    <div key={i} onClick={() => dispatch(setCategoryId(i))} className={categoryId === i ? `${style.item} ${style.active}` : style.item}>{name}</div>
+                <NavLink key={i} to='/Category' className={(url !== '/Category') ? `${style.category} ${style.removeActive}` : style.category} href="#">
+                    <div  onClick={() => dispatch(setCategoryId(i))} className={categoryId === i ? `${style.item} ${style.active}` : style.item}>{name}</div>
                 </NavLink>
             )}
-        </div>}
+        </div>
     </>
 }
 

@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Swiper, SwiperSlide} from 'swiper/react';
+import {Swiper, SwiperSlide} from 'swiper/react';
 import {Pagination, EffectFade} from 'swiper';
 import  'swiper/swiper-bundle.min.css'
 import style from './CardItem.module.css'

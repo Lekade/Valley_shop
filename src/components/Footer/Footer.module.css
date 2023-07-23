@@ -59,3 +59,23 @@
     line-height: 1.5rem;
     color: #FFFFFF;
 }
+
+@media(max-width:768px){
+    .footerContainer{
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+    .footerBottom{
+        margin-top: 3rem;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .footerH3Social{
+        display: none;
+    }
+    .footerContainer :global(.social){
+        display: none;
+    }
+}

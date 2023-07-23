@@ -1,16 +1,37 @@
 .selection{
     display: flex;
-    padding-top: 5.5rem;
+    position: relative;
     justify-content: space-between;
 }
 
 .sidebar{
     padding-top:15.2rem;
     width: 23rem;
+    background-color: #FFFFFF;
 }
 
 .sortEl{
     margin-bottom: 2rem;
+}
+.filtersClouse{
+    margin: 2rem 2.5rem 2.8rem auto;
+    display: none;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+}
+.btnName{
+    margin-right: 2rem;
+    color: #000;
+    font-family: Poppins, sans-serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: capitalize;
+}
+.filtersClouse svg{
+    width: 2rem;
+    height: 2rem;
 }
 
 .sidebarTitle{
@@ -88,7 +109,6 @@
 .content{
     padding-top: 3.8rem;
     width: 118.4rem;
-
 }
 
 .content h1{
@@ -105,11 +125,13 @@
     display: flex;
     height: 3.5rem;
     margin-bottom: 1.5rem;
+    align-items: center;
 }
 
 .sortingBlock .soringLable{
     margin-right: 1.4rem;
     width: 6.7rem;
+    height: 3.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -132,6 +154,15 @@
     text-transform: uppercase;
     border: 1px solid #B0B0B0;
     z-index: 2;
+}
+.filtersShow{
+    display: none;
+    border: none;
+    background-color: transparent;
+}
+.filtersShow svg{
+    width: 2rem;
+    height: 2rem;
 }
 .sortingHeader{
     padding-left: 0.8rem;
@@ -205,7 +236,6 @@
     display: flex;
     min-height: 90vh;
     height: 100%;
-
 }
 
 .errorBlock{
@@ -235,6 +265,57 @@
     text-align: center;
     text-transform: lowercase;
     color: #7B7B7B;
+}
+
+@media (max-width:768px){
+    .sidebar{
+        padding-top: 0;
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        top: 0;
+        right: -100vw;
+        visibility: hidden;
+        z-index: 11;
+        transition: right 0.3s ease-out, visibility 0.3s ease-out;
+    }
+    .sidebar.active{
+        right: 0;
+        visibility: visible;
+        transition: left 0.3s ease-out, visibility 0.3s ease-out;
+    }
+    .content{
+        padding: 2rem 1rem 5.4rem;
+        width: 100vw;
+    }
+    .content h1{
+        margin-bottom: 1rem;
+        font-size: 1.8rem;
+        line-height: normal;
+    }
+    .sortingBlock{
+        padding-right: 2rem;
+        padding-left: 2rem;
+        margin-bottom: 1.7rem;
+        justify-content: space-between;
+    }
+    .filtersClouse{
+        display: flex;
+    }
+    .sortingBlock .soringLable{
+        display: none;
+    }
+    .filtersShow{
+        display: flex;
+    }
+    .selectionItems{
+        padding-right: 0;
+        padding-bottom:0;
+        display: grid;
+        grid-template-columns: repeat(2, 18rem);
+        grid-template-rows: 30rem;
+        gap:1rem;
+    }
 }
 
 

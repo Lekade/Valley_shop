@@ -21,7 +21,7 @@ const CardItem = ({items = [],  status, errorBlock}) => {
 
     let slectionItem = items.map(item => <div className={location.pathname === '/Favorites' ? `${style.favoriteItem} ${style.selectionItem}` : style.selectionItem} key={item.id}>
             <div className={style.imgBlock}>
-                <Link to={`/Product/${item.id}`}>
+                <Link className={style.itemSlider} to={`/Product/${item.id}`}>
                     <CardImagesSlides images={item.imageUrl}/>
                 </Link>
                 <button className={btnFavoriteАdded(item.id) ? `${style.btnFavoriteAdded} ${style.btnFavorite}` : style.btnFavorite} onClick={() => dispatch(fetchClickToFavorite(item))} >
