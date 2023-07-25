@@ -24,7 +24,7 @@
 
 .imagesSection :global(.swiper-slide) {
     text-align: center;
-    font-size: 18px;
+    font-size: 1.8rem;
     background: #fff;
     display: flex;
     justify-content: center;
@@ -91,6 +91,9 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+:global(.swiper-pagination){
+    display: none;
 }
 /*---------------------------------------------------------------------*/
 
@@ -368,6 +371,11 @@
     visibility: visible;
 }
 .clouse{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
     position: absolute;
     top: 2.5rem;
     right: 4rem;
@@ -379,6 +387,7 @@
     color: #FFFFFF;
     cursor: pointer;
     transform: rotate(45deg);
+    border-radius: 50%;
 }
 .popup{
     padding: 3rem 12.5rem;
@@ -478,4 +487,319 @@
     font-size: 1.4rem;
     font-weight: 400;
     line-height: normal;
+}
+
+@media (max-width:768px) {
+    .wrapper{
+        padding: 0 0 0;
+        flex-direction: column;
+    }
+    .imagesSection{
+        width: 100%;
+    }
+    .productMainSlider{
+        width: 100%;
+    }
+    .imagesSection :global(.mySwiper2) {
+        height: calc(100vh - 7rem);
+        width: 100%;
+    }
+
+    :global(.swiper-pagination){
+        display: block;
+    }
+    :global(.swiper-pagination-bullet){
+        background-color: #FFFFFF;
+        width: 1.4rem;
+        height: 1.4rem;
+    }
+    .swiper-pagination-bullet-active-prev-prev{
+        background-color: #FFFFFF !important;
+    }
+    .swiper-pagination-bullet-active-prev{
+        background-color: #FFFFFF !important;
+    }
+    .swiper-pagination-bullet-active-next{
+        background-color: #FFFFFF !important;
+    }
+    .swiper-pagination-bullet-active-next-next{
+        background-color: #FFFFFF !important;
+    }
+
+    .paramsSection{
+        padding: 0 1rem 5.5rem;
+        width: 100%;
+        position: static;
+    }
+    .paramsSectionInner{
+        padding-left: 0;
+        position: static;
+        top: 0;
+        width: 100%;
+        right: 0;
+
+    }
+    .nameBlock{
+        margin-top: 3rem;
+        width: 100%;
+        text-align: center;
+    }
+    .name{
+        font-size: 1.8rem;
+        line-height: normal;
+    }
+    .article{
+        margin-top: 1rem;
+        font-size: .8rem;
+        line-height: normal;
+
+    }
+    .btnFavorite{
+        margin-top: 0;
+        margin-right: 0;
+        width: 5rem;
+        height: 5rem;
+        transition: 0s;
+        position: absolute;
+        top: 2.5rem;
+        right: 2.5rem;
+        z-index: 1;
+    }
+    .sortBlock{
+        margin-top: 2rem;
+        width: 100%;
+    }
+    .sortInner{
+        display: flex;
+        justify-content: center;
+    }
+    .title{
+        display: none;
+    }
+    .colorItem{
+        margin: 1.4rem 1.5rem 0;
+        width: 4rem;
+        height: 4rem;
+        border: .06rem solid #000;
+        outline: 1px solid transparent;
+        border-radius: 50%;
+        font-size: 0;
+        color: transparent;
+        transition: 0.5s;
+        cursor: pointer;
+    }
+
+    .sizeItem{
+        margin: 1.4rem 1.8rem 0;
+    }
+
+    .sizeItem.selectedSize{
+        outline: 0.06rem solid #000;
+        transition: 0.5s;
+    }
+    .priceBlock{
+        margin-top: 5rem;
+        margin-right: 0;
+        margin-left: 2rem;
+    }
+    .ratingBlock{
+        margin-top: 5rem;
+        margin-right: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .btnBuy1Click,
+    .btnBuy{
+        margin: 3rem auto 0;
+        width: 100%;
+        height: 6rem;
+        font-weight: 400;
+        font-size: 1.8rem;
+    }
+    .btnBuy1Click{
+        margin-top: 1rem;
+    }
+
+    .accordionBlock{
+        margin: 5rem 2rem 0;
+        width: 100%;
+    }
+    .accordionItem{
+        border-bottom: 0.05rem solid transparent;
+    }
+    .accordionTitle{
+        margin-top: 1.2rem;
+        width: 100%;
+        height: 3.3rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        cursor: pointer;
+    }
+    .accordionTitle.accordionTitleOpen .checkImg{
+        transform: rotate(180deg);
+        transition: 0.5s;
+    }
+    .accordionH2{
+        font-size: 2rem;
+        line-height: normal;
+    }
+    .checkImg{
+        margin-top: .8rem;
+        margin-right: .18rem;
+        width: 2.1rem;
+        height: 1.2rem;
+    }
+    .accordionInfo{
+        margin-top: 2.5rem;
+        font-weight: 300;
+        font-size: 1.6rem;
+        line-height: normal;
+    }
+    .infoItem{
+        margin-left: 2.2rem;
+    }
+    /*---------------------------------------------------Popup---------------------------------------------------*/
+    .overlay{
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        visibility: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0,0,0, .6);
+        z-index: 11;
+    }
+    .overlayOpen{
+        visibility: visible;
+    }
+    .clouse{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 4rem;
+        height: 4rem;
+        position: absolute;
+        top: 2.5rem;
+        right: 4rem;
+        font-family: 'Poppins', sans-serif;
+        font-size: 4rem;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        color: #FFFFFF;
+        cursor: pointer;
+        transform: rotate(45deg);
+        border-radius: 50%;
+    }
+    .popup{
+        padding: 3rem 12.5rem;
+        width: 50rem;
+        height: 37.5rem;
+        background-color: #FFFFFF;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    .popupTitle{
+        font-family: Poppins, sans-serif;
+        font-size: 2.8rem;
+        font-weight: 400;
+        line-height: normal;
+    }
+    .popupText{
+        margin-top: 2rem;
+        text-align: center;
+        font-family: Poppins, sans-serif;
+        font-size: 1.4rem;
+        font-weight: 400;
+        line-height: normal;
+    }
+    .inputLabel{
+        display: block;
+        margin-top: 4.5rem;
+        width: 25rem;
+
+    }
+    .inputEl{
+        padding: 1.4rem 2.4rem;
+        width: 100%;
+        height: 4.8rem;
+        font-family: 'Poppins', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1.4rem;
+        line-height: 2.1rem;
+        border: none;
+        outline: .1rem solid #BBBBBB;
+        transition: outline .5s;
+        text-align: center;
+    }
+    .inputLabel .inputEl:focus{
+        outline: .1rem solid #8D8D8D;
+    }
+    .inputLabel .inputEl.error{
+        outline: .1rem solid #DA2C2C;
+    }
+    .inputLabel .inputEl.error::placeholder{
+        color: #DA2C2C;
+    }
+
+    .inputEl::placeholder{
+        color:#B0B0B0;
+        text-transform: uppercase;
+    }
+    .errorBlock{
+        width: 100%;
+        height: 1rem;
+    }
+    .errorMessage{
+        font-size: 1rem;
+        color: #DA2C2C;
+    }
+    .inputEl{}
+    .submitBtn{
+        margin-top: 2rem;
+        width: 25rem;
+        height: 4.8rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #3C3C3C;
+        color: #FFF;
+        font-family: Poppins,sans-serif;
+        font-size: 1.4rem;
+        font-weight: 500;
+        line-height: normal;
+        text-transform: uppercase;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.5s ease-out;
+    }
+    .submitBtn:hover{
+        background-color: #959595;
+        transition: background-color 0.5s ease-out;
+    }
+    .message{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        font-family: Poppins, sans-serif;
+        font-size: 1.4rem;
+        font-weight: 400;
+        line-height: normal;
+    }
+}
+
+@media (max-width:390px) {
+    .imagesSection :global(.mySwiper2) {
+        height: 52rem;
+        width: 100%;
+    }
 }

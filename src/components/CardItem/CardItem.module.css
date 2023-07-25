@@ -38,13 +38,14 @@
     border-radius: 50%;
     cursor: pointer;
     transition:background-color 0.5s ease-out, opacity 0.5s ease-out;
+    z-index: 1;
 }
 
 .selectionItem:hover .btnFavorite{
     visibility: visible;
     opacity: 100;
     transition: opacity 0.5s ease-out;
-    z-index: 2;
+    /*z-index: 2;*/
 }
 .favoriteItem.selectionItem .btnFavorite{
     visibility: visible;
@@ -145,38 +146,48 @@
     color: transparent;
 }
 /*---------------------------------------------------@media -------------------------------------------------------*/
+@media (max-width: 1024px) {
+    .selectionItem .btnFavorite{
+        visibility: visible;
+        opacity: 100;
+        /*z-index: 2;*/
+    }
+    .selectionItem .btnFavorite{
+        top: 1.3rem;
+        right: 1.3rem;
+        width: 4rem;
+        height: 4rem;
+    }
+
+    .likeImg{
+        width: 2.4rem;
+        height: 2.4rem;
+    }
+}
 
 @media (max-width:768px){
 
-    .selectionItem{
-        transition: 0.5s;
-    }
-    .selectionItem:hover{
-        transition: 0.5s;
-        box-shadow: 0 .2rem .9rem rgba(46, 46, 46, 0.25);
-    }
     .imgBlock{
         position: relative;
-        width: 18rem;
-        height:22rem;
+        width: 26rem;
+        height:32rem;
     }
     .itemSlider{
         display: block;
-        width: 18rem;
-        height:22rem;
+        width: 26rem;
+        height:32rem;
     }
     .itemImg{
-        width: 18rem;
-        height:22rem;
+        width: 26rem;
+        height:32rem;
     }
     .selectionItem .btnFavorite{
-        visibility:visible;
-        opacity: 100;
         top: 1rem;
         right: 1rem;
         width: 3rem;
         height: 3rem;
     }
+
     .likeImg{
         width: 1.9rem;
         height: 1.9rem;
@@ -190,19 +201,19 @@
     }
 
     .itemName{
-        font-size: 1.2rem;
+        font-size: 1.5rem;
         line-height: normal;
 
     }
     .selectionItem:hover .itemName{
-        font-size: 1.2rem;
+        font-size: 1.5rem;
         transition: 0s;
     }
     .itemPrice{
         margin-left: .4rem;
         margin-top: 1.2rem;
         font-family: 'Nunito', sans-serif;
-        font-size: 1.4rem;
+        font-size: 1.5rem;
         line-height: normal;
     }
 
@@ -217,8 +228,8 @@
         margin-right: .3rem;
     }
     .asterisk svg{
-        width: 1.8rem;
-        height: 1.8rem;
+        width: 1.75rem;
+        height: 1.75rem;
     }
     .ratingNumber{
         font-size: 1.4rem;
@@ -230,5 +241,35 @@
     }
     .hoverPoint{
         display: none;
+    }
+}
+@media (max-width:390px){
+    .imgBlock{
+        position: relative;
+        width: 18rem;
+        height:22rem;
+    }
+    .itemSlider{
+        display: block;
+        width: 18rem;
+        height:22rem;
+    }
+    .itemImg{
+        width: 18rem;
+        height:22rem;
+    }
+    .itemName{
+        font-size: 1.2rem;
+    }
+    .selectionItem:hover .itemName{
+        font-size: 1.2rem;
+        transition: 0s;
+    }
+    .itemPrice{
+        margin-left: .4rem;
+        margin-top: 1.2rem;
+        font-family: 'Nunito', sans-serif;
+        font-size: 1.4rem;
+        line-height: normal;
     }
 }

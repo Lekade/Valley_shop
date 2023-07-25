@@ -1,6 +1,6 @@
 import React, {useState } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { FreeMode, Navigation, Thumbs} from 'swiper';
+import { FreeMode, Navigation, Thumbs, Pagination} from 'swiper';
 
 import style from "./ProductPage.module.css";
 import  'swiper/swiper-bundle.min.css'
@@ -8,12 +8,14 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
+import {useResize} from "../../useResize";
 
 const ProductSlider = ({productImages}) => {
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
+    const size = useResize()
 
     return <section className={style.imagesSection}>
-        <div className={style.verticalSlides}>
+        {size.width > 768 && <div className={style.verticalSlides}>
             <Swiper
                 direction={'vertical'}
                 onSwiper={setThumbsSwiper}
@@ -31,14 +33,17 @@ const ProductSlider = ({productImages}) => {
                     </SwiperSlide>
                 ))}
             </Swiper>
-        </div>
+        </div>}
         <div className={style.productMainSlider}>
             <Swiper
                 loop={true}
                 spaceBetween={10}
-                navigation={true}
+                navigation={size.width > 768}
+                pagination={{
+                    dynamicBullets: true
+                }}
                 thumbs={thumbsSwiper ? { swiper: thumbsSwiper } : undefined}
-                modules={[FreeMode, Navigation, Thumbs]}
+                modules={[FreeMode, Navigation, Thumbs, Pagination]}
                 className="mySwiper2"
             >
                 {(productImages.length > 0) && productImages.map((image) => (

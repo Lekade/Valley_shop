@@ -14,31 +14,6 @@
     line-height: 4.2rem;
     text-transform: uppercase;
 }
-.buttonCleatAll{
-    margin-bottom: 0.8rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 9.8rem;
-    height: 2.2rem;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-}
-.buttonCleatAll img{
-    margin-right: 1rem;
-    width: 2rem;
-    height: 2rem;
-}
-
-.buttonCleatAll span{
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400;
-    font-size: 1.4rem;
-    line-height: 2.1rem;
-    text-transform: uppercase;
-}
-
 .selectionItems{
     display: grid;
     grid-template-columns: repeat(3, 38.4rem);
@@ -81,4 +56,54 @@
     text-align: center;
     text-transform: lowercase;
     color: #7B7B7B;
+}
+@media (max-width:768px){
+    .favorites{
+        padding: 2rem 1rem 5.4rem;
+        width: 100%;
+        min-height: calc(100vh - 7rem);
+    }
+    .favoritesTitle{
+        margin: 0 auto 2rem 2rem;
+        font-weight: 400;
+        font-size: 1.8rem;
+        line-height: normal;
+    }
+    .selectionItems{
+        grid-template-columns: repeat(2, 26rem);
+        grid-template-rows: 40rem;
+        padding-bottom:0;
+        gap:1rem;
+    }
+    .selectionItems.error{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 70vh;
+        height: 100%;
+
+    }
+    .errorBlock{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .errorTitle{
+        font-size: 1.8rem;
+        line-height: normal;
+    }
+    .errorSubtitle{
+        font-size: 1.2rem;
+        line-height: normal;
+    }
+}
+
+@media (max-width:390px){
+    .selectionItems{
+        grid-template-columns: repeat(2, 18rem);
+        grid-template-rows: 30rem;
+    }
 }
