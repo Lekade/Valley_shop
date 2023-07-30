@@ -32,6 +32,31 @@ export const fetchRemoveCheckoutItem = createAsyncThunk(
     }
 )
 
+export const fetchAugmentCheckoutItem = createAsyncThunk(
+    'checkout/fetchAugmentCheckoutItem',async (item, thunkAPI) => {
+        const el = {...item}
+        const {dispatch} = thunkAPI
+        el.quantity++
+        dispatch(setAugmentCheckoutItem(item))
+        const {data} = await axios.put(`https://64523a52a2860c9ed4057faf.mockapi.io/checkout/${el.number}`, el)
+        return data
+    }
+)
+
+export const fetchReduceCheckoutItem = createAsyncThunk(
+    'checkout/fetchReduceCheckoutItem',async (item, thunkAPI) => {
+        if(item.quantity > 0) {
+            const el = {...item}
+            const {dispatch} = thunkAPI
+            el.quantity--
+            dispatch(setReduceCheckoutItem(item))
+            const {data} = await axios.put(`https://64523a52a2860c9ed4057faf.mockapi.io/checkout/${el.number}`, el)
+            return data
+        }
+    }
+)
+
+
 const initialState = {
     checkoutItems: [],
 }
@@ -50,7 +75,7 @@ export const checkoutSlice = createSlice({
             return {
                 ...state,
                 checkoutItems: state.checkoutItems.map(item => {
-                    if(item.number === action.payload){
+                    if(item.number === action.payload.number){
                         return  {...item, quantity : item.quantity + 1}
                     }
                     return item
@@ -58,10 +83,11 @@ export const checkoutSlice = createSlice({
             }
         },
         setReduceCheckoutItem(state, action){
+            console.log(action)
             return {
                 ...state,
                 checkoutItems: state.checkoutItems.map(item => {
-                    if(item.number === action.payload){
+                    if(item.number === action.payload.number){
                         return  {...item, quantity : item.quantity > 0 ? item.quantity - 1 : item.quantity}
                     }
                     return item
@@ -82,6 +108,12 @@ export const checkoutSlice = createSlice({
             alert('Server error ')
         },
         [fetchCheckoutItems.rejected]:(state, action) => {
+            alert('Server error ')
+        },
+        [fetchAugmentCheckoutItem.rejected]:(state, action) => {
+            alert('Server error ')
+        },
+        [fetchReduceCheckoutItem.rejected]:(state, action) => {
             alert('Server error ')
         },
     },

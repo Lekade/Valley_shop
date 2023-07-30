@@ -8,11 +8,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0,0,0, .6);
+    background-color: rgba(0,0,0, .0);
     z-index: 11;
 }
 .overlayOpen{
     visibility: visible;
+    background-color: rgba(0,0,0, .6);
+    transition: background-color 0.3s ease-out, visibility 0.3s ease-out;
 }
 .clouse{
     position: absolute;
@@ -26,6 +28,7 @@
     color: #FFFFFF;
     cursor: pointer;
     transform: rotate(45deg);
+    text-shadow: 0.1rem 0.1rem 0.2rem rgba(0,0,0, .6), -0.05rem -0.05rem 0.1rem rgba(0,0,0, .6);
 }
 .popup{
     padding: 3rem 12.5rem;
@@ -68,4 +71,49 @@
 .choiceBtn.active{
     color: #212121;
     transition: color 0.5s ease-out;
+}
+
+@media (max-width: 768px) {
+    .popup{
+        padding: 3rem 6rem;
+        width: 50rem;
+        height: auto;
+        background-color: #FFFFFF;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    .popupTitle{
+        font-family: Poppins, sans-serif;
+        font-size: 2.8rem;
+        font-weight: 400;
+        line-height: normal;
+    }
+    .choice{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 6rem;
+    }
+    .choiceBtn{
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        background-color: transparent;
+        border: none;
+        margin-top: 3rem;
+        color: #B0B0B0;
+        font-family: Poppins, sans-serif;
+        font-size: 1.8rem;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: color 0.5s ease-out;
+    }
+    .choiceBtn.active{
+        color: #212121;
+        transition: color 0.5s ease-out;
+    }
 }

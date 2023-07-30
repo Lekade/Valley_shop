@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useState} from "react";
 import {Routes, Route, useLocation} from "react-router-dom";
 import './App.css';
 import Header from './components/Header/Header'
@@ -12,19 +12,21 @@ import Profile from "./components/Profile/Profile";
 import Basket from "./components/Сheckout/Basket";
 import style from "./components/Сheckout/Сheckout.module.css"
 import LoginPopup from "./components/Profile/Login/LoginPopup";
+import {useResize} from "./useResize";
 
 function App() {
-
     const [basketPopupOpen, setBasketPopupOpen] = useState(false)
     const [loginPopupOpen, setLoginPopupOpen] = useState(false)
     const location = useLocation()
+    const size = useResize()
+    const overlayExists = location.pathname !== '/Checkout' || size.width <= 768
 
   return (
           <div className="wrapper">
                   <Header setBasketPopupOpen={setBasketPopupOpen} setLoginPopupOpen={setLoginPopupOpen}/>
-              {location.pathname !== '/Checkout/' && <div className={basketPopupOpen ? `${style.overlay} ${style.overlayVisible}` : style.overlay}>
+              {overlayExists   && <div className={basketPopupOpen ? `${style.overlay} ${style.overlayVisible}` : style.overlay}>
                   <Basket setBasketPopupOpen={setBasketPopupOpen}/>
-              </div>}
+              </div> }
               <LoginPopup loginPopupOpen={loginPopupOpen} setLoginPopupOpen={setLoginPopupOpen}/>
                   <main className="main">
                     <Routes>

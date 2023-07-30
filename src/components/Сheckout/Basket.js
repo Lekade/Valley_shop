@@ -2,19 +2,21 @@ import React, {useEffect} from "react";
 import basketImg from "../../assecs/images/basket.svg";
 import style from './Сheckout.module.css'
 import {
-    fetchCheckoutItems,
-    fetchRemoveCheckoutItem,
-    setAugmentCheckoutItem,
-    setReduceCheckoutItem
+    fetchAugmentCheckoutItem,
+    fetchCheckoutItems, fetchReduceCheckoutItem,
+    fetchRemoveCheckoutItem
 } from "../../redux/slices/checkoutSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {NavLink, useLocation} from 'react-router-dom';
+import {useResize} from "../../useResize";
 
 
 const Basket = ({setBasketPopupOpen}) => {
     const dispatch = useDispatch()
     const location = useLocation()
-    const popupOpen = location.pathname === '/Category' || location.pathname.includes('/Product/')  || location.pathname === '/Favorites' && true
+    const size = useResize()
+    const popupOpen = location.pathname === '/Category' || location.pathname.includes('/Product/')
+        || location.pathname === '/Favorites' || size.width <= 768 && true
     const {checkoutItems} = useSelector(state => state.checkoutReducer)
     const totalPrice = checkoutItems.reduce((sum, obj) => Number(obj.price * obj.quantity) + sum, 0)
     let delivery = checkoutItems.length > 0 ? 30 : 0
@@ -33,8 +35,8 @@ const Basket = ({setBasketPopupOpen}) => {
             <p className={style.labelInfo}>Quantity:</p>
             <div className={style.quantityBlock}>
                 <div className={style.quantity}>{item.quantity}</div>
-                <span className={style.quantitySet} onClick={() => dispatch(setAugmentCheckoutItem(item.number))}>+</span>
-                <span className={style.quantitySet} onClick={() => dispatch(setReduceCheckoutItem(item.number))}>-</span>
+                <span className={style.quantitySet} onClick={() => dispatch(fetchAugmentCheckoutItem(item))}>+</span>
+                <span className={style.quantitySet} onClick={() => dispatch(fetchReduceCheckoutItem(item))}>-</span>
             </div>
             <div className={style.priceItem}>{Number(item.price * item.quantity)}<p>$</p></div>
         </div>
@@ -55,10 +57,10 @@ const Basket = ({setBasketPopupOpen}) => {
             </div>}
         </div>
         <div className={style.priceInfo}><p>Cost of the items:</p>{totalPrice}<p>$</p></div>
-        <div className={style.priceInfo}><p>Delivery cost:</p>{delivery}<p>$</p></div>
+        <div className={`${style.priceInfo} ${style.delivery}`}><p>Delivery cost:</p>{delivery}<p>$</p></div>
         <div className={style.priceTotal}><p>Total due:</p>{totalPrice + delivery}<p>$</p></div>
         <button form="checkout" type="submit" className={`${style.btn} ${style.submitBtn}`}>proceed</button>
-        <NavLink to='/Checkout/' onClick={() => setBasketPopupOpen(false)} className={`${style.btn} ${style.checkoutBtn}`}>Checkout</NavLink>
+        <NavLink to='/Checkout' onClick={() => setBasketPopupOpen(false)} className={`${style.btn} ${style.checkoutLink}`}>Checkout</NavLink>
     </div>
 }
 

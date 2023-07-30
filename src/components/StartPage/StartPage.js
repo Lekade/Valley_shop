@@ -22,7 +22,6 @@ const StartPage = () => {
             onRealIndexChange={(element)=>setActiveIndex(element.activeIndex)}
             modules={[Pagination]}
             slidesPerView={size.width <= 768 ? '1' : '2'}
-            onSwiper={(swiper) => {}}
         >
             <SwiperSlide >
                 <div onClick={() => dispatch(setGender(1))} className={`${style.gender} ${style.woman}`}>

@@ -23,7 +23,26 @@ p{
 html{
     height: 100%;
     font-size: calc(100vw/1440*10);
+}
 
+body::-webkit-scrollbar {
+    width: 12px;               /* ширина scrollbar */
+}
+body::-webkit-scrollbar-track {
+    background: #ffffff;        /* цвет дорожки */
+}
+body::-webkit-scrollbar-thumb {
+    background-color: #212121;    /* цвет плашки */
+    border-radius: 20px;       /* закругления плашки */
+    border: 3px solid #ffffff;  /* padding вокруг плашки */
+}
+
+.checkoutBasket.checkoutBasketPopup .priceInfo{
+    display: none;
+}
+body {
+    scrollbar-width: thin;          /* "auto" или "thin"  */
+    scrollbar-color: #212121 #ffff;   /* плашка скролла и дорожка */
 }
 
 

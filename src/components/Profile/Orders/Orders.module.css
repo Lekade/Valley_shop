@@ -100,3 +100,54 @@
     line-height: 4.2rem;
     text-transform: uppercase;
 }
+@media (max-width: 768px) {
+    .orders{
+        min-height: 100vh;
+    }
+    .header{
+        margin: 3.8rem auto 3rem 3rem;
+        font-size: 2.2rem;
+    }
+    .order{
+        margin-left: 0;
+        padding: 0 0 4.6rem 0;
+        width: 100%;
+        flex-direction: column;
+    }
+    .order:last-child{
+        padding-bottom: 0;
+    }
+    .itemImage{
+        margin-right: 0;
+        width: 100%;
+        min-height: 37rem;
+        height: auto;
+        object-fit:cover;
+        object-position: center bottom;
+    }
+    .info{
+        padding: 0 1rem;
+        width: 100%;
+    }
+    .title{
+        width: 80%;
+    }
+    .infoInner{
+        grid-template-columns: 1fr;
+
+    }
+    .point{
+        width: 100%;
+    }
+    .rating{
+        width: 100%;
+        justify-content: center;
+    }
+
+    .mark{
+        width: 100%;
+        text-align: center;
+        margin-top: 2rem;
+        line-height: normal;
+    }
+}

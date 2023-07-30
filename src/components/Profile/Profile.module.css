@@ -31,8 +31,42 @@
     cursor: pointer;
     transiton:0.5s;
 }
-
+.linkIcon{
+    display: none;
+}
  :global(.active).link {
     transiton:0.5s;
     border-bottom: .1rem solid #CCCCCC;
 }
+
+ @media (max-width:768px) {
+     .profile{
+         padding: 0 1rem 7.5rem;
+     }
+     .profileContent{
+         width: 100%;
+     }
+     .profileInner{
+         flex-direction: column;
+     }
+     .profileMenu{
+         width: 100%;
+         margin-top: 2rem;
+         display: flex;
+         justify-content: center;
+     }
+     .link{
+         display: flex;
+         font-size: 0;
+         color: transparent;
+     }
+     .linkIcon{
+         display: block;
+         margin: 0 3rem;
+     }
+     .linkIcon svg{
+         width: 3.4rem;
+         height: 3.4rem;
+     }
+ }
+

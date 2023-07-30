@@ -5,19 +5,21 @@ import {useSelector, useDispatch} from "react-redux";
 import {setGender} from "../../redux/slices/filterSlice";
 import CategoryMenu from "./CategoryMenu";
 import SocialLink from "../Footer/SocialLink/SocialLink";
+import {useResize} from "../../useResize";
 
 const Header = ({setBasketPopupOpen, setLoginPopupOpen}) => {
     const [gender, category, categoryId] = useSelector(state => [state.filterReducer.gender, state.filterReducer.category, state.filterReducer.categoryId])
     const [singIn, register] = useSelector(state => [state.profileReducer.singIn, state.profileReducer.register])
     const dispatch = useDispatch()
     const location = useLocation()
-    const popupOpen = location.pathname === '/Category' || location.pathname.includes('/Product/')  || location.pathname === '/Favorites' && true
+    const size = useResize()
+    const popupOpen = location.pathname === '/Category' || location.pathname.includes('/Product/')
+        || location.pathname === '/Favorites' || size.width <= 768  && true
     const login = Object.entries(singIn).length === 0 ?  Object.entries(register).length === 0 : false;
     const [burgerOpen, setBurgerOpen] = useState(false)
-
     useEffect(() =>{
         setBurgerOpen(false)
-    }, [categoryId])
+    }, [location])
 
     return <>
     <header className={style.header}>
