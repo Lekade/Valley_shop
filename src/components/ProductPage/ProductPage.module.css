@@ -488,6 +488,35 @@
     font-weight: 400;
     line-height: normal;
 }
+@media (max-width: 1024px) {
+    .btnFavorite:hover{
+        background-color: #fff;
+        transition: 0s;
+    }
+    .btnFavorite:hover .likeImg path{
+        stroke: #3C3C3C;
+        transition: 0s;
+    }
+    .btnFavorite.btnFavoriteAdded:hover{
+        background-color: #3C3C3C;
+    }
+    .btnFavorite.btnFavoriteAdded:hover .likeImg path{
+        stroke: #fff;
+        transition: 0s;
+    }
+    .btnBuy:hover{
+        background: #3C3C3C;
+        transition: 0s;
+    }
+    .btnBuy1Click:hover{
+        outline: .1rem solid transparent;
+        transition: 0s;
+    }
+    .btnBuy.btnBuyOff:hover{
+        background: #1A1A1A;
+        transition:0s;
+    }
+}
 
 @media (max-width:768px) {
     .wrapper{

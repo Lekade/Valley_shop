@@ -108,6 +108,7 @@
 
 .content{
     padding-top: 3.8rem;
+    padding-bottom: 3rem;
     width: 118.4rem;
 }
 
@@ -224,7 +225,6 @@
 
 .selectionItems{
     padding-right: 1rem;
-    padding-bottom:10.7rem;
     display: grid;
     grid-template-columns: repeat(3, 38.4rem);
     grid-template-rows: 63rem;
@@ -232,9 +232,32 @@
 }
 .skeleton{
     width: 38.4rem;
-    height: 56.8rem;
+    height: 63rem;
 }
-
+.skeletonImage{
+    x: 0;
+    y: 0;
+    width: 38.4rem;
+    height:49.3rem;
+}
+.skeletonText{
+    x: 2rem;
+    y: 51.7rem;
+    width: 34.4rem;
+    height: 3rem;
+}
+.skeletonPrice{
+    x: 2rem;
+    y: 58rem;
+    width: 13.9rem;
+    height: 2.5rem;
+}
+.skeletonRating{
+    x: 22.8rem;
+    y: 58rem;
+    width: 13.9rem;
+    height: 2.5rem;
+}
 .selectionItems.error{
     display: flex;
     min-height: 90vh;
@@ -268,6 +291,53 @@
     text-align: center;
     text-transform: lowercase;
     color: #7B7B7B;
+}
+
+@media (min-width: 1800px) {
+    .selectionItems{
+        padding-right: 0;
+        padding-bottom:0;
+        display: grid;
+        grid-template-columns: repeat(4, 28.5rem);
+        grid-template-rows: 48.6rem;
+        gap:1rem;
+    }
+    .skeleton{
+        width: 28.5rem;
+        height: 48.6rem;
+    }
+    .skeletonImage{
+        width: 28.5rem;
+        height:36.3rem;
+    }
+    .skeletonText{
+        x: 2rem;
+        y: 38.5rem;
+        width: 24.4rem;
+        height: 3rem;
+    }
+    .skeletonPrice{
+        x: 2rem;
+        y: 44rem;
+        width: 10rem;
+        height: 2.5rem;
+    }
+    .skeletonRating{
+        x: 16.4rem;
+        y: 44rem;
+        width: 10rem;
+        height: 2.5rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .sortingItem:hover{
+        background-color: #fff;
+        transition:0s;
+    }
+    .sortingItem.soringActiv{
+        background-color: #3C3C3C;
+    }
 }
 
 @media (max-width:768px){
@@ -317,17 +387,81 @@
         padding-bottom:0;
         display: grid;
         grid-template-columns: repeat(2, 26rem);
-        grid-template-rows: 40rem;
+        grid-template-rows: 43rem;
         gap:1rem;
+    }
+    .selectionItems.error{
+        display: flex;
+        min-height: 100%;
+        height: 100%;
+    }
+    .errorTitle{
+        font-size: 1.8rem;
+    }
+    .errorSubtitle{
+        font-size: 1.2rem;
+    }
+    .skeleton{
+        width: 26rem;
+        height: 43rem;
+    }
+    .skeletonImage{
+        width: 26rem;
+        height:32rem;
+    }
+    .skeletonText{
+        x: 0.8rem;
+        y: 34rem;
+        width: 24.4rem;
+        height: 2.5rem;
+    }
+    .skeletonPrice{
+        x: 0.8rem;
+        y: 39rem;
+        width: 10rem;
+        height: 2.3rem;
+    }
+    .skeletonRating{
+        x: 15.1rem;
+        y: 39rem;
+        width: 10rem;
+        height: 2.3rem;
     }
 }
 
 @media (max-width:390px){
     .selectionItems{
         grid-template-columns: repeat(2, 18rem);
-        grid-template-rows: 30rem;
+        grid-template-rows: 30.5rem;
+    }
+    .skeleton{
+        width: 18rem;
+        height: 30.5rem;
+    }
+    .skeletonImage{
+        width: 18rem;
+        height:22rem;
+    }
+    .skeletonText{
+        x: 0.6rem;
+        y: 23rem;
+        width: 16.8rem;
+        height: 2.5rem;
+    }
+    .skeletonPrice{
+        x: 0.6rem;
+        y: 27rem;
+        width: 6rem;
+        height: 2.3rem;
+    }
+    .skeletonRating{
+        x: 11.4rem;
+        y: 27rem;
+        width: 6rem;
+        height: 2.3rem;
     }
 }
+
 
 
 

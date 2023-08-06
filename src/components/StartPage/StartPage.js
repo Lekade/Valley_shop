@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {NavLink} from "react-router-dom";
 import style from "./StartPage.module.css"
 import {setGender} from "../../redux/slices/filterSlice";
@@ -9,19 +9,21 @@ import {useResize} from "../../useResize";
 
 const StartPage = () => {
     const dispatch = useDispatch()
-    const size = useResize()
+    const size = useResize().width
 
-    const [activeIndex, setActiveIndex] = useState(0);
+    const [activeIndex, setActiveIndex] = useState(1);
 
     useEffect(()=>{
-        dispatch(setGender(activeIndex))
+        if(size <= 768){
+            dispatch(setGender(activeIndex))
+        }
     },[activeIndex])
 
-    return <NavLink to='/Category' className={size.width <= 768 ? `${style.srartPage} ${style.slider}` : style.srartPage}>
+    return <NavLink to='/Category' className={size <= 768 ? `${style.srartPage} ${style.slider}` : style.srartPage}>
         <Swiper
-            onRealIndexChange={(element)=>setActiveIndex(element.activeIndex)}
+            onRealIndexChange={(el) => setActiveIndex(el.activeIndex + 1)}
             modules={[Pagination]}
-            slidesPerView={size.width <= 768 ? '1' : '2'}
+            slidesPerView={size <= 768 ? '1' : '2'}
         >
             <SwiperSlide >
                 <div onClick={() => dispatch(setGender(1))} className={`${style.gender} ${style.woman}`}>

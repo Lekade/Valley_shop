@@ -31,7 +31,7 @@ const Header = ({setBasketPopupOpen, setLoginPopupOpen}) => {
             </svg>
         </button>
 
-        <NavLink onClick={() => dispatch(setGender(0))} to='/' className={gender > 0 ? style.logo : `${style.logo} ${style.logoCenter}`}>VALLEY</NavLink>
+        <NavLink onClick={() => {size.width <= 768 ? dispatch(setGender(1)) : dispatch(setGender(0))}} to='/' className={gender > 0 ? style.logo : `${style.logo} ${style.logoCenter}`}>VALLEY</NavLink>
 
         <CategoryMenu category={category} gender={gender} url={location.pathname} categoryId={categoryId} setBurgerOpen={setBurgerOpen}/>
 

@@ -211,6 +211,19 @@
     margin: 0 auto;
 }
 
+@media (max-width: 1024px) {
+    .contactLabel:hover input.inputEl{
+        outline: .1rem solid transparent;
+        transition: outline 0s;
+    }
+    .contactLabel:hover input.inputEl:focus{
+        outline: .1rem solid #8D8D8D;
+    }
+    .contactLabel:hover input.inputEl.error{
+        outline: .1rem solid #DA2C2C;
+    }
+}
+
 @media(max-width: 768px){
     .checkoutForm{
         padding-left: 0;
@@ -237,7 +250,7 @@
     }
 
     .paymentEl{
-        margin: 0 2rem 4rem;
+        margin: 0 4rem 4rem;
         width: 10rem;
         height: 6.3rem;
         display: block;
@@ -304,5 +317,11 @@
     }
     .fullRow{
         margin-right: 0;
+    }
+}
+
+@media (max-width: 390px) {
+    .paymentEl {
+        margin: 0 2rem 4rem;
     }
 }

@@ -5,25 +5,8 @@ import MaskedInput from "react-text-mask";
 import style from "./ProductPage.module.css"
 
 const phoneNumberMask = [
-    '+',
-    /\d/,
-    /\d/,
-    " ",
-    "(",
-    /[1-9]/,
-    /\d/,
-    /\d/,
-    ")",
-    " ",
-    /\d/,
-    /\d/,
-    /\d/,
-    " ",
-    /\d/,
-    /\d/,
-    " ",
-    /\d/,
-    /\d/
+    '+', /\d/, /\d/, " ", "(", /[1-9]/, /\d/, /\d/, ")",
+    " ", /\d/, /\d/, /\d/, " ", /\d/, /\d/, " ", /\d/, /\d/
 ];
 
 

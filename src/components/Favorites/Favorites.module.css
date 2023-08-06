@@ -57,6 +57,7 @@
     text-transform: lowercase;
     color: #7B7B7B;
 }
+
 @media (max-width:768px){
     .favorites{
         padding: 2rem 1rem 5.4rem;

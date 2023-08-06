@@ -90,6 +90,12 @@
     .text{
         color: #fff;
     }
+
+    .gender.woman:hover:after,
+    .gender.man:hover:after{
+        opacity: 0;
+        transition: 0s;
+    }
 }
 .slider.srartPage .gender .text{
     font-size: 6rem;
