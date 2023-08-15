@@ -7,7 +7,6 @@ import PersonalData from "./PersonalData/PersonalData";
 import Orders from "./Orders/Orders";
 import ChangePassword from "./ChangePassword/ChangePassword";
 
-
 const Profile = () => {
     return <div className={style.profile}>
         <div className={style.profileInner}>

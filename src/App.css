@@ -26,23 +26,23 @@ html{
 }
 
 body::-webkit-scrollbar {
-    width: 12px;               /* ширина scrollbar */
+    width: 12px;
 }
 body::-webkit-scrollbar-track {
-    background: #ffffff;        /* цвет дорожки */
+    background: #ffffff;
 }
 body::-webkit-scrollbar-thumb {
-    background-color: #212121;    /* цвет плашки */
-    border-radius: 20px;       /* закругления плашки */
-    border: 3px solid #ffffff;  /* padding вокруг плашки */
+    background-color: #212121;
+    border-radius: 20px;
+    border: 3px solid #ffffff;
 }
 
 .checkoutBasket.checkoutBasketPopup .priceInfo{
     display: none;
 }
 body {
-    scrollbar-width: thin;          /* "auto" или "thin"  */
-    scrollbar-color: #212121 #ffff;   /* плашка скролла и дорожка */
+    scrollbar-width: thin;
+    scrollbar-color: #212121 #ffff;
 }
 
 

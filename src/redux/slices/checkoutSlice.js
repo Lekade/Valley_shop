@@ -96,24 +96,22 @@ export const checkoutSlice = createSlice({
         },
     },
     extraReducers:{
-        [fetchCheckoutItems.pending]:(state) => {
-        },
         [fetchCheckoutItems.fulfilled]:(state, action) => {
             state.checkoutItems = action.payload
         },
-        [fetchAddCheckoutItem.rejected]:(state, action) => {
+        [fetchAddCheckoutItem.rejected]:() => {
             alert('Server error ')
         },
-        [fetchRemoveCheckoutItem.rejected]:(state, action) => {
+        [fetchRemoveCheckoutItem.rejected]:() => {
             alert('Server error ')
         },
-        [fetchCheckoutItems.rejected]:(state, action) => {
+        [fetchCheckoutItems.rejected]:() => {
             alert('Server error ')
         },
-        [fetchAugmentCheckoutItem.rejected]:(state, action) => {
+        [fetchAugmentCheckoutItem.rejected]:() => {
             alert('Server error ')
         },
-        [fetchReduceCheckoutItem.rejected]:(state, action) => {
+        [fetchReduceCheckoutItem.rejected]:() => {
             alert('Server error ')
         },
     },

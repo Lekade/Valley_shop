@@ -41,19 +41,17 @@ export const favoriteSlice = createSlice({
         },
     },
     extraReducers:{
-        [fetchFavorites.pending]:(state) => {
-        },
         [fetchFavorites.fulfilled]:(state, action) => {
         state.favorites = action.payload
         },
-        [fetchFavorites.rejected]:(state, action) => {
+        [fetchFavorites.rejected]:() => {
             alert('Server error')
         },
-        [fetchClickToFavorite.pending]:(state) => {
+        [fetchClickToFavorite.pending]:() => {
         },
-        [fetchClickToFavorite.fulfilled]:(state, action) => {
+        [fetchClickToFavorite.fulfilled]:() => {
         },
-        [fetchClickToFavorite.rejected]:(state, action) => {
+        [fetchClickToFavorite.rejected]:() => {
             alert('Server error ')
         },
     },

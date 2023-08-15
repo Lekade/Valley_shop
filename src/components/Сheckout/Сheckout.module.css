@@ -1,5 +1,6 @@
 .checkout{
     display: flex;
+    padding-bottom: 5rem;
     justify-content: space-between;
 }
 .pageName{

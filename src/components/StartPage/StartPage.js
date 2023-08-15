@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {NavLink} from "react-router-dom";
 import style from "./StartPage.module.css"
 import {setGender} from "../../redux/slices/filterSlice";

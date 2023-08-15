@@ -237,8 +237,9 @@
 }
 
 .priceBlock{
+    width: 22rem;
     margin-top: 4rem;
-    margin-right: 30rem;
+    margin-right: 20rem;
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     font-size: 2rem;
@@ -246,7 +247,7 @@
 }
 .ratingBlock{
     margin-top: 4rem;
-    margin-right: 4rem;
+    margin-right: 3rem;
     display: flex;
     justify-content: center;
     align-items: center;

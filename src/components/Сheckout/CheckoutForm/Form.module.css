@@ -135,10 +135,9 @@
     border-radius: 0 0 50% 50%;
     transition: 1s;
     z-index: 2;
-
 }
 
-.paymentEl img{
+.paymentEl svg{
     margin-top: -0.2rem;
     margin-left: -0.2rem;
     position: absolute;
@@ -266,7 +265,7 @@
     }
 
 
-    .paymentEl img{
+    .paymentEl svg{
         margin-top: -0.2rem;
         margin-left: -0.2rem;
         position: absolute;

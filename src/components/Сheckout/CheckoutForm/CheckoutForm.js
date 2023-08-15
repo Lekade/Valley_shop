@@ -2,11 +2,8 @@ import React from "react";
 import style from "./Form.module.css";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import {fetchAddOrders} from "../../../redux/slices/ordersSlice";
-import visaImg from "../../../assecs/images/visa.svg";
-import masterCardImg from "../../../assecs/images/masterCard.svg";
-import GPayImg from "../../../assecs/images/GPay.svg";
-import APayImg from "../../../assecs/images/APay.svg";
 import {useDispatch} from "react-redux";
+import {APayImg, GPayImg, masterCardImg, visaImg} from "../../Footer/Payment";
 
 
 const CheckoutForm = () => {
@@ -116,19 +113,19 @@ const CheckoutForm = () => {
                     <div className={style.paymentBlock}>
                         <label className={style.paymentEl}>
                             <Field  type="radio" name='payment' value="visa"/>
-                            <img src={visaImg} alt="visa"/>
+                            {visaImg()}
                         </label>
                         <label className={style.paymentEl}>
                             <Field type="radio" name='payment' value="masterCard"/>
-                            <img src={masterCardImg} alt="masterCard"/>
+                            {masterCardImg()}
                         </label>
                         <label className={style.paymentEl}>
                             <Field type="radio" name='payment' value="GPay"/>
-                            <img src={GPayImg} alt="GPay"/>
+                            {GPayImg()}
                         </label>
                         <label className={style.paymentEl}>
                             <Field type="radio" name='payment' value="APay"/>
-                            <img src={APayImg} alt="APay"/>
+                            {APayImg()}
                         </label>
                     </div>
                 </Form>

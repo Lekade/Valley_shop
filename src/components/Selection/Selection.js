@@ -1,7 +1,5 @@
 import React, {useEffect, useRef, useState} from "react";
 import style from './Selection.module.css'
-import checkImg from '../../assecs/images/check.svg'
-import checkboxImg from '../../assecs/images/checkbox.svg'
 import SliderRenge from "./sliderRenge/SliderRenge";
 import CardItem from "../CardItem/CardItem";
 import { useSelector, useDispatch } from 'react-redux'
@@ -16,6 +14,7 @@ import {
     setSelectSearch, setGender
 } from "../../redux/slices/filterSlice"
 import qs from "qs";
+import {CheckIMG} from "./CheckIMG";
 
 
 const Selection = () => {
@@ -107,6 +106,12 @@ const Selection = () => {
         return () => document.removeEventListener('click', handleClickOutside)
     }, [sortOpen])
 
+    const checkboxImg = () =>{
+        return <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.25 0.4375L4.1125 9.38438L1.75 7.59063H0.4375L4.1125 13.5625L13.5625 0.4375H12.25Z" fill="#4D5357"/>
+        </svg>
+    }
+
     return (
         <div className={style.selection}>
             <div className={mobaileFilterOpen ? `${style.active} ${style.sidebar}` : style.sidebar}>
@@ -119,7 +124,7 @@ const Selection = () => {
                     </button>
                     <div onClick={() => setSortPriceOpen(!sortPriceOpen)} className={sortPriceOpen ? `${style.sidebarTitle} ${style.sidebarTitleOpen}` :  style.sidebarTitle}>
                         <h2 className={style.sidebarH2}>Price</h2>
-                        <img className={style.checkImg} src={checkImg} alt="check"/>
+                        {CheckIMG(style.checkImg)}
                     </div>
 
                     {sortPriceOpen && <div className={style.sortElInner}>
@@ -130,14 +135,14 @@ const Selection = () => {
                 <div className={style.sortEl}>
                     <div onClick={() => setSortSeasonOpen(!sortSeasonOpen)}  className={sortSeasonOpen ? `${style.sidebarTitle} ${style.sidebarTitleOpen}` :  style.sidebarTitle}>
                         <h2 className={style.sidebarH2}>Season</h2>
-                        <img className={style.checkImg} src={checkImg} alt="check"/>
+                        {CheckIMG(style.checkImg)}
                     </div>
 
                     {sortSeasonOpen && <div className={style.sortElInner}>
                         {sortSeason.map((el, index) =>
                             <div key={index} className={style.checkboxItem} onClick={ () => changeFilter(index, 'season') }>
                                 <div className={style.checkbox}>
-                                    {sortSeasonNum.some(num => num === index) && <img src={checkboxImg} alt="check"/>}
+                                    {sortSeasonNum.some(num => num === index) && checkboxImg()}
                                 </div>
                                 <p className={style.checkboxText}>{el}</p>
                             </div>
@@ -147,13 +152,13 @@ const Selection = () => {
                 <div className={style.sortEl}>
                     <div onClick={() => setSortSizeOpen(!sortSizeOpen)}  className={sortSizeOpen ? `${style.sidebarTitle} ${style.sidebarTitleOpen}` :  style.sidebarTitle}>
                         <h2 className={style.sidebarH2}>Size</h2>
-                        <img className={style.checkImg} src={checkImg} alt="check"/>
+                        {CheckIMG(style.checkImg)}
                     </div>
                     {sortSizeOpen && <div className={style.sortElInner}>
                         {sortSize.map((el, index)=>
                             <div key={index} className={style.checkboxItem} onClick={ () => changeFilter(index, 'size')} >
                                 <div className={style.checkbox}>
-                                    {sortSizeNum.some(num => num === index) && <img src={checkboxImg} alt="check"/>}
+                                    {sortSizeNum.some(num => num === index) && checkboxImg()}
                                 </div>
                                 <p className={style.checkboxText}>{el}</p>
                             </div>
@@ -169,7 +174,7 @@ const Selection = () => {
                     <div ref={sortRef}  className={sortOpen ? `${style.sortingBody} ${style.activ}` : style.sortingBody}>
                         <div onClick={() => setSortOpen(!sortOpen)} className={style.sortingHeader}>
                             <span className={style.sortingCurrent}>{sortSelectItem.name}</span>
-                            <img className={style.checkImg} src={checkImg} alt="check"/>
+                            {CheckIMG(style.checkImg)}
                         </div>
                         <div className={style.sortingItems}>
                             {sortSelect.map((obj, index ) =>

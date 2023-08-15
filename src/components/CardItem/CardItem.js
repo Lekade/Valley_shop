@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import {fetchClickToFavorite, fetchFavorites} from "../../redux/slices/favoriteSlice";
 import {Link, useLocation} from "react-router-dom";
 import CardImagesSlides from "./CardImagesSlides";
+import {setGender} from "../../redux/slices/filterSlice";
 
 const CardItem = ({items = [],  status, errorBlock}) => {
     const dispatch = useDispatch()
@@ -19,9 +20,17 @@ const CardItem = ({items = [],  status, errorBlock}) => {
         return favorites.some( i => i.id === id)
     }
 
+    const clickToFavorite = (images) => {
+        if(images[0].indexOf("girl") >= 0){
+            dispatch(setGender(1))
+        }else {
+            dispatch(setGender(2))
+        }
+    }
+
     let slectionItem = items.map(item => <div className={location.pathname === '/Favorites' ? `${style.favoriteItem} ${style.selectionItem}` : style.selectionItem} key={item.id}>
             <div className={style.imgBlock}>
-                <Link className={style.itemSlider} to={`/Product/${item.id}`}>
+                <Link className={style.itemSlider} to={`/Product/${item.id}`} onClick={location.pathname === '/Favorites' ? () => clickToFavorite(item.imageUrl) : ""}>
                     <CardImagesSlides images={item.imageUrl}/>
                 </Link>
                 <button className={btnFavoriteАdded(item.id) ? `${style.btnFavoriteAdded} ${style.btnFavorite}` : style.btnFavorite} onClick={() => dispatch(fetchClickToFavorite(item))} >

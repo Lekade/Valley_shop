@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import style from "./ProductPage.module.css"
-import checkImg from '../../assecs/images/check.svg'
 import {useParams} from "react-router-dom";
 import {fetchProduct} from "../../redux/slices/filterSlice";
 import {useDispatch, useSelector} from "react-redux";
@@ -8,6 +7,7 @@ import {fetchClickToFavorite, fetchFavorites} from "../../redux/slices/favoriteS
 import {fetchAddCheckoutItem, fetchCheckoutItems} from "../../redux/slices/checkoutSlice";
 import ProductSlider from "./ProductSlider";
 import OrderOneClick from "./OrderOneClick";
+import {CheckIMG} from "../Selection/CheckIMG";
 
 const ProductPage = () => {
     const {id} = useParams()
@@ -17,7 +17,6 @@ const ProductPage = () => {
     const {checkoutItems} = useSelector(state => state.checkoutReducer)
     const [accordionOpen, setaccordionOpen] = useState([])
     const [selectedSize, setSelectedSize] = useState([])
-
     const [productColorActive, setProductColorActive] = useState(0)
     const productColor = ['#808080', '#FFFFFF', '#E2D0EF', '#B199E3', '#F29595']
     const [orderPopupOpen, setOrderPopupOpen] = useState(false)
@@ -49,7 +48,7 @@ const ProductPage = () => {
         <div className={accordionOpen[index] ? `${style.accordionTitle} ${style.accordionTitleOpen}`
             : style.accordionTitle} onClick={() => accordionItemOpen(index)}>
             <h2 className={style.accordionH2}>{Object.keys(item)[0]}</h2>
-            <img className={style.checkImg} src={checkImg} alt="check"/>
+            {CheckIMG(style.checkImg)}
         </div>
     {accordionOpen[index] && <ul className={style.accordionInfo}>
             {item[Object.keys(item)[0]].map((text, i)=>

@@ -26,7 +26,7 @@ const Orders = () => {
             }
         }
 
-        return <div className={style.order}>
+        return <div className={style.order} key={index}>
         <img className={style.itemImage} src={`/${item.imageUrl[0]}`} alt="item"/>
         <div className={style.info}>
             <div className={style.title}>{item.title}</div>

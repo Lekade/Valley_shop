@@ -10,6 +10,7 @@ import {useResize} from "../../useResize";
 const Header = ({setBasketPopupOpen, setLoginPopupOpen}) => {
     const [gender, category, categoryId] = useSelector(state => [state.filterReducer.gender, state.filterReducer.category, state.filterReducer.categoryId])
     const [singIn, register] = useSelector(state => [state.profileReducer.singIn, state.profileReducer.register])
+    const checkoutItems = useSelector(state => state.checkoutReducer.checkoutItems)
     const dispatch = useDispatch()
     const location = useLocation()
     const size = useResize()
@@ -57,11 +58,13 @@ const Header = ({setBasketPopupOpen, setLoginPopupOpen}) => {
                     <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
                         <path d="M13.4166 4.79167C13.4166 4.28334 13.2146 3.79582 12.8552 3.43638C12.4957 3.07693 12.0082 2.875 11.4999 2.875C10.9916 2.875 10.5041 3.07693 10.1446 3.43638C9.78516 3.79582 9.58323 4.28334 9.58323 4.79167M18.4574 9.292L19.7847 17.917C19.8267 18.19 19.8092 18.4688 19.7334 18.7344C19.6575 19 19.5252 19.246 19.3455 19.4557C19.1657 19.6654 18.9428 19.8338 18.6919 19.9493C18.441 20.0648 18.1682 20.1248 17.892 20.125H5.10781C4.83146 20.125 4.55837 20.0653 4.30726 19.9499C4.05616 19.8345 3.83297 19.6662 3.65301 19.4565C3.47305 19.2467 3.34057 19.0006 3.26466 18.7349C3.18874 18.4691 3.17118 18.1901 3.21319 17.917L4.54048 9.292C4.6101 8.83927 4.83956 8.42645 5.18728 8.1283C5.53501 7.83015 5.97802 7.66638 6.43606 7.66667H16.5637C17.0216 7.66661 17.4644 7.83048 17.8119 8.12861C18.1594 8.42674 18.3878 8.83944 18.4574 9.292Z" stroke="black" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
+                    {checkoutItems.length > 0 && <div className={style.basketCounter}>{checkoutItems.length}</div>}
             </button>
                 : <NavLink to='/Checkout' className={`${style.iconItem} ${style.basket}`}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
                         <path d="M13.4166 4.79167C13.4166 4.28334 13.2146 3.79582 12.8552 3.43638C12.4957 3.07693 12.0082 2.875 11.4999 2.875C10.9916 2.875 10.5041 3.07693 10.1446 3.43638C9.78516 3.79582 9.58323 4.28334 9.58323 4.79167M18.4574 9.292L19.7847 17.917C19.8267 18.19 19.8092 18.4688 19.7334 18.7344C19.6575 19 19.5252 19.246 19.3455 19.4557C19.1657 19.6654 18.9428 19.8338 18.6919 19.9493C18.441 20.0648 18.1682 20.1248 17.892 20.125H5.10781C4.83146 20.125 4.55837 20.0653 4.30726 19.9499C4.05616 19.8345 3.83297 19.6662 3.65301 19.4565C3.47305 19.2467 3.34057 19.0006 3.26466 18.7349C3.18874 18.4691 3.17118 18.1901 3.21319 17.917L4.54048 9.292C4.6101 8.83927 4.83956 8.42645 5.18728 8.1283C5.53501 7.83015 5.97802 7.66638 6.43606 7.66667H16.5637C17.0216 7.66661 17.4644 7.83048 17.8119 8.12861C18.1594 8.42674 18.3878 8.83944 18.4574 9.292Z" stroke="black" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
+                    {checkoutItems.length > 0 && <div className={style.basketCounter}>{checkoutItems.length}</div>}
                 </NavLink>}
         </div>
     </header>

@@ -1,10 +1,7 @@
 import React from "react";
 import style from './Footer.module.css';
-import visaImg from '../../assecs/images/visa.svg'
-import masterCardImg from '../../assecs/images/masterCard.svg'
-import GPayImg from '../../assecs/images/GPay.svg'
-import APayImg from '../../assecs/images/APay.svg'
 import SocialLink from "./SocialLink/SocialLink";
+import {APayImg, GPayImg, masterCardImg, visaImg} from "./Payment";
 
 const Footer = () => {
     return <footer className={style.footer}>
@@ -26,10 +23,10 @@ const Footer = () => {
                 <SocialLink/>
                 <h3 className={style.footerH3}>payment methods</h3>
                 <div className={style.payment}>
-                    <img className={style.paymentItem} src={visaImg} alt="visa"/>
-                    <img className={style.paymentItem} src={masterCardImg} alt="masterCard"/>
-                    <img className={style.paymentItem} src={GPayImg} alt="GPay"/>
-                    <img className={style.paymentItem} src={APayImg} alt="APay"/>
+                    {visaImg(style.paymentItem)}
+                    {masterCardImg(style.paymentItem)}
+                    {GPayImg(style.paymentItem)}
+                    {APayImg(style.paymentItem)}
                 </div>
             </div>
         </div>

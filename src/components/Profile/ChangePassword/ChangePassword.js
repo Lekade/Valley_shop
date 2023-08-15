@@ -1,10 +1,8 @@
 import React from "react";
 import style from "../../Сheckout/CheckoutForm/Form.module.css";
 import {ErrorMessage, Field, Form, Formik} from "formik";
-import {useDispatch} from "react-redux";
 
 const ChangePassword = () => {
-    const dispatch = useDispatch()
     return <div className={style.personalDataForm}>
         <h1 className={style.header}>change password</h1>
         <Formik

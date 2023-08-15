@@ -42,8 +42,6 @@ export const ordersSlice = createSlice({
     reducers: {
     },
     extraReducers: {
-        [fetchOrders.pending]: (state) => {
-        },
         [fetchOrders.fulfilled]: (state, action) => {
             state.orders = action.payload
         },

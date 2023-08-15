@@ -1,17 +1,21 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 import axios from "axios";
 
+const urlMen = 'https://644146b5792fe886a8a31f8c.mockapi.io/items'
+const urlGirl = 'https://64d130eaff953154bb7a1bd5.mockapi.io/items'
 
 export const fetchProducts = createAsyncThunk(
-    'filter/fetchProducts',async ({category, sortBy,order}) => {
-        const {data} = await  axios.get(`https://644146b5792fe886a8a31f8c.mockapi.io/items?${category}&sortBy=${sortBy}&order=${order}`)
+    'filter/fetchProducts',async ({category, sortBy,order}, thunkAPI) => {
+        const gender = thunkAPI.getState().filterReducer.gender
+        const {data} = await  axios.get( `${gender !== 1 && gender !== 0 ? urlMen : urlGirl}?${category}&sortBy=${sortBy}&order=${order}`)
         return data
     }
 )
 
 export const fetchProduct = createAsyncThunk(
-    'filter/fetchProduct',async (id) => {
-        const {data} = await  axios.get('https://644146b5792fe886a8a31f8c.mockapi.io/items/' + id)
+    'filter/fetchProduct',async (id, thunkAPI) => {
+        const gender = thunkAPI.getState().filterReducer.gender
+        const {data} = await  axios.get(`${gender !== 1 && gender !== 0 ? urlMen : urlGirl}` + '/' + id)
         return data
     }
 )
@@ -21,7 +25,7 @@ const initialState = {
     products: [],
     productsNoFilter: [],
     minPrice: 15,
-    maxPrice: 200,
+    maxPrice: 295,
     product: {},
     status: 'loading', // loading | success | error
     category: ["t-shirts", "sweaters", "hoodies", "shirts", "pants/shorts", "polo", "popular"],
@@ -121,7 +125,7 @@ export const filterSlice = createSlice({
         [fetchProduct.fulfilled]:(state, action) => {
             state.product = action.payload
         },
-        [fetchProducts.rejected]:(state, action) => {
+        [fetchProducts.rejected]:(state) => {
             state.status = 'error'
             state.products = []
         },

@@ -58,6 +58,44 @@
     color: #7B7B7B;
 }
 
+@media (min-width: 1800px) {
+    .selectionItems{
+        padding-right: 0;
+        padding-bottom:0;
+        display: grid;
+        grid-template-columns: repeat(4, 28.5rem);
+        grid-template-rows: 48.6rem;
+        gap:1rem;
+        justify-content: center;
+    }
+    .skeleton{
+        width: 28.5rem;
+        height: 48.6rem;
+    }
+    .skeletonImage{
+        width: 28.5rem;
+        height:36.3rem;
+    }
+    .skeletonText{
+        x: 2rem;
+        y: 38.5rem;
+        width: 24.4rem;
+        height: 3rem;
+    }
+    .skeletonPrice{
+        x: 2rem;
+        y: 44rem;
+        width: 10rem;
+        height: 2.5rem;
+    }
+    .skeletonRating{
+        x: 16.4rem;
+        y: 44rem;
+        width: 10rem;
+        height: 2.5rem;
+    }
+}
+
 @media (max-width:768px){
     .favorites{
         padding: 2rem 1rem 5.4rem;
