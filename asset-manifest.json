@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/Valley_shop/static/css/main.7f5b0caa.css",
+    "main.css": "/Valley_shop/static/css/main.c9087051.css",
     "main.js": "/Valley_shop/static/js/main.dc60ae70.js",
     "ProductPage.css": "/Valley_shop/static/css/ProductPage.d25efc3c.chunk.css",
     "ProductPage.js": "/Valley_shop/static/js/ProductPage.53d82495.chunk.js",
@@ -16,7 +16,7 @@
     "static/media/m.jpg": "/Valley_shop/static/media/m.5f6cda761d47d23dce7f.jpg",
     "static/media/mobM.jpg": "/Valley_shop/static/media/mobM.cac4eb291f7640f82585.jpg",
     "index.html": "/Valley_shop/index.html",
-    "main.7f5b0caa.css.map": "/Valley_shop/static/css/main.7f5b0caa.css.map",
+    "main.c9087051.css.map": "/Valley_shop/static/css/main.c9087051.css.map",
     "main.dc60ae70.js.map": "/Valley_shop/static/js/main.dc60ae70.js.map",
     "ProductPage.d25efc3c.chunk.css.map": "/Valley_shop/static/css/ProductPage.d25efc3c.chunk.css.map",
     "ProductPage.53d82495.chunk.js.map": "/Valley_shop/static/js/ProductPage.53d82495.chunk.js.map",
@@ -29,7 +29,7 @@
     "787.4c996d11.chunk.js.map": "/Valley_shop/static/js/787.4c996d11.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7f5b0caa.css",
+    "static/css/main.c9087051.css",
     "static/js/main.dc60ae70.js"
   ]
 }
