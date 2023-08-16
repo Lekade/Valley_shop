@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/Valley_shop/static/css/main.254455ef.css",
-    "main.js": "/Valley_shop/static/js/main.fa64b4fe.js",
+    "main.js": "/Valley_shop/static/js/main.f4bab2b2.js",
     "ProductPage.css": "/Valley_shop/static/css/ProductPage.d25efc3c.chunk.css",
-    "ProductPage.js": "/Valley_shop/static/js/ProductPage.8725ae43.chunk.js",
+    "ProductPage.js": "/Valley_shop/static/js/ProductPage.53d82495.chunk.js",
     "Profile.css": "/Valley_shop/static/css/Profile.0be1009f.chunk.css",
     "Profile.js": "/Valley_shop/static/js/Profile.f9fbc96c.chunk.js",
     " Favorites.css": "/Valley_shop/static/css/ Favorites.ea6af7fb.chunk.css",
@@ -17,9 +17,9 @@
     "static/media/mobM.jpg": "/Valley_shop/static/media/mobM.cac4eb291f7640f82585.jpg",
     "index.html": "/Valley_shop/index.html",
     "main.254455ef.css.map": "/Valley_shop/static/css/main.254455ef.css.map",
-    "main.fa64b4fe.js.map": "/Valley_shop/static/js/main.fa64b4fe.js.map",
+    "main.f4bab2b2.js.map": "/Valley_shop/static/js/main.f4bab2b2.js.map",
     "ProductPage.d25efc3c.chunk.css.map": "/Valley_shop/static/css/ProductPage.d25efc3c.chunk.css.map",
-    "ProductPage.8725ae43.chunk.js.map": "/Valley_shop/static/js/ProductPage.8725ae43.chunk.js.map",
+    "ProductPage.53d82495.chunk.js.map": "/Valley_shop/static/js/ProductPage.53d82495.chunk.js.map",
     "Profile.0be1009f.chunk.css.map": "/Valley_shop/static/css/Profile.0be1009f.chunk.css.map",
     "Profile.f9fbc96c.chunk.js.map": "/Valley_shop/static/js/Profile.f9fbc96c.chunk.js.map",
     " Favorites.ea6af7fb.chunk.css.map": "/Valley_shop/static/css/ Favorites.ea6af7fb.chunk.css.map",
@@ -30,6 +30,6 @@
   },
   "entrypoints": [
     "static/css/main.254455ef.css",
-    "static/js/main.fa64b4fe.js"
+    "static/js/main.f4bab2b2.js"
   ]
 }
