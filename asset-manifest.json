@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Valley_shop/static/css/main.254455ef.css",
-    "main.js": "/Valley_shop/static/js/main.f4bab2b2.js",
+    "main.js": "/Valley_shop/static/js/main.dc60ae70.js",
     "ProductPage.css": "/Valley_shop/static/css/ProductPage.d25efc3c.chunk.css",
     "ProductPage.js": "/Valley_shop/static/js/ProductPage.53d82495.chunk.js",
     "Profile.css": "/Valley_shop/static/css/Profile.0be1009f.chunk.css",
-    "Profile.js": "/Valley_shop/static/js/Profile.f9fbc96c.chunk.js",
+    "Profile.js": "/Valley_shop/static/js/Profile.b4a17a14.chunk.js",
     " Favorites.css": "/Valley_shop/static/css/ Favorites.ea6af7fb.chunk.css",
     " Favorites.js": "/Valley_shop/static/js/ Favorites.96c7eaf3.chunk.js",
-    "Checkout.js": "/Valley_shop/static/js/Checkout.7122215e.chunk.js",
-    "Basket.js": "/Valley_shop/static/js/Basket.ef4a087f.chunk.js",
+    "Checkout.js": "/Valley_shop/static/js/Checkout.17209b13.chunk.js",
+    "Basket.js": "/Valley_shop/static/js/Basket.9ae04484.chunk.js",
     "static/js/787.4c996d11.chunk.js": "/Valley_shop/static/js/787.4c996d11.chunk.js",
     "static/media/w.jpg": "/Valley_shop/static/media/w.291e5cffcc4566302382.jpg",
     "static/media/mobW.jpg": "/Valley_shop/static/media/mobW.7f274c4f51ff1c9d7d56.jpg",
@@ -17,19 +17,19 @@
     "static/media/mobM.jpg": "/Valley_shop/static/media/mobM.cac4eb291f7640f82585.jpg",
     "index.html": "/Valley_shop/index.html",
     "main.254455ef.css.map": "/Valley_shop/static/css/main.254455ef.css.map",
-    "main.f4bab2b2.js.map": "/Valley_shop/static/js/main.f4bab2b2.js.map",
+    "main.dc60ae70.js.map": "/Valley_shop/static/js/main.dc60ae70.js.map",
     "ProductPage.d25efc3c.chunk.css.map": "/Valley_shop/static/css/ProductPage.d25efc3c.chunk.css.map",
     "ProductPage.53d82495.chunk.js.map": "/Valley_shop/static/js/ProductPage.53d82495.chunk.js.map",
     "Profile.0be1009f.chunk.css.map": "/Valley_shop/static/css/Profile.0be1009f.chunk.css.map",
-    "Profile.f9fbc96c.chunk.js.map": "/Valley_shop/static/js/Profile.f9fbc96c.chunk.js.map",
+    "Profile.b4a17a14.chunk.js.map": "/Valley_shop/static/js/Profile.b4a17a14.chunk.js.map",
     " Favorites.ea6af7fb.chunk.css.map": "/Valley_shop/static/css/ Favorites.ea6af7fb.chunk.css.map",
     " Favorites.96c7eaf3.chunk.js.map": "/Valley_shop/static/js/ Favorites.96c7eaf3.chunk.js.map",
-    "Checkout.7122215e.chunk.js.map": "/Valley_shop/static/js/Checkout.7122215e.chunk.js.map",
-    "Basket.ef4a087f.chunk.js.map": "/Valley_shop/static/js/Basket.ef4a087f.chunk.js.map",
+    "Checkout.17209b13.chunk.js.map": "/Valley_shop/static/js/Checkout.17209b13.chunk.js.map",
+    "Basket.9ae04484.chunk.js.map": "/Valley_shop/static/js/Basket.9ae04484.chunk.js.map",
     "787.4c996d11.chunk.js.map": "/Valley_shop/static/js/787.4c996d11.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.254455ef.css",
-    "static/js/main.f4bab2b2.js"
+    "static/js/main.dc60ae70.js"
   ]
 }
